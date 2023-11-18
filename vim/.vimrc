@@ -1,11 +1,10 @@
-
-set runtimepath+=$HOME/.local/share/nvim/site/autoload
+set runtimepath+=$HOME/vimnvimconfig/autoload
 
 " Load Plug.vim
-if empty(glob('$HOME/.local/share/nvim/site/autoload'))
+if empty(glob('$HOME/vimnvimconfig/autoload'))
   echo "Plug.vim not found. Please check the path."
 else
-  source $HOME/.local/share/nvim/site/autoload/plug.vim
+  source $HOME/vimnvimconfig/autoload/plug.vim
 endif
 
 
