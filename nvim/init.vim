@@ -1,6 +1,20 @@
-set runtimepath+=$HOME/vimnvimconfig/autoload/
+"let g:vim_configuration_dir = $HOME . '<vim_config_repo_directory>'
+let g:vim_configuration_dir = $HOME . '/vim-configuration'
 
-source $HOME/vimnvimconfig/autoload/plug.vim
+
+" Add the vim configuration to the runtimepath
+if isdirectory(g:vim_configuration_dir)
+				execute 'set runtimepath+=' . g:vim_configuration_dir . '/autoload'
+else
+				echom "Vim configuration directory does not exists: " . g:vim_configuration_dir
+endif
+
+" Load plug vim
+if empty(glob(g:vim_configuration_dir . '/autoload'))
+				echo "Plug.vim not found. Please check the path."
+else
+				execute 'source ' . g:vim_configuration_dir . '/autoload/plug.vim'
+endif
 
 call plug#begin()
 Plug 'junegunn/fzf.vim'
