@@ -21,6 +21,7 @@ call plug#begin()
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/DrawIt'
 Plug 'maksimr/vim-beautify'
+Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 
 set autoindent
@@ -31,8 +32,9 @@ set clipboard=unnamedplus,unnamed,autoselect
 
 set mouse=a
 set number
-set tabstop=2
 set relativenumber
+set tabstop=2
+set shiftwidth=1
 
 nmap <leader>sv :source ~/.vimrc<CR>
 nmap <leader>ev :hide e ~/.vimrc<CR>
@@ -46,3 +48,22 @@ nmap <Tab>j <c-w><s-j>
 nmap <Tab>k <c-w><s-k>
 nmap <Tab>h <c-w><s-h>
 nmap <Tab>l <c-w><s-l>
+
+nmap <leader>w :Explore<CR>
+nmap <leader>b :buffers<CR>:buffer<space>
+
+" Toggle in and out of terminal mode
+nnoremap <Leader>t :call ToggleTerminal()<CR>
+
+function! ToggleTerminal()
+  if &buftype ==# 'terminal'
+    " If in terminal mode, close the terminal
+    call term_sendkeys(bufnr(''), "\<C-w>:q\<CR>")
+  else
+    " If not in terminal mode, open a new terminal
+    term
+  endif
+endfunction
+
+tnoremap <C-t> <C-\><C-n>
+
