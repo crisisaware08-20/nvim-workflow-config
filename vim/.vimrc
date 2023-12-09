@@ -29,6 +29,7 @@ set autoindent
 set path+=$PWD/**/**
 set dictionary+=$HOME/.vim/words/java_words
 set clipboard=unnamedplus,unnamed,autoselect
+set hidden
 
 set mouse=a
 set number
@@ -50,6 +51,11 @@ nmap <Tab>h <c-w><s-h>
 nmap <Tab>l <c-w><s-l>
 
 nmap <leader>w :Explore<CR>
+
+
+" Automatically save the buffer when it loses focus or goes into hidden state
+autocmd BufLeave * silent! wall
+
 nmap <leader>b :buffers<CR>:buffer<space>
 
 " Toggle in and out of terminal mode
@@ -66,4 +72,3 @@ function! ToggleTerminal()
 endfunction
 
 tnoremap <C-t> <C-\><C-n>
-
