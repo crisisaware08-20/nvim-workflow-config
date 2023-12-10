@@ -39,6 +39,8 @@ set shiftwidth=1
 
 nmap <leader>sv :source ~/.vimrc<CR>
 nmap <leader>ev :hide e ~/.vimrc<CR>
+nmap <leader>sz :!source ~/.zshrc<CR>
+nmap <leader>ez :hide e ~/.zshrc<CR>
 
 nmap <leard>f gg=G
 
@@ -72,3 +74,4 @@ function! ToggleTerminal()
 endfunction
 
 tnoremap <C-t> <C-\><C-n>
+
