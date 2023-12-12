@@ -43,6 +43,10 @@ nmap <leader>sz :!source ~/.zshrc<CR>
 nmap <leader>ez :hide e ~/.zshrc<CR>
 
 nmap <leard>f gg=G
+" To ident the current line ==
+" To ident the all the lines below the current line
+" To ident n lines below the current line n==
+" To ident block of code, go to one of the braces and use command =%
 
 :abbreviate ts <CR> @Test <CR> void test() { <CR> }<ESC><UP>o<TAB>
 
