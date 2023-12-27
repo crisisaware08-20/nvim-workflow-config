@@ -36,13 +36,14 @@ set number
 set relativenumber
 set tabstop=2
 set shiftwidth=1
+set noswapfile
 
 nmap <leader>sv :source ~/.vimrc<CR>
 nmap <leader>ev :hide e ~/.vimrc<CR>
 nmap <leader>sz :!source ~/.zshrc<CR>
 nmap <leader>ez :hide e ~/.zshrc<CR>
 
-nmap <leader>>f gg=G
+nmap <leader>f gg=G
 " To ident the current line ==
 " To ident the all the lines below the current line
 " To ident n lines below the current line n==
@@ -54,7 +55,7 @@ nmap <leader>>f gg=G
 nmap <Tab>j <c-w><s-j>
 nmap <Tab>k <c-w><s-k>
 nmap <Tab>h <c-w><s-h>
-  nmap <Tab>l <c-w><s-l>
+nmap <Tab>l <c-w><s-l>
 
 nmap <leader>w :Explore<CR>
 
