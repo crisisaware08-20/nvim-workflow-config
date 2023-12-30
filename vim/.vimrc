@@ -67,6 +67,7 @@ nmap <leader>b :buffers<CR>:buffer<space>
 
 " Toggle in and out of terminal mode
 nnoremap <Leader>t :call ToggleTerminal()<CR>
+tnoremap <Esc> <C-\><C-n>
 
 function! ToggleTerminal()
   if &buftype ==# 'terminal'
@@ -77,6 +78,3 @@ function! ToggleTerminal()
     term
   endif
 endfunction
-
-tnoremap <C-t> <C-\><C-n>
-
