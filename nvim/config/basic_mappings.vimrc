@@ -1,11 +1,9 @@
-
 " Key Mappings:Customized keys
 
-"noremap <esc> :noh<cr>
-imap jj <esc>
+nmap <leader>w :Explore<CR>
 
+nmap <leader>b :buffers<CR>:buffer<space>
 
-"Sugest completion if any
 
 "Close window
 nnoremap qw :q <CR>
@@ -55,9 +53,6 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
-" Next window
-nnoremap ]w <c-w>w
-
 "Split window
 nnoremap <Space>v :vsplit<CR>
 nnoremap <Space>h :split<CR>
@@ -82,6 +77,3 @@ nnoremap <C-y> 3<c-y>
 
 "Indent the content of the file
 nnoremap <Leader>f gg=G 
-
-"Only current window
-nnoremap<leader>o :only<CR>

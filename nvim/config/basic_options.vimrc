@@ -1,9 +1,6 @@
-" colorscheme edge
-
 syntax enable
 syntax on
 filetype on
-set rtp+=~/.fzf
 set autowriteall
 set clipboard=unnamed,unnamedplus
 set noswapfile

@@ -17,25 +17,36 @@ else
 endif
 
 call plug#begin()
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/DrawIt'
-Plug 'reedes/vim-pencil'
-Plug 'frazrepo/vim-rainbow'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/edge'
-Plug 'neovim/nvim-lspconfig'
-Plug 'mfussenegger/nvim-jdtls'
 call plug#end()
+
+
+" Automatically save the buffer when it loses focus or goes into hidden state
+autocmd BufLeave * silent! wall
+
+
+" Toggle in and out of terminal mode
+nnoremap <Leader>t :call ToggleTerminal()<CR>
+tnoremap <Esc> <C-\><C-n>
+
+function! ToggleTerminal()
+  if &buftype ==# 'terminal'
+    " If in terminal mode, close the terminal
+    call term_sendkeys(bufnr(''), "\<C-w>:q\<CR>")
+  else
+    " If not in terminal mode, open a new terminal
+    term
+  endif
+endfunction
+
 
 source $HOME/.config/nvim/config/plugins.vimrc
 source $HOME/.config/nvim/config/basic_mappings.vimrc
 source $HOME/.config/nvim/config/basic_options.vimrc
-source $HOME/.config/nvim/config/terminall.vimrc
 
 au FocusLost * :wa
