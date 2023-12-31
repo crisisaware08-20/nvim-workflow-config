@@ -1,1 +1,1 @@
-### NVim workflow repo
+### NVim workflow
