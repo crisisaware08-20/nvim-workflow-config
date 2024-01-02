@@ -1,1 +1,1 @@
-### NVim workflow
+### NVim workflow / personal development environment
