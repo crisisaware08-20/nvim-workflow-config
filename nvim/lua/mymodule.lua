@@ -11,7 +11,7 @@ function M.add_numbers(a, b)
 end
 
 function M.print_path_option()
-  print("path option value")
+  print("NVim paths:")
   for _, path_entry in ipairs(vim.opt.path:get()) do
     print(path_entry)
   end
