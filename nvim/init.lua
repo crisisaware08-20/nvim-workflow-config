@@ -1,9 +1,7 @@
 require('lazy').add_lazy_to_nvim_rtp()
-local util_module = require('mymodule') -- Load mymodule, purley for experimenting
 
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
-
 vim.keymap.set('n', '<leader>w', ':Explore<CR>')
 vim.keymap.set('n', '<leader>sv', '<cmd>source ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>')
@@ -22,4 +20,4 @@ vim.opt.shiftwidth=1
 
 
 -- Delete when the find will search in all subdirectories of the root directory
-util_module.print_path_option()
+-- util_module.print_path_option()
