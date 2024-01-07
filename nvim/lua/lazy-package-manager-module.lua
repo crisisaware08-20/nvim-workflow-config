@@ -11,9 +11,9 @@ M.add_lazy_to_nvim_rtp = function()
 			"--branch=stable", -- latest stable release
 			lazypath,
 		})
+		print("Lazy package manager installed")
 	end
 	vim.opt.rtp:prepend(lazypath)
-	print("Lazy package manager installed")
 end
 
 return M

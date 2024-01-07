@@ -1,4 +1,4 @@
-require('lazy').add_lazy_to_nvim_rtp()
+require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
 
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
