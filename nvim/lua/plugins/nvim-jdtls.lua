@@ -1,1 +1,1 @@
-return { {"williamboman/mason.nvim"} }
+return { {"mfussenegger/nvim-jdtls"} }
