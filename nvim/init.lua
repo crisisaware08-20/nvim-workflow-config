@@ -1,5 +1,10 @@
 require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
 require('lazy').setup('plugins')
+require('mason').setup()
+require('mason-lspconfig').setup()
+require'keymaps'.map_hop()
+require('custom-module')
+
 
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
@@ -9,6 +14,10 @@ vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>ez', '<cmd>hide e ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>f', 'gg=G')
+vim.api.nvim_set_keymap('n', 'qw', '<c-w>c', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<leader>cd', [[:lua require('mymodule').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_command('filetype plugin on')
 
 -- Options
 vim.opt.clipboard='unnamedplus' -- Share Nvim clipboard with system clipboard.
@@ -18,6 +27,7 @@ vim.opt.number=true
 vim.opt.relativenumber=true
 vim.opt.tabstop=1
 vim.opt.shiftwidth=1
+--vim.opt.timeoutlen=100
 
 
 -- Delete when the find will search in all subdirectories of the root directory
