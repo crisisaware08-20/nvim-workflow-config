@@ -2,7 +2,7 @@
 local M = {}
 
 
-print("Lua plugin!!!")
+print("Automatically loaded lua module by NVim")
 
 
 return M

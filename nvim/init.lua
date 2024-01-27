@@ -1,5 +1,6 @@
 require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
 require('lazy').setup('plugins')
+
 require('mason').setup()
 require('mason-lspconfig').setup()
 require'keymaps'.map_hop()
