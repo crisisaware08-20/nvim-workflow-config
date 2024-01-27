@@ -3,7 +3,9 @@ require('lazy').setup('plugins')
 
 require('mason').setup()
 require('mason-lspconfig').setup()
+
 require'keymaps'.map_hop()
+
 require('custom-module')
 
 
@@ -28,6 +30,7 @@ vim.opt.number=true
 vim.opt.relativenumber=true
 vim.opt.tabstop=1
 vim.opt.shiftwidth=1
+vim.opt.termguicolors=true
 --vim.opt.timeoutlen=100
 
 
