@@ -7,6 +7,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
+		"tamago324/cmp-zsh",
 		"rafamadriz/friendly-snippets"
 	} 
 }

@@ -46,10 +46,10 @@ function P.map_java_keys(bufnr)
 	key_map('x', '<leader>ev', ':lua require("jdtls").extract_variable(true)<CR>')
 	key_map('n', '<leader>jc', ':lua require("jdtls").compile("incremental")')
 
--- If using nvim-dap
--- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
---nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
---nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
+	-- If using nvim-dap
+	-- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
+	--nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
+	--nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
 end
 
 -- hop
