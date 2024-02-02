@@ -1,8 +1,6 @@
 require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
 require('lazy').setup('plugins')
 
-require('tokyonight').colorscheme()
-
 require('pluginconfigs')
 
 require'keymaps'.map_hop()
@@ -23,6 +21,7 @@ vim.api.nvim_set_keymap('n', '<leader>cd', [[:lua require('mymodule').change_nvi
 
 
 vim.api.nvim_command('filetype plugin on')
+vim.api.nvim_command('colorscheme tokyonight-moon')
 -- Options
 vim.opt.clipboard='unnamedplus' -- Share Nvim clipboard with system clipboard.
 vim.opt.path:append  '**' -- Append to current path current directory and its subdirectories.
