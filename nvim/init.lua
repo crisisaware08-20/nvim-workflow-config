@@ -1,6 +1,8 @@
 require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
 require('lazy').setup('plugins')
 
+require('tokyonight').colorscheme()
+
 require('pluginconfigs')
 
 require'keymaps'.map_hop()
