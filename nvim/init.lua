@@ -30,7 +30,6 @@ vim.opt.number=true
 vim.opt.relativenumber=true
 vim.opt.tabstop=1
 vim.opt.shiftwidth=1
-vim.opt.termguicolors=true
 --vim.opt.timeoutlen=100
 
 -- Delete when the find will search in all subdirectories of the root directory

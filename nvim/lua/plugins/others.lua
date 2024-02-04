@@ -19,9 +19,12 @@ return {
 		opts = {},
 	},
 
-	{
-		'folke/tokyonight.nvim',
-	}
+  -- Status line
+	{ 'famiu/feline.nvim' },
+
+	{ 'lewis6991/gitsigns.nvim' },
+
+	{ 'terrortylor/nvim-comment' },
 
 }
 
