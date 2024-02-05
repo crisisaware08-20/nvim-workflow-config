@@ -10,7 +10,7 @@ end
 
 
 --LSP
-function P.map_lsp_keys() 
+function P.map_lsp_keys()
 	key_map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 	key_map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
 	key_map('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
