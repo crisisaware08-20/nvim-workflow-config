@@ -5,7 +5,8 @@ vim.opt.termguicolors=true
 -- LSP
 require('mason').setup()
 require('mason-lspconfig').setup()
-require('lspconfig').lua_ls.setup{}
+
+--require('lspconfig').lua_ls.setup{}
 
 -- Status line
 require('feline').setup()

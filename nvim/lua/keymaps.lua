@@ -54,10 +54,17 @@ end
 
 -- hop
 function P.map_hop()
-	key_map('n', 'f', '<cmd>HopWordCurrentLineAC<CR>')
+	--key_map('n', 'f', '<cmd>HopWordCurrentLineAC<CR>')
 	key_map('n', '<leader>hp', '<cmd>HopPattern<CR>')
 	key_map('n', 'gt', '<cmd>HopLine<CR>')
 	key_map('n', '<leader><leader>w', '<cmd>HopWord<CR>')
 end
 
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 return P
