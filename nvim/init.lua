@@ -1,25 +1,24 @@
-require('lazy-package-manager-module').add_lazy_to_nvim_rtp()
-require('lazy').setup('plugins')
+require('package-manager').add_lazy_to_nvim_rtp()
 
 require('pluginconfigs')
 
 require'keymaps'.map_hop()
 
---require('custom-module')
-
-
--- Mappings
-vim.api.nvim_set_keymap('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
+-- Basic Mappings
+vim.keymap.set('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>w', ':Explore<CR>')
 vim.keymap.set('n', '<leader>sv', '<cmd>source ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>ez', '<cmd>hide e ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>f', 'gg=G')
-vim.api.nvim_set_keymap('n', 'wo', '<c-w>o', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', 'qw', '<c-w>c', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>cd', [[:lua require('mymodule').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wo', '<c-w>o', { noremap = true, silent = false })
+vim.keymap.set('n', 'qw', '<c-w>c', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cd', 
+                    [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
+																				{ noremap = true, silent = true })
 
+-- Commands
 vim.api.nvim_command('filetype plugin on')
 vim.api.nvim_command('colorscheme tokyonight-moon')
 

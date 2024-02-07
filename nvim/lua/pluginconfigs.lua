@@ -2,24 +2,12 @@ local M = {}
 
 vim.opt.termguicolors=true
 
--- LSP
+require('lazy').setup('plugins')
 require('mason').setup()
 require('mason-lspconfig').setup()
-
 --require('lspconfig').lua_ls.setup{}
-
--- Status line
 require('feline').setup()
-
 require('gitsigns').setup()
-
--- gcc comment/uncomment current line, this does not take a count, if you want a count use the gc{count}{motion}
--- gc{motion} comment/uncomment selection defined by a motion (as lines are commented, any comment toggling actions will default to a linewise):
--- gcip comment/uncomment a paragraph
--- gc4w comment/uncomment current line
--- gc4j comment/uncomment 4 lines below the current line
--- dic delete comment block
--- gcic uncomment commented block
 require('nvim_comment').setup()
 
 -- Completion
@@ -80,14 +68,14 @@ cmp.setup.cmdline({ '/', '?' }, {
 	}
 })
 
--- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
--- 	mapping = cmp.mapping.preset.cmdline(),
--- 	sources = cmp.config.sources({
--- 		{ name = 'path' }
--- 	}, {
--- 		{ name = 'cmdline' }
--- 	})
--- })
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
+})
 
 return M

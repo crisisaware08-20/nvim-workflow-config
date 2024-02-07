@@ -1,8 +1,8 @@
 [v] cmp completion
-[] experiment with completion and adjust to your needs
-[] search in files
+[v] experiment with completion and adjust to your needs
+[v] search in files
 [] tree sitier, file navigation
-[] telescope ??
+[v] telescope ??
 [] file changes, git integration
 
 
