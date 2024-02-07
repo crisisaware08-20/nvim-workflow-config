@@ -1,9 +1,9 @@
 local P = {}
 keymaps = P
+
 -- leader --
 --vim.g.mapleader = ' '
 
--- key_mapping --
 local key_map = function(mode, key, result)
 	vim.api.nvim_set_keymap( mode, key, result, {noremap = true, silent = true})
 end

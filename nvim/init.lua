@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>ez', '<cmd>hide e ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>f', 'gg=G')
+vim.api.nvim_set_keymap('n', 'wo', '<c-w>o', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', 'qw', '<c-w>c', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>cd', [[:lua require('mymodule').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]], { noremap = true, silent = true })
 
