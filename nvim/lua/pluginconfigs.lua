@@ -5,10 +5,40 @@ vim.opt.termguicolors=true
 require('lazy').setup('plugins')
 require('mason').setup()
 require('mason-lspconfig').setup()
---require('lspconfig').lua_ls.setup{}
+require('lspconfig').lua_ls.setup{}
 require('feline').setup()
 require('gitsigns').setup()
 require('nvim_comment').setup()
+
+
+-- Gitsign
+
+require('gitsigns').setup {
+	signs = {
+		add          = { text = '+' },
+		change       = { text = '~' },
+		delete       = { text = '_' },
+		topdelete    = { text = '‾' },
+		changedelete = { text = '~' },
+		untracked    = { text = '┆' },
+	},
+	signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+	numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
+	linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+	word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+	watch_gitdir = {
+		follow_files = true
+	},
+	preview_config = {
+		-- Options passed to nvim_open_win
+		border = 'single',
+		style = 'minimal',
+		relative = 'cursor',
+		row = 0,
+		col = 1
+	},
+
+}
 
 -- Completion
 local cmp = require('cmp')
