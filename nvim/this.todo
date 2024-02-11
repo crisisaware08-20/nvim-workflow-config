@@ -9,10 +9,11 @@
 [] other lsp, bash, rust, go, scala, kotlin
 [] do not compromise the speed
 
-[] bar customization ?
-
 
 gitsign, fugitive, telescope
 
-what was the change ?
-undo the change
+preview the change - compare with checked out version
+unstage the change
+stage the change
+revert to working directory state - checkout
+compare block of code with previous commits

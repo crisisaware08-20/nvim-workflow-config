@@ -1,5 +1,5 @@
-return { 
-	{ 
+return {
+	{
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -9,5 +9,5 @@ return {
 		"hrsh7th/vim-vsnip",
 		"tamago324/cmp-zsh",
 		"rafamadriz/friendly-snippets"
-	} 
+	}
 }

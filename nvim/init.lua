@@ -37,7 +37,8 @@ vim.api.nvim_command('colorscheme tokyonight-moon')
 
 -- Options
 vim.opt.clipboard='unnamedplus' -- Share Nvim clipboard with system clipboard.
-vim.opt.path:append  '**' -- Append to current path current directory and its subdirectories.
+vim.opt.path:append  '**' -- Having Telescope in the context this might not be required anymore
+vim.opt.path:append  '/Users/mihailiurco/vim-configuration/nvim/**' -- It's good to have quick access to your primary configurations isn't it ?
 vim.opt.hidden=true
 vim.opt.number=true
 vim.opt.relativenumber=true
