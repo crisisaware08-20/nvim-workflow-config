@@ -15,5 +15,5 @@ gitsign, fugitive, telescope
 preview the change - compare with checked out version
 unstage the change
 stage the change
-revert to working directory state - checkout
-compare block of code with previous commits
+checkout file - revert to initial state
+compare current workgin directory state with other commits

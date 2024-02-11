@@ -30,19 +30,13 @@ function M.explore()
 
 end
 
--- Define a variable to store the original window height
+-- Functions for maximizing and restoring the current buffer's size
 local original_height
-
--- Define a function to resize the buffer vertically to the top
 function M.ResizeBufferTop()
-    -- Save the current window height
     original_height = vim.api.nvim_win_get_height(0)
-
-    -- Resize the buffer to the top
-    vim.cmd('resize +6000')  -- Increase height by 5 lines (adjust as needed)
+    vim.cmd('resize +6000')
 end
 
--- Define a function to restore the original window size
 function M.RestoreOriginalSize()
     if original_height ~= nil then
         local current_height = vim.api.nvim_win_get_height(0)
