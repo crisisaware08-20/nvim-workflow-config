@@ -1,13 +1,14 @@
 require('package-manager').add_lazy_to_nvim_rtp()
 
-require('pluginconfigs')
+require('lazy').setup(require("plugins/to_install"), opts)
+
+require('plugins/to_config')
 
 require'keymaps'.map_hop()
 
 -- Create key mappings for the functions
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>', { noremap = true, silent = true })
-
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
@@ -30,6 +31,10 @@ vim.keymap.set('n', 'qw', '<c-w>c', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>cd', 
 [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 { noremap = true, silent = true })
+
+-- Define a key mapping to close the quickfix list
+vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
+
 
 -- Commands
 vim.api.nvim_command('filetype plugin on')
