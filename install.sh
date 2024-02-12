@@ -24,4 +24,3 @@ create_link() {
 create_link "$CONFIG_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 create_link "$CONFIG_DIR/nvim/lua" "$HOME/.config/nvim/lua"
 create_link "$CONFIG_DIR/nvim/ftplugin" "$HOME/.config/nvim/ftplugin"
-create_link "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
