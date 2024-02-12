@@ -1,4 +1,4 @@
-require('package-manager').add_lazy_to_nvim_rtp()
+require('package-manager').boot_lazy_packg_manager()
 
 require('lazy').setup(require("plugins/to_install"), opts)
 

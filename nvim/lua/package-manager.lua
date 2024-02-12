@@ -1,6 +1,6 @@
 local M = {}
 
-M.add_lazy_to_nvim_rtp = function() 
+M.boot_lazy_packg_manager = function()
 	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 	if not vim.loop.fs_stat(lazypath) then
 		vim.fn.system({

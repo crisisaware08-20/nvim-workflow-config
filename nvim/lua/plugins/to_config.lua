@@ -2,7 +2,7 @@ local M = {}
 
 vim.opt.termguicolors=true
 
--- require('lazy').setup('plugins')
+require'keymaps'.map_hop()
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lspconfig').lua_ls.setup{}
@@ -12,7 +12,6 @@ require('nvim_comment').setup()
 
 
 -- Gitsign
-
 require('gitsigns').setup {
 	signs = {
 		add          = { text = '+' },
