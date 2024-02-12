@@ -50,6 +50,3 @@ vim.opt.relativenumber=true
 vim.opt.tabstop=1
 vim.opt.shiftwidth=1
 --vim.opt.timeoutlen=100
-
--- Delete when the find will search in all subdirectories of the root directory
--- util_module.print_path_option()
