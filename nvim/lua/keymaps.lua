@@ -6,7 +6,7 @@ local key_map = function(mode, key, result)
 end
 
 
---LSP
+-- LSP
 function P.map_lsp_keys()
 	key_map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 	key_map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
