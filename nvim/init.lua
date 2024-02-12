@@ -4,8 +4,6 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
-require'keymaps'.map_hop()
-
 -- Create key mappings for the functions
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>', { noremap = true, silent = true })
