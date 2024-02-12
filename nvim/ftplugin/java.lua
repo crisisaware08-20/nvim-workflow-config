@@ -1,9 +1,4 @@
--- Java Language Server configuration.
--- Locations:
--- 'nvim/ftplugin/java.lua'.
--- 'nvim/lang-servers/intellij-java-google-style.xml'
 
-vim.notify "Noty you!!!!!"
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 if not jdtls_ok then
 	vim.notify "JDTLS not found, install with `:LspInstall jdtls`"

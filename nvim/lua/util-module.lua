@@ -1,14 +1,5 @@
--- mymodule.lua
-
 local M = {}
 
-function M.say_hello()
-	print("Hello from the module!")
-end
-
-function M.add_numbers(a, b)
-	return a + b
-end
 
 function M.print_path_option()
 	print("NVim paths:")
@@ -17,11 +8,13 @@ function M.print_path_option()
 	end
 end
 
+-- Change directory to current buffer, not quite used --> may be removed
 function M.change_nvim_directory_to(path)
 	vim.fn.chdir(path)
 	print("Directory changed to" .. path .. " ")
 end
 
+-- Used as "quickly try things"
 function M.explore()
 	local fruits = {"apple", "banana", "orange", "blueberry"}
 	for key, value in pairs(fruits) do

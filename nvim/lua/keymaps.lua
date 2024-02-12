@@ -1,9 +1,6 @@
 local P = {}
 keymaps = P
 
--- leader --
---vim.g.mapleader = ' '
-
 local key_map = function(mode, key, result)
 	vim.api.nvim_set_keymap( mode, key, result, {noremap = true, silent = true})
 end
@@ -40,7 +37,7 @@ end
 function P.map_java_keys(bufnr)
 	P.map_lsp_keys()
 	key_map('n', '<leader>oi', ':lua require("jdtls").organize_imports()<CR>')
-	-- key_map('n', '<leader>ev', ':lua require("jdtls").extract_variable()<CR>')
+	-- key_map('n', '<leader>ev', ':lua require("jdtls").extract_variable()<CR>') conflicts with init.lua
 	key_map('n', '<leader>em', ':lua require("jdtls").extract_method()<CR>')
 	key_map('x', '<leader>em', ':lua require("jdtls").extract_method(true)<CR>')
 	key_map('x', '<leader>ev', ':lua require("jdtls").extract_variable(true)<CR>')
@@ -52,14 +49,12 @@ function P.map_java_keys(bufnr)
 	--nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
 end
 
--- hop
+-- Hop
 function P.map_hop()
-	--key_map('n', 'f', '<cmd>HopWordCurrentLineAC<CR>')
 	key_map('n', '<leader>hp', '<cmd>HopPattern<CR>')
 	key_map('n', 'gt', '<cmd>HopLine<CR>')
 	key_map('n', '<leader><leader>w', '<cmd>HopWord<CR>')
 end
-
 
 -- Telescope
 local builtin = require('telescope.builtin')
