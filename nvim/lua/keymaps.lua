@@ -6,7 +6,7 @@ local key_map = function(mode, key, result)
 end
 
 
--- LSP
+-- nvim-lspconfig
 function P.map_lsp_keys()
 	key_map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 	key_map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
@@ -33,7 +33,7 @@ function P.map_lsp_keys()
 
 end
 
--- Java
+-- nvim-jdtls
 function P.map_java_keys(bufnr)
 	P.map_lsp_keys()
 	key_map('n', '<leader>oi', ':lua require("jdtls").organize_imports()<CR>')
@@ -49,14 +49,14 @@ function P.map_java_keys(bufnr)
 	--nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
 end
 
--- Hop
+-- hop
 function P.map_hop()
 	key_map('n', '<leader>hp', '<cmd>HopPattern<CR>')
 	key_map('n', 'gt', '<cmd>HopLine<CR>')
 	key_map('n', '<leader><leader>w', '<cmd>HopWord<CR>')
 end
 
--- Telescope
+-- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
