@@ -4,9 +4,13 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
--- Create key mappings for the functions
+-- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
+-- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cd', 
+[[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
+{ noremap = true, silent = true })
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
@@ -26,11 +30,6 @@ vim.keymap.set('n', '<Tab>h', '<c-w><S-h>', { noremap = true, silent = false })
 vim.keymap.set('n', '<Tab>k', '<c-w><S-k>', { noremap = true, silent = false })
 vim.keymap.set('n', '<Tab>j', '<c-w><S-j>', { noremap = true, silent = false })
 vim.keymap.set('n', 'qw', '<c-w>c', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cd', 
-[[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
-{ noremap = true, silent = true })
-
--- Define a key mapping to close the quickfix list
 vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
 
 
@@ -39,9 +38,9 @@ vim.api.nvim_command('filetype plugin on')
 vim.api.nvim_command('colorscheme tokyonight-moon')
 
 -- Options
-vim.opt.clipboard='unnamedplus' -- Share Nvim clipboard with system clipboard.
-vim.opt.path:append  '**' -- Having Telescope in the context this might not be required anymore
-vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- It's good to have quick access to your primary configurations isn't it ?
+vim.opt.clipboard='unnamedplus'
+vim.opt.path:append  '**'
+vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden=true
 vim.opt.number=true
 vim.opt.relativenumber=true
