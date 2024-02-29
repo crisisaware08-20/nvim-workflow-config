@@ -76,4 +76,8 @@ return {
 		"terrortylor/nvim-comment"
 	},
 
+	{
+		"vim-scripts/DrawIt"
+	},
+
 }
