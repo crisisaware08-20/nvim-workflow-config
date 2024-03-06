@@ -80,4 +80,9 @@ return {
 		"vim-scripts/DrawIt"
 	},
 
+	-- Get lost with mapping ? Unload your mental model of mappings to this friendly plugin
+	{
+		 'folke/which-key.nvim'
+	},
+
 }

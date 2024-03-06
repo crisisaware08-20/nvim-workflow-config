@@ -1,19 +1,23 @@
-[v] cmp completion
-[v] experiment with completion and adjust to your needs
-[v] search in files
-[] tree sitier, file navigation
-[v] telescope ??
-[] file changes, git integration
-
+[v] Completion
+[v] Search in files, so far it's through Telescope, no key map
+[x] File structure
 
 [] other lsp, bash, rust, go, scala, kotlin
 [] do not compromise the speed
+[] keep it simple
 
 
-gitsign, fugitive, telescope
+[] Better workflow with Git source control
+   [v] Gitsigns
+   [v] Telescope
+   [] Fugitive
+   [] LazyGit
 
-preview the change - compare with checked out version
-unstage the change
-stage the change
-checkout file - revert to initial state
+[v] Navigate to changes
+[v] Preview the change
+[v] Unstage the change
+[v] Stage the change
+[v] Checkout file - revert to initial state
 compare current workgin directory state with other commits
+
+
