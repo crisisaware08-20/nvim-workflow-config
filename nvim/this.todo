@@ -13,6 +13,11 @@
    [] Fugitive
    [] LazyGit
 
+[] Editing and Navigation
+   [] Using Marks, '
+   [] Using Registers, "
+			[] Copying to registers / Pasting from registers
+
 [v] Navigate to changes
 [v] Preview the change
 [v] Unstage the change
