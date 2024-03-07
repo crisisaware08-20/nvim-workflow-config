@@ -82,7 +82,11 @@ return {
 
 	-- Get lost with mapping ? Unload your mental model of mappings to this friendly plugin
 	{
-		 'folke/which-key.nvim'
+		'folke/which-key.nvim'
 	},
+
+	{
+		"kylechui/nvim-surround",
+	}
 
 }

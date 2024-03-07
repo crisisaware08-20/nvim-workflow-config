@@ -2,6 +2,7 @@ local M = {}
 
 vim.opt.termguicolors=true
 
+require("nvim-surround").setup()
 require'keymaps'.map_hop()
 require('mason').setup()
 require('mason-lspconfig').setup()
