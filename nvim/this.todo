@@ -8,15 +8,19 @@
 
 
 [] Better workflow with Git source control
+   First cycle, continue to improve the workflow
    [v] Gitsigns
    [v] Telescope
-   [] Fugitive
-   [] LazyGit
+   [v] Fugitive
+   [v] LazyGit
 
 [] Editing and Navigation
    [] Using Marks, '
    [] Using Registers, "
 			[] Copying to registers / Pasting from registers
+
+
+
 
 [v] Navigate to changes
 [v] Preview the change

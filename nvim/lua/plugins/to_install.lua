@@ -16,7 +16,7 @@ return {
 	-- Color scheme
 	{
 		"folke/tokyonight.nvim",
-			dependencies = { "nvim-tree/nvim-web-devicons" }
+		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
 	-- Git
@@ -44,7 +44,7 @@ return {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" }
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim" }
 	},
 
 
@@ -88,6 +88,9 @@ return {
 
 	{
 		"kylechui/nvim-surround",
-	}
+	},
 
+	{
+		"folke/zen-mode.nvim",
+	}
 }
