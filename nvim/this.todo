@@ -27,6 +27,7 @@
 [v] Unstage the change
 [v] Stage the change
 [v] Checkout file - revert to initial state
+
 compare current workgin directory state with other commits
 
 
