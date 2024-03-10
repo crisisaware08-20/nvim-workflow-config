@@ -15,7 +15,8 @@ return {
 
 	-- Color scheme
 	{
-		"folke/tokyonight.nvim"
+		"folke/tokyonight.nvim",
+			dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
 	-- Git

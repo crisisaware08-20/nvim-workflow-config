@@ -46,4 +46,4 @@ vim.opt.number=true
 vim.opt.relativenumber=true
 vim.opt.tabstop=1
 vim.opt.shiftwidth=1
---vim.opt.timeoutlen=100
+vim.opt.timeoutlen=100
