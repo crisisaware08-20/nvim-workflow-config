@@ -1,5 +1,10 @@
 return {
 
+	-- File explorer
+	{
+	 "nvim-tree/nvim-tree.lua",
+	},
+
 	-- Completion
 	{
 		"hrsh7th/cmp-nvim-lsp",
