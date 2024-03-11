@@ -37,6 +37,8 @@ vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true 
 vim.api.nvim_command('filetype plugin on')
 vim.api.nvim_command('colorscheme tokyonight-moon')
 
+vim.diagnostic.config({ virtual_text = false })
+
 -- Options
 vim.opt.clipboard='unnamedplus'
 vim.opt.path:append  '**'
