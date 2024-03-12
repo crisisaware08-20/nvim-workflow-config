@@ -24,6 +24,7 @@ os.execute("mkdir " .. workspace_dir)
 
 
 local config = {
+
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
@@ -128,6 +129,9 @@ local config = {
 config['on_attach'] = function(client, bufnr)
 	require'keymaps'.map_java_keys(bufnr);
 end
+
+
+config['capabilities'] = require('cmp_nvim_lsp').default_capabilities()
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.

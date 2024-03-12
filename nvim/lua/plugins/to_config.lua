@@ -335,7 +335,7 @@ require('which-key').setup {
 	-- Disabled by default for Telescope
 	disable = {
 		buftypes = {},
-		filetypes = {"java", "lua", "gradle"},
+		filetypes = {"lua", "gradle", "groovy"},
 	},
 }
 
@@ -395,6 +395,13 @@ require('gitsigns').setup {
 }
 
 -- Completion
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 local cmp = require('cmp')
 cmp.setup({
 	snippet = {
@@ -415,13 +422,24 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<Esc>'] = cmp.mapping.abort(),
-		['<Tab>'] = function(fallback)
-			if cmp.visible() then 
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end,
+		['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, {"i", "s"}),
+		-- ['<Tab>'] = function(fallback)
+		-- 	if cmp.visible() then 
+		-- 		cmp.select_next_item()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end,
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
