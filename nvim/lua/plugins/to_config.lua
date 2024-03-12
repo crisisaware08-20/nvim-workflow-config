@@ -335,7 +335,7 @@ require('which-key').setup {
 	-- Disabled by default for Telescope
 	disable = {
 		buftypes = {},
-		filetypes = {},
+		filetypes = {"java"},
 	},
 }
 

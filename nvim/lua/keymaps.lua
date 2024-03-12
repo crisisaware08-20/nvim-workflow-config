@@ -75,4 +75,8 @@ vim.keymap.set('n', ';', require('telescope.builtin').live_grep, { desc = '[S]ea
 -- vim.keymap.set("n", "<Leader>sR", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", silent)
 -- vim.keymap.set("n", "<Leader>sn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", silent)
 
+-- nvim-tree
+
+vim.keymap.set('n', "<leader>w", "<CMD>NvimTreeFindFileToggle<cr>")
+
 return P

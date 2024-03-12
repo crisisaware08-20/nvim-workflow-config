@@ -14,7 +14,6 @@ vim.keymap.set('n', '<leader>cd',
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>b', ':buffers<CR>:buffer<Space>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>w', ':Explore<CR>')
 vim.keymap.set('n', '<leader>sv', '<cmd>source ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
