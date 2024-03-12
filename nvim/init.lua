@@ -35,6 +35,7 @@ vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true 
 -- Commands
 vim.api.nvim_command('filetype plugin on')
 vim.api.nvim_command('colorscheme tokyonight-moon')
+vim.api.nvim_command(':set autowriteall')
 
 vim.diagnostic.config({ virtual_text = false })
 
