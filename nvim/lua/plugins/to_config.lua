@@ -20,8 +20,8 @@ require('noice').setup {
       -- icon_hl_group: optional hl_group for the icon
       -- title: set to anything or empty string to hide
       cmdline = { pattern = "^:", icon = "", lang = "vim" },
-      search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-      search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+      search_down = { kind = "search", pattern = "^/", icon = "", lang = "regex" },
+      search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
       filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
       lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
       help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
@@ -106,7 +106,7 @@ require('noice').setup {
   },
   lsp = {
     progress = {
-      enabled = true,
+      enabled = false,
       -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
       -- See the section on formatting for more details on how to customize.
       --- @type NoiceFormat|string
@@ -135,7 +135,7 @@ require('noice').setup {
       enabled = false,
       auto_open = {
         enabled = true,
-        trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+        trigger = false, -- Automatically show signature help when typing a trigger character from the LSP
         luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
         throttle = 50, -- Debounce lsp signature help request by 50ms
       },
