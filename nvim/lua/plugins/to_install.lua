@@ -1,5 +1,10 @@
 return {
 
+
+	{
+		"ribru17/bamboo.nvim"
+	},
+
 	-- Noice
 {
   "folke/noice.nvim",
