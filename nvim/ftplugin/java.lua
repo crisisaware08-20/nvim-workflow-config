@@ -127,7 +127,7 @@ local config = {
 }
 
 config['on_attach'] = function(client, bufnr)
-	require'keymaps'.map_java_keys(bufnr);
+	require'keymaps'.jdtls_keys(bufnr);
 end
 
 
