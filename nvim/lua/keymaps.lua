@@ -7,8 +7,8 @@ local wk = require("which-key")
 local lsp = vim.lsp.buf
 
 
-local key_map = function(mode, key, result)
-	vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true })
+local key_map = function(mode, key, result, desc)
+	vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true, desc = desc })
 end
 
 -- nvim-lspconfig
@@ -19,10 +19,10 @@ function P.lsp_keys()
 			d = { lsp.definition, "Go to definition" },
 			D = { lsp.declaration, "Go to declaration" },
 			i = { lsp.implementation, "Go to implementation" },
-			r = { lsp.references, "Go to references" },
 			t = { lsp.type_definition, "Jumps to the definition of the type of the symbol under the cursor" }
 		}
 	})
+	key_map('n', '<leader>sr', ':lua require("telescope.builtin").lsp_references()<CR>', "[S]how [r]eferences of suc")
 	key_map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 	key_map('x', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 	key_map('n', '<leader>re', ':lua vim.lsp.buf.rename()<CR>')
