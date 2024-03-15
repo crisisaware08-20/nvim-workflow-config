@@ -3,19 +3,26 @@ keymaps = P
 
 
 local builtin = require('telescope.builtin')
+local wk = require("which-key")
+local lsp = vim.lsp.buf
+
 
 local key_map = function(mode, key, result)
-	vim.api.nvim_set_keymap( mode, key, result, {noremap = true, silent = true})
+	vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true })
 end
-
 
 -- nvim-lspconfig
 function P.lsp_keys()
-	key_map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-	key_map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
-	key_map('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
-	key_map('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
-	key_map('n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
+	wk.register({
+		["g"] = {
+			name = "LSP - default key maps",
+			d = { lsp.definition, "Go to definition" },
+			D = { lsp.declaration, "Go to declaration" },
+			i = { lsp.implementation, "Go to implementation" },
+			r = { lsp.references, "Go to references" },
+			t = { lsp.type_definition, "Jumps to the definition of the type of the symbol under the cursor" }
+		}
+	})
 	key_map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 	key_map('x', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 	key_map('n', '<leader>re', ':lua vim.lsp.buf.rename()<CR>')
@@ -25,8 +32,8 @@ function P.lsp_keys()
 	key_map('n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
 	key_map('n', '<leader>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
 	key_map('n', '<space>e', ':lua vim.diagnostic.open_float()')
-	key_map('n', '[d',':lua vim.diagnostic.goto_prev()<CR>')
-	key_map('n', ']d',':lua vim.diagnostic.goto_next()<CR>')
+	key_map('n', '[d', ':lua vim.diagnostic.goto_prev()<CR>')
+	key_map('n', ']d', ':lua vim.diagnostic.goto_next()<CR>')
 	key_map('n', '<space>q', ':lua vim.diagnostic.setloclist()')
 end
 
@@ -58,7 +65,7 @@ function P.telescope()
 		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
 			winblend = 10,
 			previewer = false,
-		}, {desc = '[<leader>/] Fuzzy find in current buffer'})
+		}, { desc = '[<leader>/] Fuzzy find in current buffer' })
 	end, { desc = '[/] Fuzzily search in current buffer]' })
 	vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 	vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })

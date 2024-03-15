@@ -17,6 +17,7 @@ require('plugins/config/lsps/bash_ls')
 require('plugins/config/lsps/lua_ls')
 
 require("nvim-surround").setup()
+require('keymaps').lsp_keys()
 require('keymaps').hop()
 require('keymaps').telescope()
 require('feline').setup()

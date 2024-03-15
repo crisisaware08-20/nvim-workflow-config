@@ -35,7 +35,6 @@ require('gitsigns').setup {
 
 		wk.register({
 			["g"] = {
-				name = "Git",
 				k = { gs.prev_hunk, "Prev Hunk" },
 				j = { gs.next_hunk, "Next Hunk" },
 				l = { gs.blame_line, "Blame" },
@@ -47,7 +46,6 @@ require('gitsigns').setup {
 				o = { builtin.git_status, "Open changed file"},
 				b = { builtin.git_branches, "Checkout branch" },
 				c = { builtin.git_commits, "Checkout commit" },
-				d = { gs.diffthis, "Diff"},
 			},
 		})
 

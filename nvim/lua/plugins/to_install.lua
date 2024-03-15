@@ -6,25 +6,25 @@ return {
 	},
 
 	-- Noice
-{
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
-    }
-},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		}
+	},
 
 	-- File explorer
 	{
-	 "nvim-tree/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 	},
 
 	-- Completion
@@ -80,7 +80,7 @@ return {
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",
 		opts = {},
-		config = function(_, opts) require'lsp_signature'.setup(opts) end
+		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	},
 
 	-- Buffers and Quick list navigation
@@ -120,5 +120,13 @@ return {
 	{
 		"folke/zen-mode.nvim",
 	},
+
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+		-- use opts = {} for passing setup options
+		-- this is equalent to setup({}) function
+	}
 
 }
