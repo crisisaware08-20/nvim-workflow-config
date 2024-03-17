@@ -4,6 +4,7 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
+
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
@@ -40,6 +41,8 @@ vim.api.nvim_command('colorscheme bamboo')
 
 -- Auto save buffer
 vim.api.nvim_command(':set autowriteall')
+
+vim.api.nvim_command(':set nohls')
 
 vim.diagnostic.config({ virtual_text = false })
 

@@ -53,19 +53,16 @@ return {
 	},
 
 	-- LSP servers, DAP servers, linters, and formatters
+	-- Mason and nvim lsp integration
 	{
-		"williamboman/mason.nvim"
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig"
 	},
 
 	-- Java lsp client wrapper
 	{
 		"mfussenegger/nvim-jdtls"
-	},
-
-	-- Mason and nvim lsp integration
-	{
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig"
 	},
 
 	-- Telescope
@@ -115,6 +112,9 @@ return {
 
 	{
 		"kylechui/nvim-surround",
+		 config = function ()
+    require("nvim-surround").setup({})
+		 end
 	},
 
 	{
