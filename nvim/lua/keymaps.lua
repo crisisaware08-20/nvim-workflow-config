@@ -58,7 +58,7 @@ function P.hop()
 end
 
 function P.telescope()
-	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+	vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 	vim.keymap.set('n', '<S-e>', require('telescope.builtin').oldfiles, { desc = '[S-e] Find recently opened files' })
 	vim.keymap.set('n', '<leader>/', function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
