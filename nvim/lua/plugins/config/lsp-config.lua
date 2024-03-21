@@ -8,7 +8,7 @@ mlspconfig.setup {
 
 -- lspconfig.groovyls.setup {}
 
-lspconfig.gradle_ls.setup {}
+-- lspconfig.gradle_ls.setup {}
 
 lspconfig.bashls.setup {
 	filetypes = { "zsh", "sh" }
