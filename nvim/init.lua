@@ -8,12 +8,11 @@ require('plugins/to_config')
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
-{ noremap = true, silent = true })
+	{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>',
-{ noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cd',
-[[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
-{ noremap = true, silent = true })
+	{ noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
+	{ noremap = true, silent = true })
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>', { desc = '[E]dit init.lua' })
@@ -31,6 +30,14 @@ vim.keymap.set('n', 'qw', '<c-w>c', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true, desc = 'Close quick list' })
 vim.keymap.set('n', '<S-l>', '<c-w>>', { noremap = true, silent = false })
 vim.keymap.set('n', '<S-h>', '<c-w><', { noremap = true, silent = false })
+vim.keymap.set('n', 'tl', '', {
+	noremap = true,
+	silent = true,
+	callback = function()
+		vim.cmd('set number!')
+		vim.cmd('set relativenumber!')
+	end
+})
 
 
 vim.api.nvim_command('filetype plugin on')
@@ -56,3 +63,10 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 1
 vim.opt.shiftwidth = 1
 vim.opt.timeoutlen = 100
+vim.cmd([[
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if !&nu | set nu   |set rnu   | endif
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu              | set nonu |set nornu |  endif
+augroup END
+]])
