@@ -8,7 +8,14 @@ mlspconfig.setup {
 
 -- lspconfig.groovyls.setup {}
 
--- lspconfig.gradle_ls.setup {}
+-- lspconfig.gradle_ls.setup {
+-- 	cmd = { "gradle-language-server" },
+-- 	init_options = {
+-- 		settings = {
+-- 			gradleWrapperEnabled = false
+-- 		}
+-- 	}
+-- }
 
 lspconfig.bashls.setup {
 	filetypes = { "zsh", "sh" }

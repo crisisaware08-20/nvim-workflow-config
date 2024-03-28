@@ -23,7 +23,7 @@ require('noice').setup {
   messages = {
     -- NOTE: If you enable messages, then the cmdline is enabled automatically.
     -- This is a current Neovim limitation.
-    enabled = true, -- enables the Noice messages UI
+    enabled = false, -- enables the Noice messages UI
     view = "notify", -- default view for messages
     view_error = "notify", -- view for errors
     view_warn = "notify", -- view for warnings
@@ -116,8 +116,8 @@ require('noice').setup {
       ["cmp.entry.get_documentation"] = false,
     },
     hover = {
-      enabled = false,
-      silent = false, -- set to true to not show a message if hover is not available
+      enabled = true,
+      silent = true, -- set to true to not show a message if hover is not available
       view = nil, -- when nil, use defaults from documentation
       ---@type NoiceViewOptions
       opts = {}, -- merged with defaults from documentation
@@ -136,7 +136,7 @@ require('noice').setup {
     },
     message = {
       -- Messages shown by lsp servers
-      enabled = true,
+      enabled = false,
       view = "notify",
       opts = {},
     },

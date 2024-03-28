@@ -9,7 +9,9 @@ require('telescope').setup {
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "which_key"
 			}
-		}
+		},
+		layout_strategy = 'vertical',
+		layout_config = { height = 0.99 },
 	},
 	pickers = {
 		-- find_files = {

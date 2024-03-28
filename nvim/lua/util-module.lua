@@ -14,6 +14,15 @@ function M.change_nvim_directory_to(path)
 	print("Directory changed to" .. path .. " ")
 end
 
+function M.show_runtime_path()
+	local runtimepath = vim.opt.runtimepath
+	print("runtimepath !!!")
+
+	for _, path in ipairs(runtimepath) do
+		print(path)
+	end
+end
+
 -- Used as "quickly try things"
 function M.explore()
 	-- local fruits = { "apple", "banana", "orange", "blueberry" }
@@ -22,10 +31,8 @@ function M.explore()
 	-- end
 	--
 
-  local gugu = 	M.find_student("Gugu")
-		M.print_details(gugu)
-
-
+	local gugu = M.find_student("Gugu")
+	M.print_details(gugu)
 end
 
 -- Functions for maximizing and restoring the current buffer's size
@@ -70,6 +77,5 @@ function M.find_student(name)
 		return nil
 	end
 end
-
 
 return M

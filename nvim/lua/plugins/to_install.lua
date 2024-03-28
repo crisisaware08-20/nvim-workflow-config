@@ -1,5 +1,9 @@
 return {
 
+	-- Table and DrawIt
+	{
+		"vim-scripts/DrawIt", "dhruvasagar/vim-table-mode"
+	},
 
 	{
 		"ribru17/bamboo.nvim"
@@ -102,9 +106,6 @@ return {
 		"terrortylor/nvim-comment"
 	},
 
-	{
-		"vim-scripts/DrawIt"
-	},
 
 	-- Get lost with mapping ? Unload your mental model of mappings to this friendly plugin
 	{
@@ -128,6 +129,12 @@ return {
 		config = true
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
-	}
+	},
+
+	-- Treesitter
+	{
+		'nvim-treesitter/nvim-treesitter',
+		dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' }
+	},
 
 }

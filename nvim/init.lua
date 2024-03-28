@@ -60,7 +60,7 @@ vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- Offer 
 vim.opt.hidden = true
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 1
+vim.opt.tabstop = 5
 vim.opt.shiftwidth = 1
 vim.opt.timeoutlen = 100
 vim.cmd([[
