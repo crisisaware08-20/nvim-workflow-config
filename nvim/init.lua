@@ -54,17 +54,6 @@ vim.api.nvim_command(':set nohls')
 vim.diagnostic.config({ virtual_text = false })
 
 
-local java_group = vim.api.nvim_create_augroup('python_config', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-	group = java_group,
-	pattern = '*.java',
-	callback = function()
-		vim.opt.tabstop = 4
-		vim.opt.softtabstop = 4
-		vim.opt.shiftwidth = 4
-	end,
-})
-
 -- Options
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.path:append '**'

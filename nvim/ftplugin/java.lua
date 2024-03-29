@@ -5,6 +5,11 @@ if not jdtls_ok then
 end
 
 
+vim.api.nvim_command(':setlocal tabstop=4')
+vim.api.nvim_command(':setlocal softtabstop=4')
+vim.api.nvim_command(':setlocal shiftwidth=4')
+
+
 local jdtls_dir = vim.fn.stdpath('data') .. '/mason/packages/jdtls'
 local java_test_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-test/extension/server'
 local java_debug_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-debug-adapter/extension/server'
