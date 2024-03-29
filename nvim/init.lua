@@ -53,6 +53,18 @@ vim.api.nvim_command(':set nohls')
 
 vim.diagnostic.config({ virtual_text = false })
 
+
+local java_group = vim.api.nvim_create_augroup('python_config', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+	group = java_group,
+	pattern = '*.java',
+	callback = function()
+		vim.opt.tabstop = 4
+		vim.opt.softtabstop = 4
+		vim.opt.shiftwidth = 4
+	end,
+})
+
 -- Options
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.path:append '**'
@@ -60,8 +72,9 @@ vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- Offer 
 vim.opt.hidden = true
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 5
-vim.opt.shiftwidth = 1
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.timeoutlen = 100
 vim.cmd([[
 augroup numbertoggle
