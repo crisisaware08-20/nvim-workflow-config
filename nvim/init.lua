@@ -14,6 +14,13 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").R
 vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 	{ noremap = true, silent = true })
 
+
+-- Jump forward or backward
+vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('s', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
+
 -- Basic Mappings
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>', { desc = '[E]dit init.lua' })
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
