@@ -20,7 +20,7 @@ require('gitsigns').setup {
 	-- auto_attach = true,
 	-- one more
 	-- two more
-	peview_config = {
+	preview_config = {
 		-- Options passed to nvim_open_win
 		border = 'single',
 		style = 'minimal',
