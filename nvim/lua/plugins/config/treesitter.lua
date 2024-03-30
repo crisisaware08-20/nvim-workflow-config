@@ -6,7 +6,7 @@ require 'nvim-treesitter.configs'.setup {
 	-- parser_install_dir = "/some/path/to/store/parsers",
 
 	-- A list of parser names, or "all"
-	ensure_installed = { "c", "lua", "rust" },
+	ensure_installed = { "c", "lua", "rust", "java" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -93,31 +93,6 @@ require 'nvim-treesitter.configs'.setup {
 			-- * selection_mode: eg 'v'
 			-- and should return true or false
 			include_surrounding_whitespace = false,
-		},
-	},
-}
-
-require 'nvim-treesitter.configs'.setup {
-	textobjects = {
-		move = {
-			enable = true,
-			set_jumps = true, -- whether to set jumps in the jumplist
-			goto_next_start = {
-				["g]"] = "@function.outer",
-				["g}"] = "@function.inner",
-			},
-			goto_next_end = {
-				["]M"] = "@function.outer",
-				["]["] = "@class.outer",
-			},
-			goto_previous_start = {
-				["g["] = "@function.outer",
-				["g{"] = "@function.inner",
-			},
-			goto_previous_end = {
-				["[M"] = "@function.outer",
-				["[]"] = "@class.outer",
-			},
 		},
 	},
 }
