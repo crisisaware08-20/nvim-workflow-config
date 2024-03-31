@@ -85,18 +85,6 @@ return {
 		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	},
 
-	-- Buffers and Quick list navigation
-	-- {
-	-- 	"tpope/vim-unimpaired"
-	-- },
-
-	-- Hop
-	{
-		'smoka7/hop.nvim',
-		version = "*",
-		opts = {},
-	},
-
 	-- Status line
 	{
 		"famiu/feline.nvim"

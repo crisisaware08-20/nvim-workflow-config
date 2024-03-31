@@ -54,10 +54,6 @@ function P.jdtls_keys(bufnr)
 	key_map('n', ',c', ':lua require("jdtls").test_class()<CR>')
 end
 
-function P.hop()
-	key_map('n', '<leader><leader>w', '<cmd>HopWord<CR>')
-end
-
 function P.telescope()
 	vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 	vim.keymap.set('n', '<S-e>', require('telescope.builtin').oldfiles, { desc = '[S-e] Find recently opened files' })

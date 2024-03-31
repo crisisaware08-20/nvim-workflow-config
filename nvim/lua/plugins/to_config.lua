@@ -16,7 +16,6 @@ require('plugins/config/treesitter')
 require('plugins/config/lsp-config')
 
 require('keymaps').lsp_keys()
-require('keymaps').hop()
 require('keymaps').treesitter()
 require('keymaps').telescope()
 require('feline').setup()
