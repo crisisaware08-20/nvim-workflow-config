@@ -46,6 +46,15 @@ require 'nvim-treesitter.configs'.setup {
 
 require 'nvim-treesitter.configs'.setup {
 	textobjects = {
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>a"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>A"] = "@parameter.inner",
+			},
+		},
 		select = {
 			enable = true,
 
@@ -57,9 +66,9 @@ require 'nvim-treesitter.configs'.setup {
 
 				-- vim.keymap.set('n', 'nc', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
 				["ip"] = "@parameter.inner",
-				["ap"] = "@parameter.outer",
-				["ci"] = "@call.inner",
-				["co"] = "@call.outer",
+				["p"] = "@parameter.outer",
+				["ic"] = "@call.inner",
+				["c"] = "@call.outer",
 				["so"] = "@statement.inner",
 
 				["af"] = "@function.outer",
@@ -67,7 +76,7 @@ require 'nvim-treesitter.configs'.setup {
 				["ac"] = "@class.outer",
 				-- You can optionally set descriptions to the mappings (used in the desc parameter of
 				-- nvim_buf_set_keymap) which plugins like which-key display
-				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+				-- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
 				-- You can also use captures from other query groups like `locals.scm`
 				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
 			},
