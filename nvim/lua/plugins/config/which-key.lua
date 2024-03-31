@@ -83,6 +83,6 @@ require('which-key').setup {
 	-- Disabled by default for Telescope
 	disable = {
 		buftypes = {},
-		filetypes = {"lua", "gradle", "groovy"},
+		filetypes = {"lua", "gradle", "groovy", "java"},
 	},
 }

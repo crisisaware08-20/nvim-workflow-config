@@ -22,17 +22,17 @@ vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-
 vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
 
 
--- TS movements
-vim.keymap.set('n', '<Space>p', '<cmd>TSTextobjectGotoNextStart @parameter.inner<CR>', { desc = 'next parameter inner' })
-vim.keymap.set('n', '<Tab>p', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>', { desc = 'previous parameter inner' })
-vim.keymap.set('n', '<Space>c', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
-vim.keymap.set('n', '<Tab>c', '<cmd>TSTextobjectGotoPreviousStart @call.outer<CR>', { desc = 'previous call outer' })
-vim.keymap.set('n', '<Space>ic', '<cmd>TSTextobjectGotoNextStart @call.inner<CR>', { desc = 'next call inner' })
-vim.keymap.set('n', '<Tab>ic', '<cmd>TSTextobjectGotoPreviousStart @call.inner<CR>', { desc = 'previous call inner' })
--- vim.keymap.set('n', '<Space>f', '<cmd>TSTextobjectGotoNextStart @function.inner<CR>', { desc = 'next function inner' })
--- vim.keymap.set('n', '<Tab>f', '<cmd>TSTextobjectGotoPreviousStart @function.inner<CR>', { desc = 'previous function inner' })
-vim.keymap.set('n', '<Tab><Tab>', '<cmd>TSTextobjectGotoNextStart @block.outer<CR>', { desc = 'next block outer' })
-vim.keymap.set('n', '<Tab>b', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>', { desc = 'previous block outer' })
+-- Treesitter text-objects gotos 
+vim.keymap.set('n', 'np', '<cmd>TSTextobjectGotoNextStart @parameter.inner<CR>', { desc = 'next parameter inner' })
+vim.keymap.set('n', 'pp', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>', { desc = 'previous parameter inner' })
+vim.keymap.set('n', 'nc', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
+vim.keymap.set('n', 'pc', '<cmd>TSTextobjectGotoPreviousStart @call.outer<CR>', { desc = 'previous call outer' })
+vim.keymap.set('n', 'nic', '<cmd>TSTextobjectGotoNextStart @call.inner<CR>', { desc = 'next call inner' })
+vim.keymap.set('n', 'pic', '<cmd>TSTextobjectGotoPreviousStart @call.inner<CR>', { desc = 'previous call inner' })
+vim.keymap.set('n', 'nf', '<cmd>TSTextobjectGotoNextStart @function.inner<CR>', { desc = 'next function inner' })
+vim.keymap.set('n', 'pf', '<cmd>TSTextobjectGotoPreviousStart @function.inner<CR>', { desc = 'previous function inner' })
+vim.keymap.set('n', 'nb', '<cmd>TSTextobjectGotoNextStart @block.outer<CR>', { desc = 'next block outer' })
+vim.keymap.set('n', 'pb', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>', { desc = 'previous block outer' })
 
 
 -- Basic Mappings
@@ -85,7 +85,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 50
 vim.cmd([[
 augroup numbertoggle
   autocmd!
