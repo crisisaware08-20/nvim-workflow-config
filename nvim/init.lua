@@ -21,6 +21,20 @@ vim.api.nvim_set_keymap('s', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-n
 vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
 vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
 
+
+-- TS movements
+vim.keymap.set('n', '<Space>p', '<cmd>TSTextobjectGotoNextStart @parameter.inner<CR>', { desc = 'next parameter inner' })
+vim.keymap.set('n', '<Tab>p', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>', { desc = 'previous parameter inner' })
+vim.keymap.set('n', '<Space>c', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
+vim.keymap.set('n', '<Tab>c', '<cmd>TSTextobjectGotoPreviousStart @call.outer<CR>', { desc = 'previous call outer' })
+vim.keymap.set('n', '<Space>ic', '<cmd>TSTextobjectGotoNextStart @call.inner<CR>', { desc = 'next call inner' })
+vim.keymap.set('n', '<Tab>ic', '<cmd>TSTextobjectGotoPreviousStart @call.inner<CR>', { desc = 'previous call inner' })
+-- vim.keymap.set('n', '<Space>f', '<cmd>TSTextobjectGotoNextStart @function.inner<CR>', { desc = 'next function inner' })
+-- vim.keymap.set('n', '<Tab>f', '<cmd>TSTextobjectGotoPreviousStart @function.inner<CR>', { desc = 'previous function inner' })
+vim.keymap.set('n', '<Tab><Tab>', '<cmd>TSTextobjectGotoNextStart @block.outer<CR>', { desc = 'next block outer' })
+vim.keymap.set('n', '<Tab>b', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>', { desc = 'previous block outer' })
+
+
 -- Basic Mappings
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>', { desc = '[E]dit init.lua' })
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')

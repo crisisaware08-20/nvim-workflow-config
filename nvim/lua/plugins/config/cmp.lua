@@ -34,7 +34,6 @@ cmp.setup({
 				}
 			}
 		}),
-		['<Space>'] = cmp.mapping.abort(),
 		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

@@ -55,12 +55,12 @@ require 'nvim-treesitter.configs'.setup {
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.scm
 
-				["ia"] = "@parameter.inner",
-				["aa"] = "@parameter.outer",
-				["ir"] = "@return.inner",
+				-- vim.keymap.set('n', 'nc', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
+				["ip"] = "@parameter.inner",
+				["ap"] = "@parameter.outer",
 				["ci"] = "@call.inner",
 				["co"] = "@call.outer",
-				["so"] = "@statement.outer",
+				["so"] = "@statement.inner",
 
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
@@ -81,7 +81,8 @@ require 'nvim-treesitter.configs'.setup {
 			selection_modes = {
 				['@parameter.outer'] = 'v', -- charwise
 				['@function.outer'] = 'V', -- linewise
-				['@class.outer'] = '<c-v>', -- blockwise
+				-- ['@class.outer'] = '<c-v>', -- blockwise
+				['@class.outer'] = 'V', -- linewise
 			},
 			-- If you set this to `true` (default is `false`) then any textobject is
 			-- extended to include preceding or succeeding whitespace. Succeeding
