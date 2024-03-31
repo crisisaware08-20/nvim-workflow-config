@@ -50,13 +50,11 @@ function P.jdtls_keys(bufnr)
 	-- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
 	-- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
 	-- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
-		key_map('n', ',r', ':lua require("jdtls").test_nearest_method()<CR>')
-		key_map('n', ',c', ':lua require("jdtls").test_class()<CR>')
-
+	key_map('n', ',r', ':lua require("jdtls").test_nearest_method()<CR>')
+	key_map('n', ',c', ':lua require("jdtls").test_class()<CR>')
 end
 
 function P.hop()
-	key_map('n', '<leader>hp', '<cmd>HopPattern<CR>')
 	key_map('n', '<leader><leader>w', '<cmd>HopWord<CR>')
 end
 
@@ -75,6 +73,20 @@ function P.telescope()
 	vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 	vim.keymap.set('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols, { desc = '[F]File structure' })
 	vim.keymap.set('n', ';', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+end
+
+function P.treesitter()
+	-- Treesitter text-objects gotos
+	vim.keymap.set('n', 'np', '<cmd>TSTextobjectGotoNextStart @parameter.inner<CR>')
+	vim.keymap.set('n', 'pp', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>')
+	vim.keymap.set('n', 'nc', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>')
+	vim.keymap.set('n', 'pc', '<cmd>TSTextobjectGotoPreviousStart @call.outer<CR>')
+	vim.keymap.set('n', 'nic', '<cmd>TSTextobjectGotoNextStart @call.inner<CR>')
+	vim.keymap.set('n', 'pic', '<cmd>TSTextobjectGotoPreviousStart @call.inner<CR>')
+	vim.keymap.set('n', 'nf', '<cmd>TSTextobjectGotoNextStart @function.inner<CR>')
+	vim.keymap.set('n', 'pf', '<cmd>TSTextobjectGotoPreviousStart @function.inner<CR>')
+	vim.keymap.set('n', 'nb', '<cmd>TSTextobjectGotoNextStart @block.outer<CR>')
+	vim.keymap.set('n', 'pb', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>')
 end
 
 vim.keymap.set('n', "<leader>w", "<CMD>NvimTreeFindFileToggle<cr>")
