@@ -9,6 +9,12 @@ return {
 		"ribru17/bamboo.nvim"
 	},
 
+	{
+		{ 'akinsho/toggleterm.nvim', version = "*", config = true }
+	},
+
+	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+
 	-- Noice
 	-- {
 	-- 	"folke/noice.nvim",
@@ -96,9 +102,9 @@ return {
 
 
 	-- Get lost with mapping ? Unload your mental model of mappings to this friendly plugin
-	 {
-	 	'folke/which-key.nvim'
-	 },
+	{
+		'folke/which-key.nvim'
+	},
 
 	{
 		"kylechui/nvim-surround",

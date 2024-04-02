@@ -16,15 +16,20 @@ vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_dire
 
 
 -- Jump forward or backward
-vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('s', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], { expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']],
+	{ expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('s', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']],
+	{ expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
+	{ expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
+	{ expr = true, noremap = true, silent = true })
 
 
--- Treesitter text-objects gotos 
+-- Treesitter text-objects gotos
 vim.keymap.set('n', 'np', '<cmd>TSTextobjectGotoNextStart @parameter.inner<CR>', { desc = 'next parameter inner' })
-vim.keymap.set('n', 'pp', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>', { desc = 'previous parameter inner' })
+vim.keymap.set('n', 'pp', '<cmd>TSTextobjectGotoPreviousStart @parameter.inner<CR>',
+	{ desc = 'previous parameter inner' })
 vim.keymap.set('n', 'nc', '<cmd>TSTextobjectGotoNextStart @call.outer<CR>', { desc = 'next call outer' })
 vim.keymap.set('n', 'pc', '<cmd>TSTextobjectGotoPreviousStart @call.outer<CR>', { desc = 'previous call outer' })
 vim.keymap.set('n', 'nic', '<cmd>TSTextobjectGotoNextStart @call.inner<CR>', { desc = 'next call inner' })
@@ -88,8 +93,8 @@ vim.opt.shiftwidth = 2
 vim.opt.timeoutlen = 50
 vim.cmd([[
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if !&nu | set nu   |set rnu   | endif
-  autocmd BufLeave,FocusLost,WinLeave   * if &nu              | set nonu |set nornu |  endif
+autocmd!
+autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if !&nu | set nu   |set rnu   | endif
+autocmd BufLeave,FocusLost,WinLeave   * if &nu              | set nonu |set nornu |  endif
 augroup END
 ]])
