@@ -52,6 +52,10 @@ function P.jdtls_keys(bufnr)
 	-- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
 	key_map('n', ',r', ':lua require("jdtls").test_nearest_method()<CR>')
 	key_map('n', ',c', ':lua require("jdtls").test_class()<CR>')
+
+
+
+
 end
 
 function P.telescope()
@@ -64,10 +68,10 @@ function P.telescope()
 			previewer = false,
 		}, { desc = '[<leader>/] Fuzzy find in current buffer' })
 	end, { desc = '[/] Fuzzily search in current buffer]' })
+	vim.keymap.set('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols, { desc = '[F]File structure' })
 	vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 	vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-	vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-	vim.keymap.set('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols, { desc = '[F]File structure' })
+	vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 	vim.keymap.set('n', ';', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 end
 

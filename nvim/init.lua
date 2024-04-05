@@ -75,6 +75,7 @@ vim.api.nvim_command('colorscheme bamboo')
 -- Auto save buffer
 vim.api.nvim_command(':set autowriteall')
 
+vim.api.nvim_command(":let &statusline='%#Normal# '")
 vim.api.nvim_command(':set nohls')
 
 vim.diagnostic.config({ virtual_text = false })
@@ -85,12 +86,10 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.path:append '**'
 vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden = true
-vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.timeoutlen = 50
+vim.opt.timeoutlen = 40
 vim.cmd([[
 augroup numbertoggle
 autocmd!

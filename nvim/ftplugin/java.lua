@@ -140,12 +140,12 @@ end
 config['capabilities'] = require('cmp_nvim_lsp').default_capabilities()
 
 
--- local bundles = { vim.fn.glob(java_debug_server_dir .. '/com.microsoft.java.debug.plugin-*.jar', 1) }
--- vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_server_dir .. '/*.jar', 1), "\n"))
---
--- config['init_options'] = {
--- 	bundles = bundles
--- }
+local bundles = { vim.fn.glob(java_debug_server_dir .. '/com.microsoft.java.debug.plugin-*.jar', 1) }
+vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_server_dir .. '/*.jar', 1), "\n"))
+
+config['init_options'] = {
+	bundles = bundles
+}
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
