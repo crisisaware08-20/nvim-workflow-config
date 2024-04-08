@@ -14,6 +14,16 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").R
 vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 	{ noremap = true, silent = true })
 
+-- Terminal window navigation
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<c-k>', [[<C-\><C-N><C-w>k]])
+vim.keymap.set('i', '<c-k>', [[<C-\><C-N><C-w>k]])
+vim.keymap.set('t', '<c-h>', [[<C-\><C-N><C-w>h]])
+vim.keymap.set('i', '<c-h>', [[<C-\><C-N><C-w>h]])
+vim.keymap.set('t', '<c-l>', [[<C-\><C-N><C-w>l]])
+vim.keymap.set('i', '<c-l>', [[<C-\><C-N><C-w>l]])
+vim.keymap.set('t', '<c-j>', [[<C-\><C-N><C-w>j]])
+vim.keymap.set('i', '<c-j>', [[<C-\><C-N><C-w>j]])
 
 -- Jump forward or backward
 vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']],
