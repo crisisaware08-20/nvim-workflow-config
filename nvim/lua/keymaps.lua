@@ -89,6 +89,6 @@ function P.treesitter()
 	vim.keymap.set('n', 'pb', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>')
 end
 
-vim.keymap.set('n', "<leader>w", "<CMD>NvimTreeFindFileToggle<cr>")
+vim.keymap.set('n', "<leader>wd", "<CMD>NvimTreeFindFileToggle<cr>")
 
 return P
