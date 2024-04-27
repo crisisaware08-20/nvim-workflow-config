@@ -51,6 +51,7 @@ vim.keymap.set('n', 'pb', '<cmd>TSTextobjectGotoPreviousStart @block.outer<CR>',
 
 
 -- Basic Mappings
+vim.keymap.set('n', '<leader>te', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
 vim.keymap.set('n', '<leader>ev', '<cmd>hide e ~/.config/nvim/init.lua<CR>', { desc = '[E]dit init.lua' })
 vim.keymap.set('n', '<leader>sz', '<cmd>!source ~/.zshrc<CR>')
 vim.keymap.set('n', '<leader>ez', '<cmd>hide e ~/.zshrc<CR>')

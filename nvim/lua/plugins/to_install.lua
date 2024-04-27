@@ -1,5 +1,8 @@
 return {
 
+
+	{ "andrewferrier/wrapping.nvim" },
+
 	-- Table and DrawIt
 	{
 		"vim-scripts/DrawIt", "dhruvasagar/vim-table-mode"
