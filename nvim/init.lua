@@ -67,6 +67,8 @@ vim.keymap.set('n', 'qw', '<c-w>c', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true, desc = 'Close quick list' })
 vim.keymap.set('n', '<S-l>', '<c-w>>', { noremap = true, silent = false })
 vim.keymap.set('n', '<S-h>', '<c-w><', { noremap = true, silent = false })
+vim.keymap.set('n', '<S-e>', '<c-w>+', { noremap = true, silent = false })
+vim.keymap.set('n', '<S-y>', '<c-w>-', { noremap = true, silent = false })
 vim.keymap.set('n', 'tl', '', {
 	noremap = true,
 	silent = true,
