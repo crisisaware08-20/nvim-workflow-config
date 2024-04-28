@@ -22,7 +22,7 @@ require 'nvim-treesitter.configs'.setup {
 		enable = true,
 
 		-- list of language that will be disabled
-		disable = { "c", "rust" },
+		-- disable = { "c", "rust" },
 
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
 		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -46,6 +46,40 @@ require 'nvim-treesitter.configs'.setup {
 
 require 'nvim-treesitter.configs'.setup {
 	textobjects = {
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["np"] = "@parameter.inner",
+				["nc"] = "@call.outer",
+				["nic"] = "@call.inner",
+				["nf"] = "@function.outer",
+				["nif"] = "@function.inner",
+				["nb"] = "@conditional.inner",
+				["nl"] = "@loop.inner",
+				["]m"] = "@function.outer",
+				["]]"] = { query = "@class.outer", desc = "Next class start" },
+				--
+				-- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
+				["]o"] = "@loop.*",
+				-- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+				--
+				-- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+				-- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+			},
+			goto_next_end = {},
+			goto_previous_start = {},
+			goto_previous_end = {},
+			-- Below will go to either the start or the end, whichever is closer.
+			-- Use if you want more granular movements
+			-- Make it even more gradual by adding multiple queries and regex.
+			goto_next = {
+			},
+			goto_previous = {
+			}
+		},
 		swap = {
 			enable = true,
 			swap_next = {
@@ -69,11 +103,14 @@ require 'nvim-treesitter.configs'.setup {
 				["p"] = "@parameter.outer",
 				["ic"] = "@call.inner",
 				["c"] = "@call.outer",
-				["so"] = "@statement.inner",
 
-				["af"] = "@function.outer",
+				["ib"] = "@conditional.inner",
+				["b"] = "@conditional.outer",
+
+				["f"] = "@function.outer",
 				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
+				["l"] = "@loop.outer",
+				["il"] = "@loop.inner",
 				-- You can optionally set descriptions to the mappings (used in the desc parameter of
 				-- nvim_buf_set_keymap) which plugins like which-key display
 				-- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
@@ -106,3 +143,10 @@ require 'nvim-treesitter.configs'.setup {
 		},
 	},
 }
+
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+
+-- Repeat movement with ; and ,
+-- ensure ; goes forward and , goes backward regardless of the last direction
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
