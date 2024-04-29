@@ -57,6 +57,7 @@ require 'nvim-treesitter.configs'.setup {
 				["nif"] = "@function.inner",
 				["nb"] = "@conditional.inner",
 				["nl"] = "@loop.inner",
+				["n]"] = "@block.outer",
 				["]m"] = "@function.outer",
 				["]]"] = { query = "@class.outer", desc = "Next class start" },
 				--
@@ -70,7 +71,17 @@ require 'nvim-treesitter.configs'.setup {
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_next_end = {},
-			goto_previous_start = {},
+			goto_previous_start = {
+				["Np"] = "@parameter.inner",
+				["Nc"] = "@call.outer",
+				["Nic"] = "@call.inner",
+				["Nf"] = "@function.outer",
+				["Nif"] = "@function.inner",
+				["Nb"] = "@conditional.inner",
+				["Nl"] = "@loop.inner",
+				["N]"] = "@block.outer",
+
+			},
 			goto_previous_end = {},
 			-- Below will go to either the start or the end, whichever is closer.
 			-- Use if you want more granular movements
@@ -111,6 +122,7 @@ require 'nvim-treesitter.configs'.setup {
 				["if"] = "@function.inner",
 				["l"] = "@loop.outer",
 				["il"] = "@loop.inner",
+				["]"] = "@block.outer",
 				-- You can optionally set descriptions to the mappings (used in the desc parameter of
 				-- nvim_buf_set_keymap) which plugins like which-key display
 				-- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
