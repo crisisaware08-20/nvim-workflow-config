@@ -50,8 +50,8 @@ function P.jdtls_keys(bufnr)
 	-- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
 	-- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
 	-- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
-	key_map('n', ',r', ':lua require("jdtls").test_nearest_method()<CR>')
-	key_map('n', ',c', ':lua require("jdtls").test_class()<CR>')
+	key_map('n', ',tm', ':lua require("jdtls").test_nearest_method()<CR>')
+	key_map('n', ',tc', ':lua require("jdtls").test_class()<CR>')
 
 
 

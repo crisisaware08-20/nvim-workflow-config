@@ -16,7 +16,7 @@ return {
 		{ 'akinsho/toggleterm.nvim', version = "*", config = true }
 	},
 
-	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+	{ "kevinhwang91/nvim-ufo",      dependencies = { "kevinhwang91/promise-async" } },
 
 	-- Noice
 	-- {
@@ -133,5 +133,9 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' }
 	},
+
+	{
+	  'sbdchd/neoformat'
+	}
 
 }
