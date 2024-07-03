@@ -28,12 +28,8 @@ require('telescope').setup {
 		lsp_document_symbols = {
 			symbol_width = 80,
 			theme = "dropdown",
-			display_items = {
-				{ width = 20 },      -- This sets the width of the symbol column
-				{ remaining = true } -- This makes the other column take up the remaining space
-			},
 			layout_config = {
-				width = 0.9,
+				width = 0.8,
 			},
 		},
 	},
