@@ -1,6 +1,4 @@
 local P = {}
-keymaps = P
-
 
 local builtin = require('telescope.builtin')
 local wk = require("which-key")
