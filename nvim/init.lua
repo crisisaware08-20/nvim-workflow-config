@@ -5,6 +5,11 @@ require('lazy').setup(require("plugins/to_install"), opts)
 require('plugins/to_config')
 
 
+require('toggleterm').setup {
+	open_mapping = [[<c-\>]]
+}
+
+
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
@@ -74,7 +79,9 @@ vim.api.nvim_command('colorscheme bamboo')
 -- Auto save buffer
 vim.api.nvim_command(':set autowriteall')
 
-vim.api.nvim_command(":let &statusline='%#Normal# '")
+-- vim.api.nvim_command(":let &statusline='%#Normal# '")
+vim.api.nvim_command(":let &statusline='%f'")
+vim.api.nvim_command(":let &laststatus=2")
 vim.api.nvim_command(':set nohls')
 
 vim.diagnostic.config({ virtual_text = false })
@@ -82,7 +89,14 @@ vim.diagnostic.config({ virtual_text = false })
 
 -- Options
 vim.opt.clipboard = 'unnamedplus'
-vim.opt.path:append '**'
+-- Disable it due to the lagging effect when invoking :find command for directories with lot of files in it.
+--
+-- The scope of :find command is to search for nvim config workspace
+-- The scope of Telescope is to search for files in nvim current directory 
+--
+-- Todo: Add nvim config workspace to search path for Telescope
+--
+-- vim.opt.path:append '**'
 vim.opt.path:append(os.getenv('HOME') .. '/nvim-workflow-config/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden = true
 vim.opt.tabstop = 2

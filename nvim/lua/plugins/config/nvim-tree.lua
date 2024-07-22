@@ -1,4 +1,4 @@
-require('nvim-tree').setup{
+require('nvim-tree').setup {
 	sort = {
 		sorter = "case_sensitive",
 	},
@@ -11,4 +11,9 @@ require('nvim-tree').setup{
 	filters = {
 		dotfiles = true,
 	},
+
+	update_focused_file = {
+		enable = true,         -- Enables the feature to update the focused file
+		update_cwd = true,     -- Changes the cwd of the tree to that of the file
+	}
 }
