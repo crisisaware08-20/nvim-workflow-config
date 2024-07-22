@@ -83,7 +83,7 @@ vim.diagnostic.config({ virtual_text = false })
 -- Options
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.path:append '**'
-vim.opt.path:append(os.getenv('HOME') .. '/vim-configuration/nvim/**') -- Offer access to nvim primary configurations files
+vim.opt.path:append(os.getenv('HOME') .. '/nvim-workflow-config/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

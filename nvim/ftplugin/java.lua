@@ -15,7 +15,7 @@ local java_test_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-tes
 local java_debug_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-debug-adapter/extension/server'
 local config_dir = jdtls_dir .. '/config_mac'
 local plugins_dir = jdtls_dir .. '/plugins/'
-local path_to_jar = plugins_dir .. 'org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar'
+local path_to_jar = plugins_dir .. 'org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar'
 local path_to_lombok = jdtls_dir .. '/lombok.jar'
 
 local root_markers = { "gradlew", "settings.gradle", "settings.gradle.kts", "build.gradle", "build.gradle.kts" }
