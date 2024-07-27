@@ -1,5 +1,15 @@
 return {
 
+	-- { "github/copilot.vim" },
+
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
+	},
 
 	{ "andrewferrier/wrapping.nvim" },
 
@@ -50,8 +60,25 @@ return {
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
 		"tamago324/cmp-zsh",
+		{
+			"zbirenbaum/copilot-cmp",
+			config = function()
+				require("copilot_cmp").setup()
+			end,
+			dependencies = {
+				"zbirenbaum/copilot.lua",
+				cmd = "Copilot",
+				config = function()
+					require("copilot").setup({
+						suggestion = { enabled = false },
+						panel = { enabled = false },
+					})
+				end,
+			},
+		},
 		"rafamadriz/friendly-snippets"
 	},
+
 
 	-- Color scheme
 	{
@@ -135,7 +162,7 @@ return {
 	},
 
 	{
-	  'sbdchd/neoformat'
+		'sbdchd/neoformat'
 	}
 
 }
