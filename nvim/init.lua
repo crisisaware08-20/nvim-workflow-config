@@ -5,17 +5,12 @@ require('lazy').setup(require("plugins/to_install"), opts)
 require('plugins/to_config')
 
 
-require('toggleterm').setup {
-	open_mapping = [[<c-\>]]
-}
-
-
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
-	{ noremap = true, silent = true })
+	{ noremap = true, silent = true , desc = "Maximize Current Buffer"})
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>',
-	{ noremap = true, silent = true })
+	{ noremap = true, silent = true , desc = "Restore Buffer View"})
 vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 	{ noremap = true, silent = true })
 

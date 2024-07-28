@@ -59,8 +59,7 @@ require 'nvim-treesitter.configs'.setup {
 				["nl"] = "@loop.inner",
 				["n]"] = "@block.outer",
 				["]m"] = "@function.outer",
-				["]]"] = { query = "@class.outer", desc = "Next class start" },
-				--
+
 				-- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
 				["]o"] = "@loop.*",
 				-- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }

@@ -1,77 +1,108 @@
 local P = {}
 
-local builtin = require('telescope.builtin')
+local telescope_builtin = require('telescope.builtin')
+local jdtls = require('jdtls')
 local wk = require("which-key")
-local lsp = vim.lsp.buf
 
 
 local key_map = function(mode, key, result, desc)
 	vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true, desc = desc })
 end
 
+function P.common_keys()
+	wk.add({
+		-- Diagnostic
+		{
+			{ "[d",        vim.diagnostic.goto_prev,      desc = "Go to previous diagnostic" },
+			{ "]d",        vim.diagnostic.goto_next,      desc = "Go to next diagnostic" },
+			{ "<space>ql", vim.diagnostic.setloclist,     desc = "Set loclist" },
+			{ "<space>e",  telescope_builtin.diagnostics, desc = "DiagnSet loclistose all" }
+		},
+	})
+end
+
 -- nvim-lspconfig
 function P.lsp_keys()
-	wk.register({
-		["g"] = {
-			name = "LSP - default key maps",
-			d = { lsp.definition, "Go to definition" },
-			D = { lsp.declaration, "Go to declaration" },
-			i = { lsp.implementation, "Go to implementation" },
-			t = { lsp.type_definition, "Jumps to the definition of the type of the symbol under the cursor" }
-		}
+	wk.add({
+		{
+			-- Go to
+			{ "gd", vim.lsp.buf.definition,      desc = "Go to definition" },
+			{ "gD", vim.lsp.buf.declaration,     desc = "Go to declaration" },
+			{ "gi", vim.lsp.buf.implementation,  desc = "Go to implementation" },
+			{ "gt", vim.lsp.buf.type_definition, desc = "Jumps to the definition of the type of the symbol under the cursor" }
+		},
+
+		-- Search
+		{
+			{ "<leader>sr", telescope_builtin.lsp_references, desc = "Show references of symbol under cursor" }
+			-- { "<leader>ws", vim.lsp.buf.workspace_symbol, desc = "Search for a symbol in the workspace" }
+		},
+
+		-- Refactor
+		{
+			{ "<leader>re", vim.lsp.buf.rename, desc = "Rename symbol under cursor" },
+			{ "<leader>cf", vim.lsp.buf.format, desc = "Format the current buffer" }
+		},
+
+		-- Workspace
+		{
+			{ "<leader>wa", vim.lsp.buf.add_workspace_folder,                                        desc = "Add workspace folder" },
+			{ "<leader>wr", vim.lsp.buf.remove_workspace_folder,                                     desc = "Remove workspace folder" },
+			{ "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = "List workspace folders" },
+		},
+
+
+		-- Others
+		{
+			{ "<leader>ca", vim.lsp.buf.code_action, desc = "Show code actions" },
+			{ "K",          vim.lsp.buf.hover,       desc = "Show hover information" },
+		},
 	})
-	key_map('n', '<leader>sr', ':lua require("telescope.builtin").lsp_references()<CR>', "[S]how [r]eferences of suc")
-	key_map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-	key_map('x', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-	key_map('n', '<leader>re', ':lua vim.lsp.buf.rename()<CR>')
-	key_map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
-	key_map('n', '<leader>cf', ':lua vim.lsp.buf.format()<CR>')
-	key_map('n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>')
-	key_map('n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
-	key_map('n', '<leader>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
-	key_map('n', '<space>e', ':lua vim.diagnostic.open_float()')
-	key_map('n', '[d', ':lua vim.diagnostic.goto_prev()<CR>')
-	key_map('n', ']d', ':lua vim.diagnostic.goto_next()<CR>')
-	key_map('n', '<space>q', ':lua vim.diagnostic.setloclist()')
 end
+
+local jdtls = require('jdtls')
 
 function P.jdtls_keys(bufnr)
 	P.lsp_keys()
-	key_map('n', '<leader>oi', ':lua require("jdtls").organize_imports()<CR>')
-	-- key_map('n', '<leader>ev', ':lua require("jdtls").extract_variable()<CR>') conflicts with init.lua
-	key_map('n', '<leader>em', ':lua require("jdtls").extract_method()<CR>')
-	key_map('x', '<leader>em', ':lua require("jdtls").extract_method(true)<CR>')
-	key_map('x', '<leader>ev', ':lua require("jdtls").extract_variable(true)<CR>')
-	key_map('n', '<leader>jc', ':lua require("jdtls").compile("incremental")')
-
-	-- If using nvim-dap
-	-- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
-	-- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
-	-- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
-	key_map('n', ',tm', ':lua require("jdtls").test_nearest_method()<CR>')
-	key_map('n', ',tc', ':lua require("jdtls").test_class()<CR>')
-
-
-
-
+	wk.add({
+		-- jdtls
+		{
+			{ "<leader>oi", function() jdtls.organize_imports() end,     desc = "Organize Imports" },
+			-- { "<leader>ev", function() jdtls.extract_variable() end, desc = "Extract Variable" }, -- conflicts with init.lua
+			{ "<leader>em", function() jdtls.extract_method() end,       desc = "Extract Method" },
+			{ "<leader>jc", function() jdtls.compile('incremental') end, desc = "Compile Incremental" },
+			{ "<leader>em", function() jdtls.extract_method(true) end,   desc = "Extract Method" },
+			{ "<leader>ev", function() jdtls.extract_variable(true) end, desc = "Extract Variable" },
+			{ ",tm",        function() jdtls.test_nearest_method() end,  desc = "Test Nearest Method" },
+			{ ",tc",        function() jdtls.test_class() end,           desc = "Test Class" },
+		},
+	})
 end
 
-function P.telescope()
-	vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-	vim.keymap.set('n', '<S-e>', require('telescope.builtin').oldfiles, { desc = '[S-e] Find recently opened files' })
-	vim.keymap.set('n', '<leader>/', function()
-		-- You can pass additional configuration to telescope to change theme, layout, etc.
-		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-			winblend = 10,
-			previewer = false,
-		}, { desc = '[<leader>/] Fuzzy find in current buffer' })
-	end, { desc = '[/] Fuzzily search in current buffer]' })
-	vim.keymap.set('n', '<leader>fs', require('telescope.builtin').lsp_document_symbols, { desc = '[F]File structure' })
-	vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-	vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-	vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-	-- vim.keymap.set('n', ';', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-	vim.keymap.set('n', '<leader>lg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+function P.telescope_keys()
+	wk.add({
+		-- Telescope
+		{
+			{ "<leader>b",  telescope_builtin.buffers,  desc = "[B]uffers" },
+			{ "<leader>of", telescope_builtin.oldfiles, desc = "[O]ld [F]iles" },
+			{
+				"<leader>/",
+				function()
+					-- You can pass additional configuration to telescope to change theme, layout, etc.
+					telescope_builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+						winblend = 10,
+						previewer = false,
+					})
+				end,
+				desc = "Fuzzy find in current buffer"
+			},
+			{ "<leader>fs", telescope_builtin.lsp_document_symbols, desc = "[F]File structure" },
+			{ "<leader>ff", telescope_builtin.find_files,           desc = "[F]ind [F]iles" },
+			{ "<leader>ht", telescope_builtin.help_tags,            desc = "[H]elp [T]ags" },
+			{ "<leader>gs", telescope_builtin.grep_string,          desc = "[G]rep [S]tring" },
+			{ "<leader>lg", telescope_builtin.live_grep,            desc = "[L]ive [G]rep" },
+		},
+	})
 end
 
 vim.keymap.set('n', "<leader>wd", "<CMD>NvimTreeFindFileToggle<cr>")

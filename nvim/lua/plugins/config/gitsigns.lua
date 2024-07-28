@@ -1,4 +1,3 @@
-local wk = require("which-key")
 
 -- Gitsign
 require('gitsigns').setup {
@@ -29,23 +28,26 @@ require('gitsigns').setup {
 		col = 1
 	},
 	on_attach      = function(bufnr)
-		local gs = package.loaded.gitsigns
+		local gs = require('gitsigns')
 		local builtin = require('telescope.builtin')
+		local wk = require("which-key")
 
-		wk.register({
-			["g"] = {
-				k = { gs.prev_hunk, "Prev Hunk" },
-				j = { gs.next_hunk, "Next Hunk" },
-				l = { gs.blame_line, "Blame" },
-				p = { gs.preview_hunk, "Preview Hunk" },
-				r = { gs.reset_hunk, "Reset Hunk" },
-				R = { gs.reset_buffer, "Reset Buffer" },
-				s = { gs.stage_hunk, "Stage Hunk" },
-				u = { gs.undo_stage_hunk, "Undo Stage Hunk" },
-				o = { builtin.git_status, "Open changed file" },
-				b = { builtin.git_branches, "Checkout branch" },
-			},
-		}, { nowait = true, silent = true, mode = "n", })
+
+		wk.add({
+			{ "<leader>G", group = "GitSigns", expand = function ()
+				 return require("which-key.extras").expand.buf()
+			end },
+			{ "gk",        gs.prev_hunk,         desc = "Prev Hunk" },
+			{ "gj",        gs.next_hunk,         desc = "Next Hunk" },
+			{ "gl",        gs.blame_line,        desc = "Blame" },
+			{ "gp",        gs.preview_hunk,      desc = "Preview Hunk" },
+			{ "gr",        gs.reset_hunk,        desc = "Reset Hunk" },
+			{ "gR",        gs.reset_buffer,      desc = "Reset Buffer" },
+			{ "gs",        gs.stage_hunk,        desc = "Stage Hunk" },
+			{ "gu",        gs.undo_stage_hunk,   desc = "Undo Stage Hunk" },
+			{ "go",        builtin.git_status,   desc = "Open changed file" },
+			{ "gb",        builtin.git_branches, desc = "Checkout branch" },
+		})
 	end
 
 }

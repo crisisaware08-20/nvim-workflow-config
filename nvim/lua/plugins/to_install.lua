@@ -11,22 +11,44 @@ return {
 		end,
 	},
 
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "canary",
+		dependencies = {
+			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		opts = {
+			debug = true, -- Enable debugging
+			-- See Configuration section for rest
+		},
+		-- See Commands section for default commands if you want to lazy load on them
+	},
+
 	{ "andrewferrier/wrapping.nvim" },
 
 	-- Table and DrawIt
 	{
-		"vim-scripts/DrawIt", "dhruvasagar/vim-table-mode"
+		"vim-scripts/DrawIt",
+		"dhruvasagar/vim-table-mode"
 	},
 
+	-- Like IDE within terminal
 	{
-		"ribru17/bamboo.nvim"
+		'akinsho/toggleterm.nvim',
+		lazy = false,
+		version = "*",
+		opts = {
+			["open_mapping"] = [[<c-\>]]
+		},
 	},
 
+	-- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
+	-- TODO: configure
 	{
-		{ 'akinsho/toggleterm.nvim', version = "*", config = true }
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" }
 	},
-
-	{ "kevinhwang91/nvim-ufo",      dependencies = { "kevinhwang91/promise-async" } },
 
 	-- Noice
 	-- {
@@ -48,6 +70,7 @@ return {
 	-- File explorer
 	{
 		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
 	-- Completion
@@ -80,10 +103,10 @@ return {
 	},
 
 
-	-- Color scheme
+	-- Color schemes
 	{
 		"folke/tokyonight.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" }
+		"ribru17/bamboo.nvim",
 	},
 
 	-- Git
@@ -133,7 +156,14 @@ return {
 
 	-- Get lost with mapping ? Unload your mental model of mappings to this friendly plugin
 	{
-		'folke/which-key.nvim'
+		'folke/which-key.nvim',
+		lazy = true,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+		dependencies = { 'echasnovski/mini.nvim' }
 	},
 
 	{
