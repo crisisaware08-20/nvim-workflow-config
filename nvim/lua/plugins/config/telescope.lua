@@ -8,8 +8,9 @@ require('telescope').setup {
 				["<esc>"] = require("telescope.actions").close,
 			}
 		},
-		layout_strategy = 'vertical',
-		layout_config = { height = 0.99 },
+		layout_strategy = 'horizontal',
+		layout_config = { height = 0.99, width = 0.99 },
+		selection_strategy = "reset",
 	},
 	pickers = {
 		-- find_files = {

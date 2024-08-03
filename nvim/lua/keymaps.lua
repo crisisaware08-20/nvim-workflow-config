@@ -1,29 +1,21 @@
 local P = {}
 
 local telescope_builtin = require('telescope.builtin')
-local jdtls = require('jdtls')
 local wk = require("which-key")
 
 
-local key_map = function(mode, key, result, desc)
-	vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true, desc = desc })
-end
-
-function P.common_keys()
+-- nvim-lspconfig
+function P.lsp_keys()
 	wk.add({
+
 		-- Diagnostic
 		{
 			{ "[d",        vim.diagnostic.goto_prev,      desc = "Go to previous diagnostic" },
 			{ "]d",        vim.diagnostic.goto_next,      desc = "Go to next diagnostic" },
 			{ "<space>ql", vim.diagnostic.setloclist,     desc = "Set loclist" },
 			{ "<space>e",  telescope_builtin.diagnostics, desc = "DiagnSet loclistose all" }
-		},
-	})
-end
 
--- nvim-lspconfig
-function P.lsp_keys()
-	wk.add({
+		},
 		{
 			-- Go to
 			{ "gd", vim.lsp.buf.definition,      desc = "Go to definition" },
@@ -34,7 +26,9 @@ function P.lsp_keys()
 
 		-- Search
 		{
-			{ "<leader>sr", telescope_builtin.lsp_references, desc = "Show references of symbol under cursor" }
+			{ "<leader>sr", telescope_builtin.lsp_references,     desc = "Show references of symbol under cursor" },
+			{ "<leader>si", telescope_builtin.lsp_incoming_calls, desc = "Show incoming calls for the word under cursor" },
+			{ "<leader>so", telescope_builtin.lsp_outgoing_calls, desc = "Show outgoing calls for the word under cursor" },
 			-- { "<leader>ws", vim.lsp.buf.workspace_symbol, desc = "Search for a symbol in the workspace" }
 		},
 
@@ -83,8 +77,9 @@ function P.telescope_keys()
 	wk.add({
 		-- Telescope
 		{
-			{ "<leader>b",  telescope_builtin.buffers,  desc = "[B]uffers" },
-			{ "<leader>of", telescope_builtin.oldfiles, desc = "[O]ld [F]iles" },
+			mode = { "n", "v" },
+			{ "<leader>b",  telescope_builtin.buffers,  desc = "Search for buffers" },
+			{ "<leader>of", telescope_builtin.oldfiles, desc = "Old files" },
 			{
 				"<leader>/",
 				function()
@@ -96,11 +91,11 @@ function P.telescope_keys()
 				end,
 				desc = "Fuzzy find in current buffer"
 			},
-			{ "<leader>fs", telescope_builtin.lsp_document_symbols, desc = "[F]File structure" },
-			{ "<leader>ff", telescope_builtin.find_files,           desc = "[F]ind [F]iles" },
-			{ "<leader>ht", telescope_builtin.help_tags,            desc = "[H]elp [T]ags" },
-			{ "<leader>gs", telescope_builtin.grep_string,          desc = "[G]rep [S]tring" },
-			{ "<leader>lg", telescope_builtin.live_grep,            desc = "[L]ive [G]rep" },
+			{ "<leader>fs", telescope_builtin.lsp_document_symbols, desc = "File symbols" },
+			{ "<leader>sf", telescope_builtin.find_files,           desc = "Search for file" },
+			{ "<leader>sh", telescope_builtin.help_tags,            desc = "Search help" },
+			{ "<leader>ss", telescope_builtin.grep_string,          desc = "Search for selection in files" },
+			{ "<leader>lg", telescope_builtin.live_grep,            desc = "Live grep" },
 		},
 	})
 end
