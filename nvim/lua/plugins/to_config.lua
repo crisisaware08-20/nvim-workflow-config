@@ -18,7 +18,8 @@ require('plugins/config/ufo')
 require('plugins/config/lsp-config')
 
 require('keymaps').lsp_keys()
-require('keymaps').telescope_keys()
+require('keymaps').git_keys()
+require('keymaps').search_keys()
 require('feline').setup()
 require('nvim_comment').setup()
 

@@ -4,6 +4,20 @@ local telescope_builtin = require('telescope.builtin')
 local wk = require("which-key")
 
 
+function P.git_keys()
+	wk.add({
+		-- Telescope
+		{
+			mode = { "n", "v" },
+			{ "<leader>gbc", telescope_builtin.git_bcommits, desc = "Git buffer commits" },
+			{ "<leader>gc",  telescope_builtin.git_commits,  desc = "Git workspace commits" },
+			{ "<leader>gb",  telescope_builtin.git_branches, desc = "List all branches" },
+			{ "<leader>gs",  telescope_builtin.git_status,   desc = "Git status" },
+		},
+	}
+	)
+end
+
 -- nvim-lspconfig
 function P.lsp_keys()
 	wk.add({
@@ -73,7 +87,7 @@ function P.jdtls_keys(bufnr)
 	})
 end
 
-function P.telescope_keys()
+function P.search_keys()
 	wk.add({
 		-- Telescope
 		{
