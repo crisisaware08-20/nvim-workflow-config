@@ -75,14 +75,15 @@ function P.jdtls_keys(bufnr)
 	wk.add({
 		-- jdtls
 		{
-			{ "<leader>oi", function() jdtls.organize_imports() end,     desc = "Organize Imports" },
+			{ "<leader>gt", function() require("jdtls.tests").goto_subjects() end, desc = "Go to test" },
+			{ "<leader>oi", function() jdtls.organize_imports() end,               desc = "Organize Imports" },
 			-- { "<leader>ev", function() jdtls.extract_variable() end, desc = "Extract Variable" }, -- conflicts with init.lua
-			{ "<leader>em", function() jdtls.extract_method() end,       desc = "Extract Method" },
-			{ "<leader>jc", function() jdtls.compile('incremental') end, desc = "Compile Incremental" },
-			{ "<leader>em", function() jdtls.extract_method(true) end,   desc = "Extract Method" },
-			{ "<leader>ev", function() jdtls.extract_variable(true) end, desc = "Extract Variable" },
-			{ ",tm",        function() jdtls.test_nearest_method() end,  desc = "Test Nearest Method" },
-			{ ",tc",        function() jdtls.test_class() end,           desc = "Test Class" },
+			{ "<leader>em", function() jdtls.extract_method() end,                 desc = "Extract Method" },
+			{ "<leader>jc", function() jdtls.compile('incremental') end,           desc = "Compile Incremental" },
+			{ "<leader>em", function() jdtls.extract_method(true) end,             desc = "Extract Method" },
+			{ "<leader>ev", function() jdtls.extract_variable(true) end,           desc = "Extract Variable" },
+			{ ",tm",        function() jdtls.test_nearest_method() end,            desc = "Test Nearest Method" },
+			{ ",tc",        function() jdtls.test_class() end,                     desc = "Test Class" },
 		},
 	})
 end
