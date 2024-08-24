@@ -4,8 +4,8 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
-vim.api.nvim_set_keymap('n', 'j', 'gj^', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk^', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'j', 'gj^', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'k', 'gk^', { noremap = true, silent = true })
 
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....

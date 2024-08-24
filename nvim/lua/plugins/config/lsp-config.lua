@@ -17,6 +17,21 @@ mlspconfig.setup {
 -- 	}
 -- }
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+		-- Disable underline for warnings
+		underline = {
+			severity_limit = "Error",
+		},
+		-- Show signs for warnings
+		signs = true,
+		-- Enable virtual text for errors only
+		virtual_text = {
+			severity_limit = "Error",
+		},
+	}
+)
+
 lspconfig.bashls.setup {
 	filetypes = { "zsh", "sh" }
 }

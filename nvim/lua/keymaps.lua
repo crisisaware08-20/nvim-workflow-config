@@ -75,6 +75,7 @@ function P.jdtls_keys(bufnr)
 	wk.add({
 		-- jdtls
 		{
+			mode = {"n", "v"},
 			{ "<leader>gt", function() require("jdtls.tests").goto_subjects() end, desc = "Go to test" },
 			{ "<leader>oi", function() jdtls.organize_imports() end,               desc = "Organize Imports" },
 			-- { "<leader>ev", function() jdtls.extract_variable() end, desc = "Extract Variable" }, -- conflicts with init.lua
