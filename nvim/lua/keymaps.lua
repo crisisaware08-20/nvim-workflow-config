@@ -75,7 +75,7 @@ function P.jdtls_keys(bufnr)
 	wk.add({
 		-- jdtls
 		{
-			mode = {"n", "v"},
+			mode = { "n", "v" },
 			{ "<leader>gt", function() require("jdtls.tests").goto_subjects() end, desc = "Go to test" },
 			{ "<leader>oi", function() jdtls.organize_imports() end,               desc = "Organize Imports" },
 			-- { "<leader>ev", function() jdtls.extract_variable() end, desc = "Extract Variable" }, -- conflicts with init.lua
@@ -117,5 +117,33 @@ function P.search_keys()
 end
 
 vim.keymap.set('n', "<leader>wd", "<CMD>NvimTreeFindFileToggle<cr>")
+
+
+function P.copilot_chat_keys()
+	wk.add({
+		{
+			mode = { "n", "v" },
+
+			{
+				"<leader>ccq",
+				function()
+					local input = vim.fn.input("Quick Chat: ")
+					if input ~= "" then
+						require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+					end
+				end,
+				desc = "CopilotChat - Quick chat"
+			},
+			{
+				"<leader>ccp",
+				function()
+					local actions = require("CopilotChat.actions")
+					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+				end,
+				desc = "CopilotChat - Prompt actions",
+			},
+		},
+	})
+end
 
 return P
