@@ -118,7 +118,6 @@ end
 
 vim.keymap.set('n', "<leader>wd", "<CMD>NvimTreeFindFileToggle<cr>")
 
-
 function P.copilot_chat_keys()
 	wk.add({
 		{
@@ -142,6 +141,20 @@ function P.copilot_chat_keys()
 				end,
 				desc = "CopilotChat - Prompt actions",
 			},
+		},
+	})
+end
+
+function P.tab_keys()
+	wk.add({
+		{
+			mode = { "n", "v" },
+			{ "<leader>jt", "<CMD>BufferPick<CR>", desc = "Pick tab" },
+			{ "<leader>1", "<Cmd>BufferGoto 1<CR>", desc = "Go to tab"},
+			{ "<leader>2", "<Cmd>BufferGoto 2<CR>", desc = "Go to tab"},
+			{ "<leader>3", "<Cmd>BufferGoto 3<CR>", desc = "Go to tab"},
+			{ "<leader>4", "<Cmd>BufferGoto 4<CR>", desc = "Go to tab"},
+			{ "<leader>5", "<Cmd>BufferGoto 5<CR>", desc = "Go to tab"}
 		},
 	})
 end
