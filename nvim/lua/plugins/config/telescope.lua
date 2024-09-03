@@ -3,9 +3,12 @@ require('telescope').setup {
 		mappings = {
 			i = {
 				["<esc>"] = require("telescope.actions").close,
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist, -- For normal mode
+
 			},
 			n = {
 				["<esc>"] = require("telescope.actions").close,
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist, -- For normal mode
 			}
 		},
 		layout_strategy = 'horizontal',
