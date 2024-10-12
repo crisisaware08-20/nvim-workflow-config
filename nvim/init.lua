@@ -10,9 +10,9 @@ require('plugins/to_config')
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
-	{ noremap = true, silent = true , desc = "Maximize Current Buffer"})
+	{ noremap = true, silent = true, desc = "Maximize Current Buffer" })
 vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>',
-	{ noremap = true, silent = true , desc = "Restore Buffer View"})
+	{ noremap = true, silent = true, desc = "Restore Buffer View" })
 vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 	{ noremap = true, silent = true })
 
@@ -89,7 +89,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Disable it due to the lagging effect when invoking :find command for directories with lot of files in it.
 --
 -- The scope of :find command is to search for nvim config workspace
--- The scope of Telescope is to search for files in nvim current directory 
+-- The scope of Telescope is to search for files in nvim current directory
 --
 -- Todo: Add nvim config workspace to search path for Telescope
 --
