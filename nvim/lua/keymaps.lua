@@ -145,20 +145,4 @@ function P.copilot_chat_keys()
 	})
 end
 
-function P.tab_buffers_keys()
-	wk.add({
-		{
-			mode = { "n", "v" },
-			{ "<leader><leader>b", "<CMD>BufferCloseAllButVisible<CR>", desc = "Close all buffer but visible" },
-			{ "<leader>qb", "<CMD>BufferClose<CR>", desc = "Close tab buffer" },
-			{ "<leader>jt", "<CMD>BufferPick<CR>", desc = "Pick tab" },
-			{ "<leader>1", "<Cmd>BufferGoto 1<CR>", desc = "Go to tab"},
-			{ "<leader>2", "<Cmd>BufferGoto 2<CR>", desc = "Go to tab"},
-			{ "<leader>3", "<Cmd>BufferGoto 3<CR>", desc = "Go to tab"},
-			{ "<leader>4", "<Cmd>BufferGoto 4<CR>", desc = "Go to tab"},
-			{ "<leader>5", "<Cmd>BufferGoto 5<CR>", desc = "Go to tab"}
-		},
-	})
-end
-
 return P
