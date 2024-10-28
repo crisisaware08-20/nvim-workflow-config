@@ -76,6 +76,9 @@ vim.api.nvim_command('colorscheme bamboo')
 -- Auto save buffer
 vim.api.nvim_command(':set autowriteall')
 
+-- reason to add it is to close/open folds of diffs in a Fugitive Git commit
+vim.opt.foldmethod='syntax'
+
 -- vim.api.nvim_command(":let &statusline='%#Normal# '")
 vim.api.nvim_command(":let &statusline='%f'")
 vim.api.nvim_command(":let &laststatus=2")

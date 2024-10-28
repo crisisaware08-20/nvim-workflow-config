@@ -3,7 +3,7 @@ local mlspconfig = require('mason-lspconfig')
 
 require('mason').setup()
 mlspconfig.setup {
-	ensure_installed = { "lua_ls", "bashls", "tsserver", "groovyls", "gradle_ls" }
+	ensure_installed = { "lua_ls", "bashls", "ts_ls", "groovyls", "gradle_ls" }
 }
 
 -- lspconfig.groovyls.setup {}
