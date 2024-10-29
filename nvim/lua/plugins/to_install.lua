@@ -7,7 +7,17 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("copilot").setup({})
+			require("copilot").setup({
+				server_opts_overrides = {
+					trace = "verbose",
+					settings = {
+						advanced = {
+							listCount = 5,   -- #completions for panel
+							inlineSuggestCount = 3, -- #completions for getCompletions
+						}
+					},
+				}
+			})
 		end,
 	},
 
