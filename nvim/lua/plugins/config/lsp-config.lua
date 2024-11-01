@@ -19,15 +19,15 @@ mlspconfig.setup {
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
-		-- Disable underline for warnings
+		-- underline = false, -- This will disable underline for all diagnostics sent from LSP
 		underline = {
-			min = vim.diagnostic.severity.ERROR,
+			severity = vim.diagnostic.severity.ERROR, -- show underline for errors only
 		},
-		-- Show signs for warnings
 		signs = true,
-		-- Enable virtual text for errors only
+		virtual_text = false,
+		-- Enable virtual text for errors only, this is too noisy
 		virtual_text = {
-			min = vim.diagnostic.severity.ERROR,
+			severity = vim.diagnostic.severity.ERROR,
 		},
 	}
 )

@@ -1,50 +1,62 @@
-require("CopilotChat").setup {
-	debug = false, -- Enable debug logging
+local prompts = {
+	Explain = "Please explain how the following code works.",
+	Review = "Please review the following code and provide suggestions for improvement.",
+	Tests = "Please explain how the selected code works, then generate unit tests for it.",
+	Refactor = "Please refactor the following code to improve its clarity and readability.",
+	FixCode = "Please fix the following code to make it work as intended.",
+	FixError = "Please explain the error in the following text and provide a solution.",
+	BetterNamings = "Please provide better names for the following variables and functions.",
+	Documentation = "Please provide documentation for the following code.",
+	SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
+	SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
+	-- Text related prompts
+	Summarize = "Please summarize the following text.",
+	Spelling = "Please correct any grammar and spelling errors in the following text.",
+	Wording = "Please improve the grammar and wording of the following text.",
+	Concise = "Please rewrite the following text to make it more concise.",
+}
 
+local chat = require("CopilotChat")
+local select = require("CopilotChat.select")
 
+local opts = {
+	debug = true,    -- Enable debugging
+	show_help = true, -- Show help actions
+	window = {
+		layout = "float",
+	},
+	auto_follow_cursor = false, -- Don't follow the cursor after getting response
 
 	prompts = {
-		MyCustomPrompt = {
-			prompt = 'Explain how it works.',
-			mapping = '<leader>ccmc',
-			description = 'My custom prompt description',
-			selection = require('CopilotChat.select').visual,
+		Execute = {
+			prompt = "Provide accurate response on what is being asked.",
+			selection = select.visual,
 		},
-	},
-
-	-- default mappings
-	mappings = {
-		complete = {
-			detail = 'Use @<Tab> or /<Tab> for options.',
-			insert = '<Tab>',
-		},
-		close = {
-			normal = 'q',
-			insert = '<C-c>'
-		},
-		reset = {
-			normal = '<C-x>',
-			insert = '<C-x>'
-		},
-		submit_prompt = {
-			normal = '<CR>',
-			insert = '<C-s>'
-		},
-		accept_diff = {
-			normal = '<C-y>',
-			insert = '<C-y>'
-		},
-		yank_diff = {
-			normal = 'gy',
-		},
-		show_diff = {
-			normal = 'gd'
-		},
-		show_system_prompt = {
-			normal = 'gp'
-		},
-		show_user_selection = {
-			normal = 'gs'
-		},
+		-- Wording = {
+		-- 	prompt = 'Please improve the grammar and wording of the following text.',
+		-- 	description = 'Prompt to command',
+		-- 	selection = require('CopilotChat.select').visual,
+		-- },
 	},
 }
+
+-- Use unnamed register for the selection
+opts.selection = select.unnamed
+
+-- Override the git prompts message
+opts.prompts.Commit = {
+	prompt = "Write commit message for the change with commitizen convention",
+	selection = select.gitdiff,
+}
+
+opts.prompts.CommitStaged = {
+	prompt = "Write commit message for the change with commitizen convention",
+	selection = function(source)
+		return select.gitdiff(source, true)
+	end,
+}
+
+chat.setup(opts)
+
+-- Setup the CMP integration
+require("CopilotChat.integrations.cmp").setup()

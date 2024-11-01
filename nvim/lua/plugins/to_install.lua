@@ -2,26 +2,22 @@ return {
 
 	{ "github/copilot.vim" },
 
+
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		dependencies = {
-			{ "github/copilot.vim" }, },
-		opts = {
-			show_help = true,
-			window = {
-				layout = "float",
-			},
-			auto_follow_cursor = false,
+			{ "github/copilot.vim" },
 		},
-		build = function()
-			vim.cmd("UpdateRemotePlugins") -- You need to restart to make it works
-		end,
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-			{ "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
-		},
+		opts = {},
+		build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
+		-- keys = {
+		-- 	{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+		-- 	{ "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+		-- },
 	},
+
+
+
 
 	{ "andrewferrier/wrapping.nvim" },
 

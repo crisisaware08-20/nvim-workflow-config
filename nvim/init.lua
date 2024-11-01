@@ -4,6 +4,8 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
+vim.api.nvim_set_keymap('n', '<leader>m', [[:lua vim.api.nvim_win_set_config(0, {relative='editor', row=0, col=0, width=vim.o.columns, height=vim.o.lines})<CR>]], { noremap = true, silent = true })
+
 -- vim.api.nvim_set_keymap('n', 'j', 'gj^', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'k', 'gk^', { noremap = true, silent = true })
 
@@ -37,6 +39,11 @@ vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-
 vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
 	{ expr = true, noremap = true, silent = true })
 
+-- CopilotChat mappings
+vim.keymap.set('n', '<leader>cco', '<cmd>CopilotChatOpen<cr>')
+vim.keymap.set('n', '<leader>cct', '<cmd>CopilotChatToggle<cr>')
+vim.keymap.set('n', '<leader>cce', '<cmd>CopilotChatExecute<cr>')
+vim.keymap.set('n', '<leader>ccr', '<cmd>CopilotChatReview<cr>')
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>te', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
