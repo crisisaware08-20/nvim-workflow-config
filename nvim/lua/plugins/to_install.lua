@@ -1,38 +1,26 @@
 return {
 
-	-- { "github/copilot.vim" },
-
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				server_opts_overrides = {
-					trace = "verbose",
-					settings = {
-						advanced = {
-							listCount = 5,   -- #completions for panel
-							inlineSuggestCount = 3, -- #completions for getCompletions
-						}
-					},
-				}
-			})
-		end,
-	},
+	{ "github/copilot.vim" },
 
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
 		dependencies = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
+			{ "github/copilot.vim" }, },
 		opts = {
-			debug = true, -- Enable debugging
-			-- See Configuration section for rest
+			show_help = true,
+			window = {
+				layout = "float",
+			},
+			auto_follow_cursor = false,
 		},
-		-- See Commands section for default commands if you want to lazy load on them
+		build = function()
+			vim.cmd("UpdateRemotePlugins") -- You need to restart to make it works
+		end,
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+			{ "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+		},
 	},
 
 	{ "andrewferrier/wrapping.nvim" },
@@ -94,22 +82,6 @@ return {
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
 		"tamago324/cmp-zsh",
-		{
-			"zbirenbaum/copilot-cmp",
-			config = function()
-				require("copilot_cmp").setup()
-			end,
-			-- dependencies = {
-			-- 	"zbirenbaum/copilot.lua",
-			-- 	cmd = "Copilot",
-			-- 	config = function()
-			-- 		require("copilot").setup({
-			-- 			suggestion = { enabled = true },
-			-- 			panel = { enabled = true },
-			-- 		})
-			-- 	end,
-			-- },
-		},
 		"rafamadriz/friendly-snippets"
 	},
 
