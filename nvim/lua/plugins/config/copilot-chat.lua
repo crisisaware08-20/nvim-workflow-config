@@ -19,6 +19,30 @@ local prompts = {
 local chat = require("CopilotChat")
 local select = require("CopilotChat.select")
 
+
+local keys = {
+	-- Show help actions with telescope
+	{
+		"<leader>cch",
+		function()
+			local actions = require("CopilotChat.actions")
+			require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+		end,
+		desc = "CopilotChat - Help actions",
+	},
+	-- Show prompts actions with telescope
+	{
+		"<leader>ccp",
+		function()
+			local actions = require("CopilotChat.actions")
+			require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+		end,
+		desc = "CopilotChat - Prompt actions",
+	},
+
+}
+
+
 local opts = {
 	debug = true,    -- Enable debugging
 	show_help = true, -- Show help actions
@@ -60,3 +84,28 @@ chat.setup(opts)
 
 -- Setup the CMP integration
 require("CopilotChat.integrations.cmp").setup()
+
+vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
+	chat.ask(args.args, { selection = select.visual })
+end, { nargs = "*", range = true })
+
+-- This command is to test copilot chat api
+vim.api.nvim_create_user_command("TestCopilotChat",
+	function(args)
+		-- Open chat window with custom options
+		chat.open({
+			window = {
+				layout = 'float',
+				title = 'My Title',
+			},
+		})
+	end,
+	{ nargs = "*", range = true })
+
+
+-- vim.api.nvim_create_user_command("AskCopilot", function(args)
+--
+-- 	-- local input = vim.fn.input
+--
+-- end
+-- )

@@ -40,10 +40,11 @@ vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-
 	{ expr = true, noremap = true, silent = true })
 
 -- CopilotChat mappings
-vim.keymap.set('n', '<leader>cco', '<cmd>CopilotChatOpen<cr>')
-vim.keymap.set('n', '<leader>cct', '<cmd>CopilotChatToggle<cr>')
-vim.keymap.set('n', '<leader>cce', '<cmd>CopilotChatExecute<cr>')
-vim.keymap.set('n', '<leader>ccr', '<cmd>CopilotChatReview<cr>')
+vim.keymap.set('n', '<Space>o', '<cmd>CopilotChatOpen<cr>')
+vim.keymap.set('n', '<Space>t', '<cmd>CopilotChatToggle<cr>')
+vim.keymap.set('n', '<Space><CR>', '<cmd>CopilotChatExecute<cr>')
+-- This command has been defined in copilot-chat.lua
+vim.keymap.set('n', '<Space>vv', '<cmd>CopilotChatVisual<cr>')
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>te', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
@@ -84,7 +85,7 @@ vim.api.nvim_command('colorscheme bamboo')
 vim.api.nvim_command(':set autowriteall')
 
 -- reason to add it is to close/open folds of diffs in a Fugitive Git commit
-vim.opt.foldmethod='syntax'
+-- vim.opt.foldmethod='syntax'
 
 -- vim.api.nvim_command(":let &statusline='%#Normal# '")
 vim.api.nvim_command(":let &statusline='%f'")

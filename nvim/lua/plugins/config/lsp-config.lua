@@ -1,21 +1,23 @@
-local lspconfig = require 'lspconfig'
-local mlspconfig = require('mason-lspconfig')
+require("mason").setup()
+require("mason-lspconfig").setup()
 
-require('mason').setup()
-mlspconfig.setup {
+require("mason-lspconfig").setup {
 	ensure_installed = { "lua_ls", "bashls", "ts_ls", "groovyls", "gradle_ls" }
 }
 
--- lspconfig.groovyls.setup {}
-
--- lspconfig.gradle_ls.setup {
--- 	cmd = { "gradle-language-server" },
--- 	init_options = {
--- 		settings = {
--- 			gradleWrapperEnabled = false
--- 		}
--- 	}
--- }
+-- Automatically setup LSP servers for all installed servers
+require("mason-lspconfig").setup_handlers {
+	-- Default handler for all servers
+	function(server_name)
+		require("lspconfig")[server_name].setup {}
+	end,
+	-- Custom handler for bashls
+	-- ["bashls"] = function()
+	-- 	require("lspconfig").bashls.setup {
+	-- 		filetypes = { "zsh", "sh" }
+	-- 	}
+	-- end
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -32,38 +34,28 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	}
 )
 
-lspconfig.bashls.setup {
-	filetypes = { "zsh", "sh" }
-}
-
-lspconfig.lua_ls.setup {
-	filetypes = { "lua" },
-	on_init = function(client)
-		local path = client.workspace_folders[1].name
-		if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-			client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-				Lua = {
-					runtime = {
-						-- Tell the language server which version of Lua you're using
-						-- (most likely LuaJIT in the case of Neovim)
-						version = 'LuaJIT'
-					},
-					-- Make the server aware of Neovim runtime files
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							vim.env.VIMRUNTIME
-							-- Depending on the usage, you might want to add additional paths here.
-							-- E.g.: For using `vim.*` functions, add vim.env.VIMRUNTIME/lua.
-							-- "${3rd}/luv/library"
-							-- "${3rd}/busted/library",
-						}
-						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-						-- library = vim.api.nvim_get_runtime_file("", true)
-					}
-				}
-			})
-		end
-		return true
-	end
-}
+-- Configure the LSP server with nvim-lspconfig
+-- Note: nvim-lspconfig does not install language servers for you. It can be installed manually or could be installed by mason plugin
+-- 
+--
+--
+-- local lspconfig = require('lspconfig')
+-- lspconfig.rust_analyzer.setup {
+--   -- Server-specific settings. See `:help lspconfig-setup`
+--   settings = {
+--     ['rust-analyzer'] = {},
+--   },
+-- }
+--
+--
+-- lspconfig.groovyls.setup {}
+--
+--
+-- lspconfig.gradle_ls.setup {
+-- 	cmd = { "gradle-language-server" },
+-- 	init_options = {
+-- 		settings = {
+-- 			gradleWrapperEnabled = false
+-- 		}
+-- 	}
+-- }
