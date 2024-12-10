@@ -19,30 +19,6 @@ local prompts = {
 local chat = require("CopilotChat")
 local select = require("CopilotChat.select")
 
-
-local keys = {
-	-- Show help actions with telescope
-	{
-		"<leader>cch",
-		function()
-			local actions = require("CopilotChat.actions")
-			require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-		end,
-		desc = "CopilotChat - Help actions",
-	},
-	-- Show prompts actions with telescope
-	{
-		"<leader>ccp",
-		function()
-			local actions = require("CopilotChat.actions")
-			require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-		end,
-		desc = "CopilotChat - Prompt actions",
-	},
-
-}
-
-
 local opts = {
 	debug = true,    -- Enable debugging
 	show_help = true, -- Show help actions

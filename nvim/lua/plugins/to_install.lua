@@ -1,8 +1,7 @@
 return {
 
+	-- Copilot and CopilotChat
 	{ "github/copilot.vim" },
-
-
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		dependencies = {
@@ -10,22 +9,15 @@ return {
 		},
 		opts = {},
 		build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
-		-- keys = {
-		-- 	{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-		-- 	{ "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
-		-- },
 	},
 
-
-
-
-	{ "andrewferrier/wrapping.nvim" },
 
 	-- Table and DrawIt
 	{
 		"vim-scripts/DrawIt",
 		"dhruvasagar/vim-table-mode"
 	},
+
 
 	-- Like IDE within terminal
 	{
@@ -38,35 +30,20 @@ return {
 		direction = 'vertical'
 	},
 
-	-- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
-	-- TODO: configure
+
+	-- Folding
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" }
 	},
 
-	-- Noice
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	event = "VeryLazy",
-	-- 	opts = {
-	-- 		-- add any options here
-	-- 	},
-	-- 	dependencies = {
-	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- OPTIONAL:
-	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
-	-- 		--   If not available, we use `mini` as the fallback
-	-- 		"rcarriga/nvim-notify",
-	-- 	}
-	-- },
 
 	-- File explorer
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
+
 
 	-- Completion
 	{
@@ -88,11 +65,13 @@ return {
 		"ribru17/bamboo.nvim",
 	},
 
+
 	-- Git
 	{
 		"tpope/vim-fugitive",
 		"lewis6991/gitsigns.nvim"
 	},
+
 
 	-- LSP servers, DAP servers, linters, and formatters
 	-- Mason and nvim lsp integration
@@ -102,11 +81,13 @@ return {
 		"neovim/nvim-lspconfig"
 	},
 
+
 	-- Java lsp client wrapper
 	{
 		"mfussenegger/nvim-jdtls",
 		dependencies = { "mfussenegger/nvim-dap" }
 	},
+
 
 	-- Telescope
 	{
@@ -123,11 +104,14 @@ return {
 		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	},
 
+
 	-- Status line
 	{
 		"famiu/feline.nvim"
 	},
 
+
+	-- Toggle comments
 	{
 		"terrortylor/nvim-comment"
 	},
@@ -145,6 +129,19 @@ return {
 		dependencies = { 'echasnovski/mini.nvim' }
 	},
 
+
+  -- Less distraction
+	{
+		"folke/zen-mode.nvim",
+	},
+
+
+  -- Auto pairs and surrounder
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+	},
 	{
 		"kylechui/nvim-surround",
 		config = function()
@@ -152,17 +149,6 @@ return {
 		end
 	},
 
-	{
-		"folke/zen-mode.nvim",
-	},
-
-	{
-		'windwp/nvim-autopairs',
-		event = "InsertEnter",
-		config = true
-		-- use opts = {} for passing setup options
-		-- this is equalent to setup({}) function
-	},
 
 	-- Treesitter
 	{
@@ -170,6 +156,8 @@ return {
 		dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' }
 	},
 
+
+	-- Formatter
 	{
 		'sbdchd/neoformat'
 	}
