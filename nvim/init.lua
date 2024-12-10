@@ -4,9 +4,6 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
--- vim.api.nvim_set_keymap('n', 'j', 'gj^', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'k', 'gk^', { noremap = true, silent = true })
-
 -- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
 -- mappings could be passed to a setup function, check other plugins .....
 vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
@@ -26,16 +23,6 @@ vim.keymap.set('t', '<c-l>', [[<C-\><C-N><C-w>l]])
 vim.keymap.set('i', '<c-l>', [[<C-\><C-N><C-w>l]])
 vim.keymap.set('t', '<c-j>', [[<C-\><C-N><C-w>j]])
 vim.keymap.set('i', '<c-j>', [[<C-\><C-N><C-w>j]])
-
--- Snippets - Jump forward or backward
-vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']],
-	{ expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('s', '<C-k>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']],
-	{ expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
-	{ expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('s', '<C-j>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
-	{ expr = true, noremap = true, silent = true })
 
 -- CopilotChat mappings
 vim.keymap.set('n', '<Space>o', '<cmd>CopilotChatOpen<cr>')
