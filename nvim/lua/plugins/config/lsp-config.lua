@@ -6,18 +6,18 @@ require("mason-lspconfig").setup {
 }
 
 -- Automatically setup LSP servers for all installed servers
-require("mason-lspconfig").setup_handlers {
-	-- Default handler for all servers
-	function(server_name)
-		require("lspconfig")[server_name].setup {}
-	end,
-	-- Custom handler for bashls
-	-- ["bashls"] = function()
-	-- 	require("lspconfig").bashls.setup {
-	-- 		filetypes = { "zsh", "sh" }
-	-- 	}
-	-- end
-}
+-- require("mason-lspconfig").setup_handlers {
+-- 	-- Default handler for all servers
+-- 	function(server_name)
+-- 		require("lspconfig")[server_name].setup {}
+-- 	end,
+-- 	-- Custom handler for bashls
+-- 	-- ["bashls"] = function()
+-- 	-- 	require("lspconfig").bashls.setup {
+-- 	-- 		filetypes = { "zsh", "sh" }
+-- 	-- 	}
+-- 	-- end
+-- }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
