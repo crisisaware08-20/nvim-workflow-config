@@ -141,34 +141,6 @@ function P.copilot_chat_keys()
 				end,
 				desc = "CopilotChat - Prompt actions",
 			},
-			-- {
-			-- 	"<leader>cp",
-			-- 	function()
-			-- 		vim.api.nvim_command('Copilot panel')
-			-- 	end,
-			-- 	desc = "Copilot panel",
-			-- },
-			-- {
-			-- 	"<leader>cr",
-			-- 	function()
-			-- 		require("copilot.panel").refresh()
-			-- 	end,
-			-- 	desc = "Copilot panel refresh",
-			-- },
-			-- {
-			-- 	"<leader>cn",
-			-- 	function()
-			-- 		vim.api.nvim_command('Copilot panel jump_next')
-			-- 	end,
-			-- 	desc = "Copilot panel jump_next"
-			-- },
-			-- {
-			-- 	"<leader>ck",
-			-- 	function()
-			-- 		vim.api.nvim_command('Copilot panel jump_prev')
-			-- 	end,
-			-- 	desc = "Copilot panle jump_prev"
-			-- },
 		},
 	})
 end
