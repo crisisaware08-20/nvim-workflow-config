@@ -4,8 +4,6 @@ require('lazy').setup(require("plugins/to_install"), opts)
 
 require('plugins/to_config')
 
-vim.api.nvim_set_keymap('n', '<leader>m', [[:lua vim.api.nvim_win_set_config(0, {relative='editor', row=0, col=0, width=vim.o.columns, height=vim.o.lines})<CR>]], { noremap = true, silent = true })
-
 -- vim.api.nvim_set_keymap('n', 'j', 'gj^', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'k', 'gk^', { noremap = true, silent = true })
 
@@ -84,9 +82,6 @@ vim.api.nvim_command('colorscheme bamboo')
 -- Auto save buffer
 vim.api.nvim_command(':set autowriteall')
 
--- reason to add it is to close/open folds of diffs in a Fugitive Git commit
--- vim.opt.foldmethod='syntax'
-
 -- vim.api.nvim_command(":let &statusline='%#Normal# '")
 vim.api.nvim_command(":let &statusline='%f'")
 vim.api.nvim_command(":let &laststatus=2")
@@ -94,17 +89,9 @@ vim.api.nvim_command(':set nohls')
 
 vim.diagnostic.config({ virtual_text = false })
 
-
 -- Options
 vim.opt.clipboard = 'unnamedplus'
--- Disable it due to the lagging effect when invoking :find command for directories with lot of files in it.
---
--- The scope of :find command is to search for nvim config workspace
--- The scope of Telescope is to search for files in nvim current directory
---
--- Todo: Add nvim config workspace to search path for Telescope
---
--- vim.opt.path:append '**'
+
 vim.opt.path:append(os.getenv('HOME') .. '/nvim-workflow-config/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden = true
 vim.opt.tabstop = 2
