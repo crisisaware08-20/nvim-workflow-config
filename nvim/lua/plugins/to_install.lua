@@ -1,11 +1,12 @@
 return {
 
 	-- Copilot and CopilotChat
-	{ "github/copilot.vim" },
+	-- { "github/copilot.vim" },
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "main",
 		dependencies = {
-			{ "github/copilot.vim" },
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
 		},
 		opts = {},
 		build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
@@ -128,13 +129,13 @@ return {
 	},
 
 
-  -- Less distraction
+	-- Less distraction
 	{
 		"folke/zen-mode.nvim",
 	},
 
 
-  -- Auto pairs and surrounder
+	-- Auto pairs and surrounder
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",

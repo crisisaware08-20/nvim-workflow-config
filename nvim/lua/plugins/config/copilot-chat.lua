@@ -26,6 +26,7 @@ local opts = {
 		layout = "float",
 	},
 	auto_follow_cursor = false, -- Don't follow the cursor after getting response
+	chat_auto_complete = true, -- Enable auto completion
 
 	prompts = {
 		Execute = {
@@ -58,8 +59,6 @@ opts.prompts.CommitStaged = {
 
 chat.setup(opts)
 
--- Setup the CMP integration
-require("CopilotChat.integrations.cmp").setup()
 
 vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
 	chat.ask(args.args, { selection = select.visual })
@@ -77,11 +76,3 @@ vim.api.nvim_create_user_command("TestCopilotChat",
 		})
 	end,
 	{ nargs = "*", range = true })
-
-
--- vim.api.nvim_create_user_command("AskCopilot", function(args)
---
--- 	-- local input = vim.fn.input
---
--- end
--- )
