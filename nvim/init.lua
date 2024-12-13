@@ -28,8 +28,6 @@ vim.keymap.set('i', '<c-j>', [[<C-\><C-N><C-w>j]])
 vim.keymap.set('n', '<Space>o', '<cmd>CopilotChatOpen<cr>')
 vim.keymap.set('n', '<Space>t', '<cmd>CopilotChatToggle<cr>')
 vim.keymap.set('n', '<Space><CR>', '<cmd>CopilotChatExecute<cr>')
--- This command has been defined in copilot-chat.lua
-vim.keymap.set('n', '<Space>vv', '<cmd>CopilotChatVisual<cr>')
 
 -- Basic Mappings
 vim.keymap.set('n', '<leader>te', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
