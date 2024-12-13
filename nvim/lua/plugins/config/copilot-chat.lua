@@ -9,7 +9,6 @@ local prompts = {
 	Documentation = "Please provide documentation for the following code.",
 	SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
 	SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-	-- Text related prompts
 	Summarize = "Please summarize the following text.",
 	Spelling = "Please correct any grammar and spelling errors in the following text.",
 	Wording = "Please improve the grammar and wording of the following text.",
@@ -33,46 +32,7 @@ local opts = {
 			prompt = "Provide accurate response on what is being asked.",
 			selection = select.visual,
 		},
-		-- Wording = {
-		-- 	prompt = 'Please improve the grammar and wording of the following text.',
-		-- 	description = 'Prompt to command',
-		-- 	selection = require('CopilotChat.select').visual,
-		-- },
 	},
 }
 
--- Use unnamed register for the selection
-opts.selection = select.unnamed
-
--- Override the git prompts message
-opts.prompts.Commit = {
-	prompt = "Write commit message for the change with commitizen convention",
-	selection = select.gitdiff,
-}
-
-opts.prompts.CommitStaged = {
-	prompt = "Write commit message for the change with commitizen convention",
-	selection = function(source)
-		return select.gitdiff(source, true)
-	end,
-}
-
 chat.setup(opts)
-
-
-vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
-	chat.ask(args.args, { selection = select.visual })
-end, { nargs = "*", range = true })
-
--- This command is to test copilot chat api
-vim.api.nvim_create_user_command("TestCopilotChat",
-	function(args)
-		-- Open chat window with custom options
-		chat.open({
-			window = {
-				layout = 'float',
-				title = 'My Title',
-			},
-		})
-	end,
-	{ nargs = "*", range = true })
