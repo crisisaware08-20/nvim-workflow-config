@@ -1,23 +1,8 @@
 require("mason").setup()
-require("mason-lspconfig").setup()
-
 require("mason-lspconfig").setup {
 	ensure_installed = { "lua_ls", "bashls", "ts_ls", "groovyls", "gradle_ls" }
 }
-
--- Automatically setup LSP servers for all installed servers
-require("mason-lspconfig").setup_handlers {
-	-- Default handler for all servers
-	function(server_name)
-		require("lspconfig")[server_name].setup {}
-	end,
-	-- Custom handler for bashls
-	-- ["bashls"] = function()
-	-- 	require("lspconfig").bashls.setup {
-	-- 		filetypes = { "zsh", "sh" }
-	-- 	}
-	-- end
-}
+vim.lsp.set_log_level("debug")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -36,7 +21,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- Configure the LSP server with nvim-lspconfig
 -- Note: nvim-lspconfig does not install language servers for you. It can be installed manually or could be installed by mason plugin
---
 --
 --
 -- local lspconfig = require('lspconfig')
@@ -59,3 +43,33 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- 		}
 -- 	}
 -- }
+--
+
+require("lspconfig").lua_ls.setup({
+	settings = {
+		Lua = {
+			runtime = {
+				-- Use LuaJIT in Neovim
+				version = "LuaJIT",
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Recognize `vim` as a global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = {
+				enable = false, -- Disable telemetry
+			},
+		},
+	},
+	on_attach = function(client, bufnr)
+		print('Lua Lsp Client attaching to buffer')
+		local jdtls_keys = require('keymaps').lsp_keys()
+		require('util-module').set_keymaps(bufnr, jdtls_keys)
+	end,
+})

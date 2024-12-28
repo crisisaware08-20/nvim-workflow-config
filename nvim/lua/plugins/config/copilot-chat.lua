@@ -25,7 +25,7 @@ local opts = {
 		layout = "float",
 	},
 	auto_follow_cursor = false, -- Don't follow the cursor after getting response
-	chat_auto_complete = true, -- Enable auto completion
+	-- chat_auto_complete = true, -- Enable auto completion
 
 	prompts = {
 		Execute = {

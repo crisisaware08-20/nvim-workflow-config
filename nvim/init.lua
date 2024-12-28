@@ -13,6 +13,23 @@ vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").R
 vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
 	{ noremap = true, silent = true })
 
+-- Auto-save when leaving insert mode or after inactivity
+vim.api.nvim_create_autocmd({ "InsertLeave", "CursorHold" }, {
+  callback = function()
+    if vim.bo.modified then
+      vim.cmd("silent write")
+    end
+  end,
+})
+
+-- Map <Esc> to save the file as well as exit insert mode
+vim.keymap.set({"i", "n"}, "<Esc>", function()
+  if vim.bo.modified then
+    vim.cmd("silent write")
+  end
+  return "<Esc>"
+end, { expr = true, noremap = true })
+
 -- Terminal window navigation
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<c-k>', [[<C-\><C-N><C-w>k]])
@@ -77,7 +94,6 @@ vim.diagnostic.config({ virtual_text = false })
 -- Options
 vim.opt.clipboard = 'unnamedplus'
 
-vim.opt.path:append(os.getenv('HOME') .. '/nvim-workflow-config/nvim/**') -- Offer access to nvim primary configurations files
 vim.opt.hidden = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

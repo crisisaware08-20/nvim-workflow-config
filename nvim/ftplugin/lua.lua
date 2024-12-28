@@ -1,3 +1,3 @@
 vim.diagnostic.config({ virtual_text = false })
 
-require'keymaps'.lsp_keys()
+-- require'keymaps'.lsp_keys()

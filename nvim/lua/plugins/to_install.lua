@@ -2,15 +2,15 @@ return {
 
 	-- Copilot and CopilotChat
 	-- { "github/copilot.vim" },
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "main",
-		dependencies = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-		},
-		opts = {},
-		build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
-	},
+	-- {
+	-- 	"CopilotC-Nvim/CopilotChat.nvim",
+	-- 	branch = "main",
+	-- 	dependencies = {
+	-- 		{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+	-- 	},
+	-- 	opts = {},
+	-- 	build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
+	-- },
 
 
 	-- Table and DrawIt
@@ -48,13 +48,13 @@ return {
 
 	-- Completion
 	{
+		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
 		"tamago324/cmp-zsh",
-		"rafamadriz/friendly-snippets"
+		-- "rafamadriz/friendly-snippets"
 	},
 
 
@@ -159,6 +159,15 @@ return {
 	-- Formatter
 	{
 		'sbdchd/neoformat'
+	},
+
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp"
+
 	}
 
 }

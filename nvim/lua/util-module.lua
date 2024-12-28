@@ -8,6 +8,7 @@ function M.print_path_option()
 	end
 end
 
+
 -- Change directory to current buffer, not quite used --> may be removed
 function M.change_nvim_directory_to(path)
 	vim.fn.chdir(path)
@@ -23,17 +24,6 @@ function M.show_runtime_path()
 	end
 end
 
--- Used as "quickly try things"
-function M.explore()
-	-- local fruits = { "apple", "banana", "orange", "blueberry" }
-	-- for key, value in pairs(fruits) do
-	-- 	print(key, value)
-	-- end
-	--
-
-	local gugu = M.find_student("Gugu")
-	M.print_details(gugu)
-end
 
 -- Functions for maximizing and restoring the current buffer's size
 local original_height
@@ -57,24 +47,22 @@ function M.RestoreOriginalSize()
 	end
 end
 
-local students = {
-	{ name = "Gugu",  age = 2, grade = "A" },
-	{ name = "Lia",   age = 5, grade = "B" },
-	{ name = "Matei", age = 8, grade = "C" },
-}
-
-function M.print_details(children)
-	print(children.name)
-	print(children.age)
-	print(children.grade)
-end
-
-function M.find_student(name)
-	for _, student in ipairs(students) do
-		if student.name == name then
-			return student
+-- Set key maping for the provided keymap_groups
+function M.set_keymaps(bufnr, keymap_groups)
+	for _, group in ipairs(keymap_groups) do
+		-- Default to normal mode if no mode is specified
+		local modes = group.mode or { "n" }
+		for _, map in ipairs(group) do
+			-- Skip the "mode" field itself
+			if type(map) == "table" and map[1] then
+				local lhs = map[1]
+				local rhs = map[2]
+				local opts = { noremap = true, silent = true, desc = map.desc }
+				for _, mode in ipairs(modes) do
+					vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", opts, { buffer = bufnr }))
+				end
+			end
 		end
-		return nil
 	end
 end
 
