@@ -94,16 +94,6 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim", "nvim-telescope/telescope-ui-select.nvim" }
 	},
 
-
-	-- I don't know yet what this is used for
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		opts = {},
-		config = function(_, opts) require 'lsp_signature'.setup(opts) end
-	},
-
-
 	-- Status line
 	{
 		"famiu/feline.nvim"

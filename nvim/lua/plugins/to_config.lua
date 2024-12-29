@@ -1,7 +1,5 @@
 local M = {}
 
--- vim.opt.termguicolors=true
-
 require('plugins/config/bamboo')
 require('plugins/config/cmp')
 -- require('plugins/config/copilot-chat')
@@ -13,13 +11,10 @@ require('plugins/config/ufo')
 -- require('plugins/config/copilot')
 
 -- LSPs
-
 require('plugins/config/lsp-config')
 
+-- Keys
 require('keymaps').git_keys()
 require('keymaps').search_keys()
-require('keymaps').copilot_chat_keys()
-require('feline').setup()
-require('nvim_comment').setup()
 
 return M

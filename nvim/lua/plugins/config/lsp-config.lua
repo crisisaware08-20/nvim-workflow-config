@@ -1,8 +1,9 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "bashls", "ts_ls", "groovyls", "gradle_ls" }
+	ensure_installed = { "lua_ls", "bashls", "ts_ls" }
 }
-vim.lsp.set_log_level("debug")
+
+-- vim.lsp.set_log_level("debug")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -69,7 +70,7 @@ require("lspconfig").lua_ls.setup({
 	},
 	on_attach = function(client, bufnr)
 		print('Lua Lsp Client attaching to buffer')
-		local jdtls_keys = require('keymaps').lsp_keys()
-		require('util-module').set_keymaps(bufnr, jdtls_keys)
+		local lsp_keys = require('keymaps').lsp_keys()
+		require('util-module').set_keymaps(bufnr, lsp_keys)
 	end,
 })
