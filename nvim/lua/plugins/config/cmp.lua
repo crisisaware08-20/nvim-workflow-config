@@ -69,7 +69,7 @@ cmp.setup({
 		{
 			-- Primary source
 			{ name = 'nvim_lsp' },
-			-- { name = 'luasnip' },
+			{ name = 'luasnip' },
 		},
 		-- Fallback sources
 		{
@@ -84,7 +84,7 @@ cmp.setup.filetype('java',
 			{
 				-- Primary source
 				{ name = 'nvim_lsp' },
-				-- { name = 'luasnip' },
+				{ name = 'luasnip' },
 			},
 			-- Fallback sources
 			{

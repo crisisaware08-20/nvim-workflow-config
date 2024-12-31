@@ -93,7 +93,7 @@ vim.diagnostic.config({ virtual_text = false })
 
 -- Options
 vim.opt.clipboard = 'unnamedplus'
-
+vim.opt.scrolloff = 999
 vim.opt.hidden = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
