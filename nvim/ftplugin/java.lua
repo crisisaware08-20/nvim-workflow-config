@@ -63,6 +63,8 @@ local jdtls_settings = {
 	},
 }
 
+require('jdtls').jol_path = os.getenv("HOME") .. '/java_tools/jol-cli-0.17-full.jar'
+
 -- Capabilities, so far enabling snippet support without which the confirmation of a method will not provide the method parameters
 local client_capabilities_config = vim.lsp.protocol.make_client_capabilities()
 client_capabilities_config.textDocument.completion.completionItem.snippetSupport = true
