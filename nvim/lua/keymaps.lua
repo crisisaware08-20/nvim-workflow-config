@@ -71,21 +71,30 @@ local jdtls = require('jdtls')
 -- Avoiding copying each time attaching to buffer, probably there is a better way
 local lsp_common_keys = vim.deepcopy(P.lsp_keys() or {})
 function P.jdtls_keys()
+	local dap_widget = require('dap.ui.widgets')
 	local jdtl_keys =
 	{
 		{
 			mode = { "n", "v" },
-			{ "<leader>gt", function() require("jdtls.tests").goto_subjects() end, desc = "Go to test" },
-			{ "<leader>oi", function() jdtls.organize_imports() end,               desc = "Organize Imports" },
-			{ "<leader>jc", function() jdtls.compile('incremental') end,           desc = "Compile Incremental" },
+			{ "<leader>gt", function() require("jdtls.tests").goto_subjects() end,       desc = "Go to test" },
+			{ "<leader>oi", function() jdtls.organize_imports() end,                     desc = "Organize Imports" },
+			{ "<leader>jc", function() jdtls.compile('incremental') end,                 desc = "Compile Incremental" },
 			-- { "<leader>em", function() jdtls.extract_method(true) end,             desc = "Extract Method" },
 			-- { "<leader>ec", function() jdtls.extract_constant(true) end,           desc = "Extract Constant" },
 			-- { "<leader>ev", function() jdtls.extract_variable(true) end,           desc = "Extract Variable" },
 			-- { ",tm",        function() jdtls.test_nearest_method() end,            desc = "Test Nearest Method" },
 			-- { ",tc",        function() jdtls.test_class() end,                     desc = "Test Class" },
-			{ ",tt",        function() require('jdtls.dap').pick_test() end,       desc = "Prompt for a test method" },
+			{ ",tt",        function() require('jdtls.dap').pick_test() end,             desc = "Prompt for a test method" },
+			{ "<leader>dh", function() dap_widget.hover() end,                           desc = "Debug hover" },
+			{ "<leader>dp", function() dap_widget.preview() end,                         desc = "Debug preview" },
+			{ "<leader>df", function() dap_widget.centered_float(dap_widget.frames) end, desc = "Debug frames" },
+			{ "<leader>ds", function() dap_widget.centered_float(dap_widget.scopes) end, desc = "Debug scopes" },
+
 		}
 	}
+
+	require('jdtls').test_nearest_method()
+
 	return vim.list_extend(lsp_common_keys, jdtl_keys)
 end
 
