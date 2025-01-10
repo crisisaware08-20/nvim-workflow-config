@@ -93,11 +93,10 @@ vim.diagnostic.config({ virtual_text = false })
 
 -- Options
 vim.opt.clipboard = 'unnamedplus'
-vim.opt.scrolloff = 999
 vim.opt.hidden = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 -- vim.opt.timeoutlen = 40
 vim.cmd([[
 augroup numbertoggle
