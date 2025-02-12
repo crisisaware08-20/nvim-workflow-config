@@ -93,8 +93,6 @@ function P.jdtls_keys()
 		}
 	}
 
-	require('jdtls').test_nearest_method()
-
 	return vim.list_extend(lsp_common_keys, jdtl_keys)
 end
 
