@@ -20,9 +20,8 @@ local cmp_custom_mappings =
 	['<CR>'] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-			if luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			end
+		elseif luasnip.expandable() then 
+			luasnip.expand()
 		else
 			fallback()
 		end
