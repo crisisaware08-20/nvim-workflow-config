@@ -42,7 +42,9 @@ cmp.setup({
 
 	window = {
 		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		-- its annoying on small screens, also it is a source of noise
+		documentation = false
+		-- documentation = cmp.config.window.bordered(),
 	},
 
 	-- mapping = cmp.mapping.preset.insert({}),
