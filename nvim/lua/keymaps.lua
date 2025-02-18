@@ -2,7 +2,7 @@ local P = {}
 
 local telescope_builtin = require('telescope.builtin')
 local wk = require("which-key")
-
+local jdtls = require('jdtls')
 
 function P.git_keys()
 	wk.add({
@@ -18,7 +18,6 @@ function P.git_keys()
 	)
 end
 
--- nvim-lspconfig
 function P.lsp_keys()
 	return {
 		-- Diagnostic
@@ -66,10 +65,9 @@ function P.lsp_keys()
 	}
 end
 
-local jdtls = require('jdtls')
-
 -- Avoiding copying each time attaching to buffer, probably there is a better way
 local lsp_common_keys = vim.deepcopy(P.lsp_keys() or {})
+
 function P.jdtls_keys()
 	local dap_widget = require('dap.ui.widgets')
 	local jdtl_keys =
@@ -136,8 +134,6 @@ function P.search_keys()
 	})
 end
 
-vim.keymap.set('n', "<leader>wd", "<CMD>NvimTreeFindFileToggle<cr>")
-
 function P.copilot_chat_keys()
 	wk.add({
 		{
@@ -162,6 +158,18 @@ function P.copilot_chat_keys()
 				desc = "CopilotChat - Prompt actions",
 			},
 		},
+	})
+end
+
+function P.other_keys()
+	wk.add({
+		{
+			-- Quickfix list navigation
+			mode = { "n", "v" },
+			{ "<c-n>",      ":cnext<CR>",                  desc = "Next quick fix item" },
+			{ "<c-p>",      ":cprevious<CR>",              desc = "Previous quick fix item" },
+			{ "<leader>wd", ":NvimTreeFindFileToggle<CR>", desc = "NvimTreeFindFileToggle" },
+		}
 	})
 end
 

@@ -16,5 +16,6 @@ require('plugins/config/lsp-config')
 -- Keys
 require('keymaps').git_keys()
 require('keymaps').search_keys()
+require('keymaps').other_keys()
 
 return M

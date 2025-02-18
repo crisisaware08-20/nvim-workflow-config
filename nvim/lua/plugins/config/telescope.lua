@@ -4,7 +4,7 @@ require('telescope').setup {
 			i = {
 				["<esc>"] = require("telescope.actions").close,
 				["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist, -- For normal mode
-
+				["<C-u>"] = false,
 			},
 			n = {
 				["<esc>"] = require("telescope.actions").close,
@@ -51,8 +51,6 @@ require('telescope').setup {
 				layout_config = {
 					preview_cutoff = 1, -- Preview should always show (unless previewer = false)
 					width = function(_, max_columns, _)
-						print("Max columns!")
-						print(max_columns)
 						return math.min(max_columns, 150)
 					end
 				},

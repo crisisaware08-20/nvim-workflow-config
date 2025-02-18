@@ -2,14 +2,6 @@ require('package-manager').boot_lazy_packg_manager()
 require('lazy').setup(require("plugins/to_install"), opts)
 require('plugins/to_config')
 
-function change_working_dir()
-	-- when changing directory, I want to update nvimtree
-	require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))
-	require('nvim-tree.api').tree.change_root(vim.fn.getcwd())
-end
-
-vim.keymap.set('n', '<leader>cd', change_working_dir, { noremap = true, silent = true })
-
 -- Auto-save when leaving insert mode or after inactivity
 vim.api.nvim_create_autocmd({ "InsertLeave", "CursorHold" }, {
   callback = function()
@@ -70,6 +62,11 @@ vim.keymap.set('n', 'tl', '', {
 		vim.cmd('set relativenumber!')
 	end
 })
+function change_working_dir()
+	require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))
+	require('nvim-tree.api').tree.change_root(vim.fn.getcwd())
+end
+vim.keymap.set('n', '<leader>cd', change_working_dir, { noremap = true, silent = true })
 
 
 vim.api.nvim_command('filetype plugin on')
