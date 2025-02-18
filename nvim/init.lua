@@ -1,17 +1,14 @@
 require('package-manager').boot_lazy_packg_manager()
-
 require('lazy').setup(require("plugins/to_install"), opts)
-
 require('plugins/to_config')
 
--- Mappings based on custom functions, this could be refactored later when util-module will evolve to certain point
--- mappings could be passed to a setup function, check other plugins .....
-vim.api.nvim_set_keymap('n', '<leader><leader>m', ':lua require("util-module").ResizeBufferTop()<CR>',
-	{ noremap = true, silent = true, desc = "Maximize Current Buffer" })
-vim.api.nvim_set_keymap('n', '<leader><leader>r', ':lua require("util-module").RestoreOriginalSize()<CR>',
-	{ noremap = true, silent = true, desc = "Restore Buffer View" })
-vim.keymap.set('n', '<leader>cd', [[:lua require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))<CR>]],
-	{ noremap = true, silent = true })
+function change_working_dir()
+	-- when changing directory, I want to update nvimtree
+	require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))
+	require('nvim-tree.api').tree.change_root(vim.fn.getcwd())
+end
+
+vim.keymap.set('n', '<leader>cd', change_working_dir, { noremap = true, silent = true })
 
 -- Auto-save when leaving insert mode or after inactivity
 vim.api.nvim_create_autocmd({ "InsertLeave", "CursorHold" }, {

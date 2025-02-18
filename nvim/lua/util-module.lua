@@ -24,29 +24,6 @@ function M.show_runtime_path()
 	end
 end
 
-
--- Functions for maximizing and restoring the current buffer's size
-local original_height
-function M.ResizeBufferTop()
-	original_height = vim.api.nvim_win_get_height(0)
-	vim.cmd('resize +6000')
-end
-
-function M.RestoreOriginalSize()
-	if original_height ~= nil then
-		local current_height = vim.api.nvim_win_get_height(0)
-		local diff = original_height - current_height
-
-		if diff > 0 then
-			vim.cmd('resize +' .. diff)
-		elseif diff < 0 then
-			vim.cmd('resize ' .. diff)
-		end
-
-		original_height = nil
-	end
-end
-
 -- Set key maping for the provided keymap_groups
 function M.set_keymaps(bufnr, keymap_groups)
 	for _, group in ipairs(keymap_groups) do
