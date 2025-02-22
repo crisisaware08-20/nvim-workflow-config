@@ -1,5 +1,6 @@
 local M = {}
 
+require('plugins/treesiter/ts_modules')
 require('plugins/config/bamboo')
 require('plugins/config/cmp')
 -- require('plugins/config/copilot-chat')
@@ -18,15 +19,13 @@ require('keymaps').git_keys()
 require('keymaps').search_keys()
 require('keymaps').other_keys()
 
--- tj
-require("present").setup {
-	-- Check source for options :)
-}
+require("present").setup {}
 
 -- to extend
-require'slides'.setup{
-  bin = '/opt/homebrew/bin/slides',
-  fullscreen = true
+require 'slides'.setup {
+	bin = '/opt/homebrew/bin/slides',
+	fullscreen = true
 }
 
 return M
+
