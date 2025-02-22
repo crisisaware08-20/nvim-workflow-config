@@ -18,4 +18,15 @@ require('keymaps').git_keys()
 require('keymaps').search_keys()
 require('keymaps').other_keys()
 
+-- tj
+require("present").setup {
+	-- Check source for options :)
+}
+
+-- to extend
+require'slides'.setup{
+  bin = '/opt/homebrew/bin/slides',
+  fullscreen = true
+}
+
 return M
