@@ -21,11 +21,5 @@ require('keymaps').other_keys()
 
 require("present").setup {}
 
--- to extend
-require 'slides'.setup {
-	bin = '/opt/homebrew/bin/slides',
-	fullscreen = true
-}
-
 return M
 
