@@ -14,9 +14,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 		signs = true,
 		virtual_text = false,
 		-- Enable virtual text for errors only, this is too noisy
-		virtual_text = {
-			severity = vim.diagnostic.severity.ERROR,
-		},
+		-- virtual_text = {
+		-- 	severity = vim.diagnostic.severity.ERROR,
+		-- },
 	}
 )
 
