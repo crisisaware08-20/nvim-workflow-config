@@ -20,7 +20,7 @@ local cmp_custom_mappings =
 	['<CR>'] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-		elseif luasnip.expandable() then 
+		elseif luasnip.expandable() then
 			luasnip.expand()
 		else
 			fallback()
@@ -72,6 +72,7 @@ cmp.setup({
 			{ name = 'nvim_lsp' },
 			{ name = 'luasnip' },
 			{ name = 'path' },
+			{ name = 'copilot' },
 		},
 		-- Fallback sources
 		{
@@ -88,6 +89,7 @@ cmp.setup.filetype('java',
 				{ name = 'nvim_lsp' },
 				{ name = 'luasnip' },
 				{ name = 'path' },
+				{ name = 'copilot' },
 			},
 			-- Fallback sources
 			{
