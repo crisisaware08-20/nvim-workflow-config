@@ -1,7 +1,19 @@
 return {
 
 	-- Copilot and CopilotChat
-	{ "github/copilot.vim" },
+	-- { "github/copilot.vim" },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		dependencies = {
+			{'zbirenbaum/copilot-cmp'}
+
+		},
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
+	},
 	-- {
 	-- 	"CopilotC-Nvim/CopilotChat.nvim",
 	-- 	branch = "main",
