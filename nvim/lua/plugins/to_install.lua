@@ -1,20 +1,15 @@
 return {
 
 	-- Copilot and CopilotChat
-	-- { "github/copilot.vim" },
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		dependencies = {
-			{'zbirenbaum/copilot-cmp'}
-
-		},
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({})
 		end,
 	},
-	-- {
+
 	-- 	"CopilotC-Nvim/CopilotChat.nvim",
 	-- 	branch = "main",
 	-- 	dependencies = {
@@ -60,13 +55,16 @@ return {
 
 	-- Completion
 	{
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"tamago324/cmp-zsh",
-		-- "rafamadriz/friendly-snippets"
+		'saghen/blink.cmp',
+		-- optional: provides snippets for the snippet source
+		dependencies = {
+			'rafamadriz/friendly-snippets',
+			{ 'L3MON4D3/LuaSnip', version = 'v2.*' } },
+
+		-- use a release tag to download pre-built binaries
+		version = '*',
+
+		opts_extend = { "sources.default" }
 	},
 
 
@@ -105,6 +103,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim", "nvim-telescope/telescope-ui-select.nvim" }
 	},
+
 
 	-- Status line
 	{
@@ -164,20 +163,8 @@ return {
 		'sbdchd/neoformat'
 	},
 
+	-- Presentation tools
 	{ 'tjdevries/present.nvim' },
-
 	{ 'aspeddro/slides.nvim' },
-
-	{
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
-		-- follow latest release.
-		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!).
-		build = "make install_jsregexp",
-		dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" }
-	}
 
 }

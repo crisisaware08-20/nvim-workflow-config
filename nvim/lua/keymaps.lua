@@ -121,7 +121,7 @@ function P.search_keys()
 				"<leader>fc",
 				function()
 					telescope_builtin.find_files({
-						prompt_title = "Neovim Runtime Files",
+						prompt_title = "Neovim Config Files",
 						cwd = os.getenv('HOME') .. '/nvim-workflow-config/nvim/',
 						hidden = true,
 						no_ignore = true,

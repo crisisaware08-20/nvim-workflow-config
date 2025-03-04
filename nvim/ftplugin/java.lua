@@ -65,9 +65,9 @@ local jdtls_settings = {
 
 require('jdtls').jol_path = os.getenv("HOME") .. '/java_tools/jol-cli-0.17-full.jar'
 
--- Capabilities, so far enabling snippet support without which the confirmation of a method will not provide the method parameters
-local client_capabilities_config = vim.lsp.protocol.make_client_capabilities()
-client_capabilities_config.textDocument.completion.completionItem.snippetSupport = true
+local client_capabilities_config = require('blink.cmp').get_lsp_capabilities()
+-- This is not required anymore as the blink.cmp.get_lsp_capabilities() overrides this value with true
+-- client_capabilities_config.textDocument.completion.completionItem.snippetSupport = true
 
 
 -- Define the root directory dynamically
@@ -88,7 +88,6 @@ local bundles = {
 vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
 
 -- curl -fLo ~/.local/share/nvim/lombok/lombok.jar --create-dirs https://projectlombok.org/downloads/lombok.jar
-
 if (vim.fn.filereadable(lombok_path) == 0) then
 	vim.fn.mkdir(vim.fn.stdpath("data") .. "/lombok", "p")
 	vim.fn.system({
@@ -100,41 +99,8 @@ if (vim.fn.filereadable(lombok_path) == 0) then
 	})
 end
 
-
--- Another way to start jdtls
-
--- local jdtls_dir = vim.fn.stdpath('data') .. '/mason/packages/jdtls'
--- local java_test_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-test/extension/server'
--- local java_debug_server_dir = vim.fn.stdpath('data') .. '/mason/packages/java-debug-adapter/extension/server'
--- local config_dir = jdtls_dir .. '/config_mac'
--- local plugins_dir = jdtls_dir .. '/plugins/'
--- local path_to_jar = plugins_dir .. 'org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar'
--- local path_to_lombok = jdtls_dir .. '/lombok.jar'
--- local alternative_cmd = {
--- 	'java', -- or '/path/to/java17_or_newer/bin/java'
--- 	-- depends on if `java` is in your $PATH env variable and if it points to the right version.
--- 	-- '/Users/mihailiurco/.sdkman/candidates/java/current/bin/java'
--- 	'-Declipse.application=org.eclipse.jdt.ls.core.id1',
--- 	'-Dosgi.bundles.defaultStartLevel=4',
--- 	'-Declipse.product=org.eclipse.jdt.ls.core.product',
--- 	'-Dlog.protocol=true',
--- 	'-Dlog.level=ALL',
--- 	'-javaagent:' .. path_to_lombok,
--- 	'-Xmx1g',
--- 	'--add-modules=ALL-SYSTEM',
--- 	'--add-opens', 'java.base/java.util=ALL-UNNAMED',
--- 	'--add-opens', 'java.base/java.lang=ALL-UNNAMED',
--- 	'-jar', path_to_jar,
--- 	'-configuration', config_dir,
--- 	'-data', vim.fn.stdpath("data") .. "/jdtls_workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
--- }
-
-
--- Path to the jdtls binary (from Mason)
 local jdtls_path = require("mason-registry").get_package("jdtls"):get_install_path()
 local config = {
-
-	-- "-javaagent:/Users/mihailiurco/.local/share/nvim/lombok/lombok.jar"
 
 	cmd = {
 		jdtls_path .. "/bin/jdtls",
@@ -142,7 +108,7 @@ local config = {
 		"--jvm-arg=-javaagent:" .. lombok_path,
 
 	},
-	-- cmd = cmd_1,
+
 	root_dir = root_dir,
 	on_attach = function(client, bufnr)
 		print('Attaching to the java buffer, relevant keymaps will be set')
