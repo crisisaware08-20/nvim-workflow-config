@@ -59,7 +59,10 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			'rafamadriz/friendly-snippets',
-			{ 'L3MON4D3/LuaSnip', version = 'v2.*' } },
+			{ 'L3MON4D3/LuaSnip', version = 'v2.*' },
+			-- "giuxtaposition/blink-cmp-copilot",
+			"fang2hou/blink-copilot",
+		},
 
 		-- use a release tag to download pre-built binaries
 		version = '*',

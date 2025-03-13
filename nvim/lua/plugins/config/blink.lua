@@ -20,14 +20,60 @@ require('blink.cmp').setup({
 		use_nvim_cmp_as_default = true,
 		-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 		-- Adjusts spacing to ensure icons are aligned
-		nerd_font_variant = 'mono'
+		nerd_font_variant = 'mono',
+
+		-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+		kind_icons = {
+			Copilot = "",
+			Text = '󰉿',
+			Method = '󰊕',
+			Function = '󰊕',
+			Constructor = '󰒓',
+
+			Field = '󰜢',
+			Variable = '󰆦',
+			Property = '󰖷',
+
+			Class = '󱡠',
+			Interface = '󱡠',
+			Struct = '󱡠',
+			Module = '󰅩',
+
+			Unit = '󰪚',
+			Value = '󰦨',
+			Enum = '󰦨',
+			EnumMember = '󰦨',
+
+			Keyword = '󰻾',
+			Constant = '󰏿',
+
+			Snippet = '󱄽',
+			Color = '󰏘',
+			File = '󰈔',
+			Reference = '󰬲',
+			Folder = '󰉋',
+			Event = '󱐋',
+			Operator = '󰪚',
+			TypeParameter = '󰬛',
+
+		},
 	},
 
 	-- Default list of enabled providers defined so that you can extend it
 	-- elsewhere in your config, without redefining it, due to `opts_extend`
 	sources = {
-		default = { 'lsp', 'path', 'snippets', 'buffer' },
+		default = { 'lsp', 'snippets', 'buffer' },
+		-- default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
 		-- default = { 'lsp', 'path', 'buffer' },
+		providers = {
+			copilot = {
+				name = "copilot",
+				-- module = "blink-cmp-copilot",
+				module = "blink-copilot",
+				score_offset = 100,
+				async = true,
+			},
+		},
 	},
 
 	-- Blink.cmp uses a Rust fuzzy matcher by default for typo resistance and significantly better performance

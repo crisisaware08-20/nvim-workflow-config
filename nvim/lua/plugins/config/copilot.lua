@@ -1,10 +1,11 @@
 require("copilot").setup {
-  panel = {
-    enabled = true,
-  },
-  cmp = {
-    enabled = true,
-    method = "getCompletionsCycling",
-  },
-  -- Other configurations
+	suggestion = { enabled = false },
+	panel = {
+		enabled = false ,
+	},
+	cmp = {
+		enabled = true,
+		method = "getCompletionsCycling",
+	},
+	-- Other configurations
 }

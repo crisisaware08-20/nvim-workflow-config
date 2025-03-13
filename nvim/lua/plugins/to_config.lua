@@ -25,4 +25,10 @@ require('keymaps').git_keys()
 require('keymaps').search_keys()
 require('keymaps').other_keys()
 
+-- ~/.local/share/nvim/lazy/friendly-snippets/
+-- local path = vim.fn.stdpath("data") .. "/lazy/friendly-snippets/java"
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { path } })
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip").config.set_config({ debug = true })
 return M
