@@ -30,9 +30,11 @@ function P.lsp_keys()
 		},
 		-- Go to
 		{
+			-- { "gd", function() vim.cmd("vsplit") vim.lsp.buf.definition() end, desc = "Go to def" },
 			mode = { "n", "v" },
 			{ "gd", vim.lsp.buf.definition,      desc = "Go to def" },
-			{ "gD", vim.lsp.buf.declaration,     desc = "Go to decl" },
+			{ "gD", function() vim.cmd("vsplit") vim.lsp.buf.definition() end, desc = "Go to def" },
+			-- { "gD", vim.lsp.buf.declaration,     desc = "Go to decl" },
 			{ "gi", vim.lsp.buf.implementation,  desc = "Go to impl" },
 			{ "gt", vim.lsp.buf.type_definition, desc = "Go to type def" },
 		},
