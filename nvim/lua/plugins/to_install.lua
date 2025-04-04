@@ -10,14 +10,12 @@ return {
 		end,
 	},
 
-	-- 	"CopilotC-Nvim/CopilotChat.nvim",
-	-- 	branch = "main",
-	-- 	dependencies = {
-	-- 		{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-	-- 	},
-	-- 	opts = {},
-	-- 	build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
-	-- },
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "main",
+		opts = {},
+		build = "make tiktoken", -- Only on MacOS or Linuxevent = "VeryLazy",
+	},
 
 
 	-- Table and DrawIt
