@@ -62,11 +62,10 @@ vim.keymap.set('n', 'tl', '', {
 		vim.cmd('set relativenumber!')
 	end
 })
-function change_working_dir()
+vim.keymap.set('n', '<leader>cd', function ()
 	require('util-module').change_nvim_directory_to(vim.fn.expand('%:p:h'))
-	require('nvim-tree.api').tree.change_root(vim.fn.getcwd())
-end
-vim.keymap.set('n', '<leader>cd', change_working_dir, { noremap = true, silent = true })
+	require('nvim-tree.api').tree.change_root(vim.fn.getcwd())	
+end, { noremap = true, silent = true , desc = 'Change working directory'})
 
 
 vim.api.nvim_command('filetype plugin on')
