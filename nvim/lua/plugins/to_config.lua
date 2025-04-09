@@ -21,7 +21,8 @@ require('plugins/treesiter/ts_modules')
 require('plugins/config/lsp-config')
 
 -- Keys
-require('keymaps').git_keys()
+local keys = require('keymaps').git_keys()
+require('util-module').set_global_keymaps(require('keymaps').git_keys())
 require('keymaps').search_keys()
 require('keymaps').other_keys()
 

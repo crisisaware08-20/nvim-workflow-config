@@ -24,6 +24,26 @@ function M.show_runtime_path()
 	end
 end
 
+-- Set key mappings globally for the provided keymap_groups
+function M.set_global_keymaps(keymap_groups)
+    for _, group in ipairs(keymap_groups) do
+        -- Default to normal mode if no mode is specified
+        local modes = group.mode or { "n" }
+        for _, map in ipairs(group) do
+            -- Skip the "mode" field itself
+            if type(map) == "table" and map[1] then
+                local lhs = map[1]
+                local rhs = map[2]
+                local opts = { noremap = true, silent = true, desc = map.desc }
+                for _, mode in ipairs(modes) do
+                    vim.keymap.set(mode, lhs, rhs, opts)
+                end
+            end
+        end
+    end
+end
+
+
 -- Set key maping for the provided keymap_groups
 function M.set_keymaps(bufnr, keymap_groups)
 	for _, group in ipairs(keymap_groups) do

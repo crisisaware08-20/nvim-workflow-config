@@ -5,17 +5,15 @@ local wk = require("which-key")
 local jdtls = require('jdtls')
 
 function P.git_keys()
-	wk.add({
-		-- Telescope
+	return {
 		{
 			mode = { "n", "v" },
-			{ "<leader>gbc", telescope_builtin.git_bcommits, desc = "Git buffer commits" },
-			{ "<leader>gc",  telescope_builtin.git_commits,  desc = "Git workspace commits" },
-			{ "<leader>gb",  telescope_builtin.git_branches, desc = "List all branches" },
-			{ "<leader>gs",  telescope_builtin.git_status,   desc = "Git status" },
+			{ "<leader>gbc", function() require('telescope.builtin').git_bcommits() end, desc = "Git buffer commits" },
+			{ "<leader>gc",  function() require('telescope.builtin').git_commits() end,  desc = "Git workspace commits" },
+			{ "<leader>gb",  function() require('telescope.builtin').git_branches() end, desc = "List all branches" },
+			{ "<leader>gs",  function() require('telescope.builtin').git_status() end,   desc = "Git status" },
 		},
 	}
-	)
 end
 
 function P.lsp_keys()
@@ -30,20 +28,18 @@ function P.lsp_keys()
 		},
 		-- Go to
 		{
-			-- { "gd", function() vim.cmd("vsplit") vim.lsp.buf.definition() end, desc = "Go to def" },
 			mode = { "n", "v" },
 			{ "gd", vim.lsp.buf.definition,      desc = "Go to def" },
 			{ "gD", function() vim.cmd("vsplit") vim.lsp.buf.definition() end, desc = "Go to def" },
-			-- { "gD", vim.lsp.buf.declaration,     desc = "Go to decl" },
 			{ "gi", vim.lsp.buf.implementation,  desc = "Go to impl" },
 			{ "gt", vim.lsp.buf.type_definition, desc = "Go to type def" },
 		},
 		-- Search
 		{
 			mode = { "n", "v" },
-			{ "<leader>sr", require("telescope.builtin").lsp_references,     desc = "Telescope LSP references" },
-			{ "<leader>si", require("telescope.builtin").lsp_incoming_calls, desc = "Show incoming calls for the word under cursor" },
-			{ "<leader>so", require("telescope.builtin").lsp_outgoing_calls, desc = "Telescope outgoing calls" },
+			{ "<leader>sr", function() require("telescope.builtin").lsp_references() end,     desc = "Telescope LSP references" },
+			{ "<leader>si", function() require("telescope.builtin").lsp_incoming_calls() end, desc = "Show incoming calls for the word under cursor" },
+			{ "<leader>so", function() require("telescope.builtin").lsp_outgoing_calls() end, desc = "Telescope outgoing calls" },
 		},
 		-- Refactor
 		{
