@@ -161,7 +161,8 @@ return {
 
 	-- Formatter
 	{
-		'sbdchd/neoformat'
+		'stevearc/conform.nvim',
+		opts = {},
 	},
 
 	-- Presentation tools

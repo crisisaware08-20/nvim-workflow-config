@@ -1,7 +1,66 @@
 local jdtls_settings = {
 	java = {
 		home = '/Users/mihailiurco/.sdkman/candidates/java/current',
-	}
+		eclipse = {
+			downloadSources = true,
+		},
+		configuration = {
+			updateBuildConfiguration = "interactive",
+			runtimes = {
+			}
+		},
+		maven = {
+			downloadSources = true,
+		},
+		implementationsCodeLens = {
+			enabled = true,
+		},
+		referencesCodeLens = {
+			enabled = true,
+		},
+		references = {
+			includeDecompiledSources = true,
+		},
+		format = {
+			enabled = true,
+			settings = {
+				url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+				profile = "GoogleStyle",
+			},
+		},
+	},
+	signatureHelp = { enabled = true },
+	completion = {
+		enabled = true,
+		favoriteStaticMembers = {
+			"org.hamcrest.MatcherAssert.assertThat",
+			"org.hamcrest.Matchers.*",
+			"org.hamcrest.CoreMatchers.*",
+			"org.junit.jupiter.api.Assertions.*",
+			"java.util.Objects.requireNonNull",
+			"java.util.Objects.requireNonNullElse",
+			"org.mockito.Mockito.*",
+		},
+		importOrder = {
+			"java",
+			"javax",
+			"com",
+			"org"
+		},
+	},
+	extendedClientCapabilities = extendedClientCapabilities,
+	sources = {
+		organizeImports = {
+			starThreshold = 9999,
+			staticStarThreshold = 9999,
+		},
+	},
+	codeGeneration = {
+		toString = {
+			template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+		},
+		useBlocks = true,
+	},
 }
 
 require('jdtls').jol_path = os.getenv("HOME") .. '/java_tools/jol-cli-0.17-full.jar'
