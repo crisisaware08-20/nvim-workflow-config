@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
 	-- A directory to install the parsers into.
 	-- If this is excluded or nil parsers are installed
 	-- to either the package dir, or the "site" dir.
@@ -41,8 +41,8 @@ require 'nvim-treesitter.configs'.setup {
 		},
 	},
 	textobjects = { enable = true },
-	indent = { enable = true }
-}
+	indent = { enable = false},
+})
 
 -- require 'nvim-treesitter.configs'.setup {
 -- 	textobjects = {
@@ -155,7 +155,7 @@ require 'nvim-treesitter.configs'.setup {
 -- 	},
 -- }
 
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 -- Repeat movement with ; and ,
 -- ensure ; goes forward and , goes backward regardless of the last direction
