@@ -1,17 +1,19 @@
-require('telescope').setup {
+require("telescope").setup({
 	defaults = {
 		mappings = {
 			i = {
 				["<esc>"] = require("telescope.actions").close,
-				["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist, -- For normal mode
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
+					+ require("telescope.actions").open_qflist, -- For normal mode
 				["<C-u>"] = false,
 			},
 			n = {
 				["<esc>"] = require("telescope.actions").close,
-				["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist, -- For normal mode
-			}
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
+					+ require("telescope.actions").open_qflist, -- For normal mode
+			},
 		},
-		layout_strategy = 'vertical',
+		layout_strategy = "vertical",
 		layout_config = { height = 0.99, width = 0.99 },
 		selection_strategy = "reset",
 	},
@@ -48,19 +50,19 @@ require('telescope').setup {
 		},
 		-- Override Neovim's built-in vim.ui.select()
 		["ui-select"] = {
-			require('telescope.themes').get_dropdown {
+			require("telescope.themes").get_dropdown({
 				layout_config = {
 					preview_cutoff = 1, -- Preview should always show (unless previewer = false)
 					width = function(_, max_columns, _)
 						return math.min(max_columns, 150)
-					end
+					end,
 				},
 
 				winblend = 20, -- Optional: Adjust transparency
-			}
-		}
-	}
-}
+			}),
+		},
+	},
+})
 
-require('telescope').load_extension('fzy_native')
+require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("ui-select")
