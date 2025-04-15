@@ -1,35 +1,40 @@
 local M = {}
 
--- AI assistance
--- require('plugins/config/copilot-chat')
-require("plugins/config/copilot")
+M.setup = function()
+	local util = require("util-module")
 
--- Basics
-require("plugins/config/gitsigns")
-require("plugins/config/nvim-tree")
-require("plugins/config/telescope")
-require("plugins/config/blink")
+	-- AI assistance
+	-- require('plugins/config/copilot-chat')
+	require("plugins/config/copilot")
 
--- Folding, zR, zM
-require("plugins/config/ufo")
+	-- Basics
+	require("plugins/config/gitsigns")
+	require("plugins/config/nvim-tree")
+	require("plugins/config/telescope")
+	require("plugins/config/blink")
 
--- Treesitter and custom modules
-require("plugins/config/treesitter")
-require("plugins/treesiter/ts_modules")
+	-- Folding, zR, zM
+	require("plugins/config/ufo")
 
--- LSPs
-require("plugins/config/lsp-config")
+	-- Treesitter and custom modules
+	require("plugins/config/treesitter")
+	require("plugins/treesiter/ts_modules")
 
--- Formatter
-require("plugins/config/conform")
+	-- LSPs
+	require("plugins/config/lsp-config")
 
--- Keys
-local keys = require("keymaps").git_keys()
-require("util-module").set_global_keymaps(require("keymaps").git_keys())
-require("keymaps").search_keys()
-require("keymaps").other_keys()
+	-- Formatter
+	require("plugins/config/conform")
 
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip").config.set_config({ debug = true })
+	-- Keys
+	require("keymaps").common_keys()
+	util.set_global_keymaps(require("keymaps").git_keys())
+	util.set_global_keymaps(require("keymaps").search_keys())
+	util.set_global_keymaps(require("keymaps").other_keys())
+
+	-- Snippets
+	require("luasnip.loaders.from_vscode").lazy_load()
+	require("luasnip").config.set_config({ debug = true })
+end
 
 return M

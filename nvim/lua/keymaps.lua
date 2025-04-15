@@ -4,6 +4,57 @@ local telescope_builtin = require("telescope.builtin")
 local wk = require("which-key")
 local jdtls = require("jdtls")
 
+function P.common_keys()
+	-- Terminal window navigation
+	vim.keymap.set("n", "<leader>te", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
+	vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+	vim.keymap.set("t", "<c-k>", [[<C-\><C-N><C-w>k]])
+	vim.keymap.set("i", "<c-k>", [[<C-\><C-N><C-w>k]])
+	vim.keymap.set("t", "<c-h>", [[<C-\><C-N><C-w>h]])
+	vim.keymap.set("i", "<c-h>", [[<C-\><C-N><C-w>h]])
+	vim.keymap.set("t", "<c-l>", [[<C-\><C-N><C-w>l]])
+	vim.keymap.set("i", "<c-l>", [[<C-\><C-N><C-w>l]])
+	vim.keymap.set("t", "<c-j>", [[<C-\><C-N><C-w>j]])
+	vim.keymap.set("i", "<c-j>", [[<C-\><C-N><C-w>j]])
+
+	-- CopilotChat mappings
+	vim.keymap.set("n", "<Space>o", "<cmd>CopilotChatOpen<cr>")
+	vim.keymap.set("n", "<Space>t", "<cmd>CopilotChatToggle<cr>")
+	vim.keymap.set("n", "<Space><CR>", "<cmd>CopilotChatExecute<cr>")
+
+	-- Quick access to configuration files, so far .zshrc and init.lua
+	vim.keymap.set("n", "<leader>ev", "<cmd>hide e ~/.config/nvim/init.lua<CR>", { desc = "[E]dit init.lua" })
+	vim.keymap.set("n", "<leader>ez", "<cmd>hide e ~/.zshrc<CR>")
+	-- Window navigation
+	vim.keymap.set("n", "<c-k>", "<c-w>k", { noremap = true, silent = false })
+	vim.keymap.set("n", "<c-j>", "<c-w>j", { noremap = true, silent = false })
+	vim.keymap.set("n", "<c-h>", "<c-w>h", { noremap = true, silent = false })
+	vim.keymap.set("n", "<c-l>", "<c-w>l", { noremap = true, silent = false })
+	-- Window management
+	vim.keymap.set("n", "<Tab>l", "<c-w><S-l>", { noremap = true, silent = false })
+	vim.keymap.set("n", "<Tab>h", "<c-w><S-h>", { noremap = true, silent = false })
+	vim.keymap.set("n", "<Tab>k", "<c-w><S-k>", { noremap = true, silent = false })
+	vim.keymap.set("n", "<Tab>j", "<c-w><S-j>", { noremap = true, silent = false })
+	vim.keymap.set("n", "qw", "<c-w>c", { noremap = true, silent = false })
+	vim.keymap.set("n", "<leader>q", ":cclose<CR>", { noremap = true, silent = true, desc = "Close quick list" })
+	vim.keymap.set("n", "<S-l>", "<c-w>>", { noremap = true, silent = false })
+	vim.keymap.set("n", "<S-h>", "<c-w><", { noremap = true, silent = false })
+	vim.keymap.set("n", "<S-e>", "<c-w>+", { noremap = true, silent = false })
+	vim.keymap.set("n", "<S-y>", "<c-w>-", { noremap = true, silent = false })
+	vim.keymap.set("n", "tl", "", {
+		noremap = true,
+		silent = true,
+		callback = function()
+			vim.cmd("set number!")
+			vim.cmd("set relativenumber!")
+		end,
+	})
+	vim.keymap.set("n", "<leader>cd", function()
+		require("util-module").change_nvim_directory_to(vim.fn.expand("%:p:h"))
+		require("nvim-tree.api").tree.change_root(vim.fn.getcwd())
+	end, { noremap = true, silent = true, desc = "Change working directory" })
+end
+
 function P.git_keys()
 	return {
 		{
@@ -155,11 +206,6 @@ function P.jdtls_keys()
 				end,
 				desc = "Compile Incremental",
 			},
-			-- { "<leader>em", function() jdtls.extract_method(true) end,             desc = "Extract Method" },
-			-- { "<leader>ec", function() jdtls.extract_constant(true) end,           desc = "Extract Constant" },
-			-- { "<leader>ev", function() jdtls.extract_variable(true) end,           desc = "Extract Variable" },
-			-- { ",tm",        function() jdtls.test_nearest_method() end,            desc = "Test Nearest Method" },
-			-- { ",tc",        function() jdtls.test_class() end,                     desc = "Test Class" },
 			{
 				",tt",
 				function()
@@ -202,7 +248,7 @@ function P.jdtls_keys()
 end
 
 function P.search_keys()
-	wk.add({
+	return {
 		-- Telescope
 		{
 			mode = { "n", "v" },
@@ -238,38 +284,11 @@ function P.search_keys()
 			},
 			{ "<leader>ch", telescope_builtin.command_history, desc = "Command history" },
 		},
-	})
-end
-
-function P.copilot_chat_keys()
-	wk.add({
-		{
-			mode = { "n", "v" },
-
-			{
-				"<leader>ccq",
-				function()
-					local input = vim.fn.input("Quick Chat: ")
-					if input ~= "" then
-						require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-					end
-				end,
-				desc = "CopilotChat - Quick chat",
-			},
-			{
-				"<leader>ccp",
-				function()
-					local actions = require("CopilotChat.actions")
-					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-				end,
-				desc = "CopilotChat - Prompt actions",
-			},
-		},
-	})
+	}
 end
 
 function P.other_keys()
-	wk.add({
+	return {
 		{
 			-- Quickfix list navigation
 			mode = { "n", "v" },
@@ -277,7 +296,7 @@ function P.other_keys()
 			{ "<c-p>", ":cprevious<CR>", desc = "Previous quick fix item" },
 			{ "<leader>wd", ":NvimTreeFindFileToggle<CR>", desc = "NvimTreeFindFileToggle" },
 		},
-	})
+	}
 end
 
 return P

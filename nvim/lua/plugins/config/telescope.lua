@@ -46,6 +46,7 @@ require('telescope').setup {
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+		-- Override Neovim's built-in vim.ui.select()
 		["ui-select"] = {
 			require('telescope.themes').get_dropdown {
 				layout_config = {
