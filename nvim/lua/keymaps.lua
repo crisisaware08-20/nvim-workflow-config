@@ -266,6 +266,7 @@ function P.search_keys()
 				desc = "Fuzzy find in current buffer",
 			},
 			{ "<leader>fs", telescope_builtin.lsp_document_symbols, desc = "File symbols" },
+			{ "<space>ts", telescope_builtin.treesitter, desc = "Telescope treesitter picker" },
 			{ "<leader>ff", telescope_builtin.find_files, desc = "Search for file" },
 			{ "<leader>ht", telescope_builtin.help_tags, desc = "Search help" },
 			{ "<leader>gs", telescope_builtin.grep_string, desc = "Search for selection in files" },
