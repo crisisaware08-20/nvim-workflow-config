@@ -31,7 +31,6 @@ vim.keymap.set("n", "<Space><CR>", "<cmd>CopilotChatExecute<cr>")
 -- Basic Mappings
 vim.keymap.set("n", "<leader>te", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 vim.keymap.set("n", "<leader>ev", "<cmd>hide e ~/.config/nvim/init.lua<CR>", { desc = "[E]dit init.lua" })
-vim.keymap.set("n", "<leader>sz", "<cmd>!source ~/.zshrc<CR>")
 vim.keymap.set("n", "<leader>ez", "<cmd>hide e ~/.zshrc<CR>")
 vim.keymap.set("n", "<c-k>", "<c-w>k", { noremap = true, silent = false })
 vim.keymap.set("n", "<c-j>", "<c-w>j", { noremap = true, silent = false })
