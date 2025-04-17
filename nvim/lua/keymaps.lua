@@ -145,7 +145,7 @@ function P.lsp_keys()
 		{
 			mode = { "n", "v" },
 			{ "<leader>re", vim.lsp.buf.rename, desc = "Rename symbol under cursor" },
-			-- { "<leader>cf", vim.lsp.buf.format, desc = "Format the current buffer" },
+			{ "<leader>cf", vim.lsp.buf.format, desc = "Format the current buffer" },
 		},
 		-- Workspace
 		{

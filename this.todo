@@ -7,6 +7,10 @@
 
 [v] Define snippets
 
-[] Git workflow
+[v] Git workflow
+	[v] Git sign
+	[v] Git fugitive
+	[v] Nvim diff
+	[v] Diffview
 
 [] Search/Replace, Multiple activities with quickfix list
