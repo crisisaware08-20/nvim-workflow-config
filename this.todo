@@ -13,4 +13,11 @@
 	[v] Nvim diff
 	[v] Diffview
 
+[] Tabs
+   [v] stoptab = 1, one tab will be represented as one space
+			[v] defaults, 4 spaces
+
 [] Search/Replace, Multiple activities with quickfix list
+
+[] Source completion
+ [] Blink
