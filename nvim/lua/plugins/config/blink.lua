@@ -1,6 +1,38 @@
-require('blink.cmp').setup({
+require("blink.cmp").setup({
+	completion = {
+		trigger = {
+			-- Shows after typing a keyword, typically an alphanumeric character, `-` or `_`
+			show_on_keyword = true,
+			-- Shows after typing a trigger character, defined by the sources. For example for Luar or Rust, the LSP will define . as a trigger character.
+			show_on_trigger_character = true,
+			-- Shows after entering insert mode on top of a trigger charcter.
+			show_on_insert_on_trigger_character = true,
+		},
+		keyword = { range = "full" },
+		list = {
+			selection = {
+				preselect = true,
+				auto_insert = true,
+			},
+		},
+		menu = {
+			enabled = true,
+			draw = {
+				padding = { 1, 1 }, -- padding only on right side,
+			},
+			border = "double",
+		},
+		documentation = { window = { border = "single" } },
+	},
+	signature = {
+		enabled = true,
+		window = {
+			border = "single",
+		},
+	},
 	cmdline = { completion = { menu = { auto_show = true } } },
-	snippets = { preset = 'luasnip' },
+	snippets = { preset = "luasnip" },
+
 	-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept, C-n/C-p for up/down)
 	-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys for up/down)
 	-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -11,7 +43,7 @@ require('blink.cmp').setup({
 	-- C-k: Toggle signature help
 	--
 	-- See the full "keymap" documentation for information on defining your own keymap.
-	keymap = { preset = 'default' },
+	keymap = { preset = "default" },
 
 	appearance = {
 		-- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -20,49 +52,48 @@ require('blink.cmp').setup({
 		use_nvim_cmp_as_default = true,
 		-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 		-- Adjusts spacing to ensure icons are aligned
-		nerd_font_variant = 'mono',
+		nerd_font_variant = "mono",
 
 		-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
 		kind_icons = {
 			Copilot = "",
-			Text = '󰉿',
-			Method = '󰊕',
-			Function = '󰊕',
-			Constructor = '󰒓',
+			Text = "󰉿",
+			Method = "󰊕",
+			Function = "󰊕",
+			Constructor = "󰒓",
 
-			Field = '󰜢',
-			Variable = '󰆦',
-			Property = '󰖷',
+			Field = "󰜢",
+			Variable = "󰆦",
+			Property = "󰖷",
 
-			Class = '󱡠',
-			Interface = '󱡠',
-			Struct = '󱡠',
-			Module = '󰅩',
+			Class = "󱡠",
+			Interface = "󱡠",
+			Struct = "󱡠",
+			Module = "󰅩",
 
-			Unit = '󰪚',
-			Value = '󰦨',
-			Enum = '󰦨',
-			EnumMember = '󰦨',
+			Unit = "󰪚",
+			Value = "󰦨",
+			Enum = "󰦨",
+			EnumMember = "󰦨",
 
-			Keyword = '󰻾',
-			Constant = '󰏿',
+			Keyword = "󰻾",
+			Constant = "󰏿",
 
-			Snippet = '󱄽',
-			Color = '󰏘',
-			File = '󰈔',
-			Reference = '󰬲',
-			Folder = '󰉋',
-			Event = '󱐋',
-			Operator = '󰪚',
-			TypeParameter = '󰬛',
-
+			Snippet = "󱄽",
+			Color = "󰏘",
+			File = "󰈔",
+			Reference = "󰬲",
+			Folder = "󰉋",
+			Event = "󱐋",
+			Operator = "󰪚",
+			TypeParameter = "󰬛",
 		},
 	},
 
 	-- Default list of enabled providers defined so that you can extend it
 	-- elsewhere in your config, without redefining it, due to `opts_extend`
 	sources = {
-		default = { 'lsp', 'snippets', 'buffer', 'path'  },
+		default = { "lsp", "snippets", "buffer", "path" },
 		-- default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
 		-- default = { 'lsp', 'path', 'buffer' },
 		providers = {
@@ -72,6 +103,12 @@ require('blink.cmp').setup({
 				module = "blink-copilot",
 				score_offset = 100,
 				async = true,
+			},
+			cmdline = {
+				-- ignores cmdline completions when executing shell commands
+				enabled = function()
+					return vim.fn.getcmdtype() ~= ":" or not vim.fn.getcmdline():match("^[%%0-9, '<>%-]*!")
+				end,
 			},
 		},
 	},
