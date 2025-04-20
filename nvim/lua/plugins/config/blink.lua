@@ -1,5 +1,8 @@
 require("blink.cmp").setup({
 	completion = {
+		-- check the documentation for additional configurations
+		-- https://cmp.saghen.dev/configuration/reference.html#completion-accept
+		accept = {},
 		trigger = {
 			-- Shows after typing a keyword, typically an alphanumeric character, `-` or `_`
 			show_on_keyword = true,
@@ -17,10 +20,62 @@ require("blink.cmp").setup({
 		},
 		menu = {
 			enabled = true,
+			min_width = 150,
 			draw = {
+				-- Aligns the keyword you've typed to a component in the menu
+				align_to = "label", -- or 'none' to disable, or 'cursor' to align to the cursor
+				-- Gap between columns
+				gap = 1,
+				-- Use treesitter to highlight the label text for the given list of sources
+				treesitter = {},
+				-- treesitter = { 'lsp' }
 				padding = { 1, 1 }, -- padding only on right side,
+				-- Components to render, grouped by column
+				columns = { { "source_id", "kind_icon", gap = 2 }, { "label", "label_description", gap = 1 } },
+
+				components = {
+					label = {
+						width = { fill = true, max = 60 },
+						text = function(ctx)
+							return ctx.label .. ctx.label_detail
+						end,
+						highlight = function(ctx)
+							-- label and label details
+							local highlights = {
+								{
+									0,
+									#ctx.label,
+									group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel",
+								},
+							}
+							if ctx.label_detail then
+								table.insert(
+									highlights,
+									{ #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
+								)
+							end
+
+							-- characters matched on the label by the fuzzy matcher
+							for _, idx in ipairs(ctx.label_matched_indices) do
+								table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+							end
+
+							return highlights
+						end,
+					},
+
+					label_description = {
+						width = { max = 70 },
+						text = function(ctx)
+							return ctx.label_description
+						end,
+						highlight = "BlinkCmpLabelDescription",
+					},
+				},
 			},
-			border = "double",
+			border = "single",
+			-- border = "double",
+			-- border = nill,
 		},
 		documentation = { window = { border = "single" } },
 	},
