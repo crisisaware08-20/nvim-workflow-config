@@ -1,9 +1,17 @@
 
 [v] Clean
 
-[] luasnip
+[v] luasnip
 
-[] Trisittier
+[] Code editing
+  [v] Code navigation: leap, s{char}
+		[] d,c,y,v with leap and Treesitter, this will give only the range within the node
+		[] remote operations, d,c,y,x
+		[] go to outside label nodes, starting from current position
+
+[] Lua, new programming concepts like coroutines, functions, lambdas, etc
+
+[] Create nvim plugin
 
 [v] Define snippets
 
