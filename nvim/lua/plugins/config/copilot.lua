@@ -1,11 +1,11 @@
-require("copilot").setup {
-	suggestion = { enabled = false },
+require("copilot").setup({
+	suggestion = { enabled = true },
 	panel = {
-		enabled = false ,
+		enabled = false,
 	},
 	cmp = {
 		enabled = true,
 		method = "getCompletionsCycling",
 	},
 	-- Other configurations
-}
+})
