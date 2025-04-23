@@ -4,7 +4,7 @@ M.setup = function()
 	local util = require("util-module")
 
 	-- AI assistance
-	-- require('plugins/config/copilot-chat')
+	require("plugins/config/copilot-chat")
 	require("plugins/config/copilot")
 
 	-- Basics

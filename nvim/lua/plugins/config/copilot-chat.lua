@@ -19,7 +19,7 @@ local chat = require("CopilotChat")
 local select = require("CopilotChat.select")
 
 local opts = {
-	debug = true,    -- Enable debugging
+	debug = true, -- Enable debugging
 	show_help = true, -- Show help actions
 	window = {
 		layout = "float",
