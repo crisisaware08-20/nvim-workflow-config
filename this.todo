@@ -1,17 +1,19 @@
-
-[v] Clean
-
-[v] luasnip
-
-[] Code editing
-  [v] Code navigation: leap, s{char}
-		[] d,c,y,v with leap and Treesitter, this will give only the range within the node
-		[] remote operations, d,c,y,x
-		[] go to outside label nodes, starting from current position
+[v] Stay Clean
 
 [] Lua, new programming concepts like coroutines, functions, lambdas, etc
 
 [] Create nvim plugin
+
+Automation
+------------
+
+[v] luasnip
+
+[] Code editing
+  [v] Code navigation: flash so far demonstrate an easy of use
+		[] operating mode (d,c,y,etc)
+				[v] flash + Treessiter
+		[v] remote operating modes
 
 [v] Define snippets
 
@@ -21,7 +23,7 @@
 	[v] Nvim diff
 	[v] Diffview
 
-[] Tabs
+[v] Tabs
    [v] stoptab = 1, one tab will be represented as one space
 			[v] defaults, 4 spaces
 
@@ -29,3 +31,8 @@
 
 [] Source completion
  [v] Blink
+
+AI Integration
+-----------
+[] CopilotChat
+[] Avante
