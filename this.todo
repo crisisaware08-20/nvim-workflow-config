@@ -7,30 +7,7 @@
 Automation
 ------------
 
-[v] luasnip
-
-[] Code editing
-  [v] Code navigation: flash so far demonstrate an easy of use
-		[] operating mode (d,c,y,etc)
-				[v] flash + Treessiter
-		[v] remote operating modes
-
-[v] Define snippets
-
-[v] Git workflow
-	[v] Git sign
-	[v] Git fugitive
-	[v] Nvim diff
-	[v] Diffview
-
-[v] Tabs
-   [v] stoptab = 1, one tab will be represented as one space
-			[v] defaults, 4 spaces
-
 [] Search/Replace, Multiple activities with quickfix list
-
-[] Source completion
- [v] Blink
 
 AI Integration
 -----------
