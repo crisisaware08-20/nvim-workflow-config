@@ -22,7 +22,7 @@ local opts = {
 	debug = true, -- Enable debugging
 	show_help = true, -- Show help actions
 	window = {
-		layout = "float",
+		layout = "vertical",
 	},
 	auto_follow_cursor = false, -- Don't follow the cursor after getting response
 	-- chat_auto_complete = true, -- Enable auto completion
