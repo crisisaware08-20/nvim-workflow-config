@@ -2,7 +2,8 @@
 require("conform").setup({
 	-- Map of filetype to formatters
 	formatters_by_ft = {
-		xml = {"xml_formatter"},
+		json = { "jq" },
+		xml = { "xml_formatter" },
 		scala = { "scalafmt" },
 		java = { "google_java_format" },
 		lua = { "stylua" },
@@ -51,15 +52,20 @@ require("conform").setup({
 	notify_no_formatters = true,
 	-- Custom formatters and overrides for built-in formatters
 	formatters = {
+		jq = {
+			command = "jq",
+			args = { "." }, -- Format JSON
+			stdin = true,
+		},
 		xml_formatter = {
 			command = "xmllint",
 			args = { "--format", "-" }, -- Use stdin for formatting
-			stdin = true,               -- Enable stdin for input
+			stdin = true, -- Enable stdin for input
 		},
 		google_java_format = {
 			command = vim.fn.stdpath("data") .. "/mason/bin/google-java-format", -- Path to the binary installed by Mason
-			args = { "-" },                                                      -- Use stdin for formatting
-			stdin = true,                                                        -- Enable stdin for input
+			args = { "-" }, -- Use stdin for formatting
+			stdin = true, -- Enable stdin for input
 		},
 		my_formatter = {
 			-- This can be a string or a function that returns a string.
