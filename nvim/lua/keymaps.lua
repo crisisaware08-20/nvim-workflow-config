@@ -270,7 +270,10 @@ function P.search_keys()
 			{ "<leader>ff", telescope_builtin.find_files, desc = "Search for file" },
 			{ "<leader>ht", telescope_builtin.help_tags, desc = "Search help" },
 			{ "<leader>gs", telescope_builtin.grep_string, desc = "Search for selection in files" },
-			{ "<leader>lg", telescope_builtin.live_grep, desc = "Live grep" },
+			-- { "<leader>lg", telescope_builtin.live_grep, desc = "Live grep" },
+			{ "<leader>lg", require('telescope').extensions.live_grep_args.live_grep_args, desc = "Live grep" },
+			-- vim.keymap.set('n', '<leader>fg', require('telescope').extensions.live_grep_args.live_grep_args, {})
+
 			{
 				"<leader>fc",
 				function()
