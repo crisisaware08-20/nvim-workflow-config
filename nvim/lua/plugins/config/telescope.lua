@@ -4,13 +4,13 @@ require("telescope").setup({
 			i = {
 				["<esc>"] = require("telescope.actions").close,
 				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
-					+ require("telescope.actions").open_qflist, -- For normal mode
+								+ require("telescope.actions").open_qflist, -- For normal mode
 				["<C-u>"] = false,
 			},
 			n = {
 				["<esc>"] = require("telescope.actions").close,
 				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
-					+ require("telescope.actions").open_qflist, -- For normal mode
+								+ require("telescope.actions").open_qflist, -- For normal mode
 			},
 		},
 		layout_strategy = "vertical",
@@ -18,9 +18,13 @@ require("telescope").setup({
 		selection_strategy = "reset",
 	},
 	pickers = {
-		-- find_files = {
-		-- 	theme = "dropdown",
-		-- }
+		find_files = {
+			theme = "dropdown",
+			preview = true,
+			layout_config = {
+				width = 0.8,
+			},
+		},
 		-- Default configuration for builtin pickers goes here:
 
 		-- picker_name = {
@@ -31,10 +35,13 @@ require("telescope").setup({
 		-- builtin picker
 		lsp_document_symbols = {
 			symbol_width = 80,
-			theme = "dropdown",
+			theme = "dropdown", -- others: cursor,
 			layout_config = {
 				width = 0.8,
 			},
+		},
+		live_grep = {
+			preview = false,
 		},
 	},
 	extensions = {
