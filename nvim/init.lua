@@ -42,3 +42,7 @@ autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if !&nu | set nu   |set rnu 
 autocmd BufLeave,FocusLost,WinLeave   * if &nu              | set nonu |set nornu |  endif
 augroup END
 ]])
+
+-- Scroll effect, this would make you to stick to healthy productive code navigation while having focus and better visual context
+vim.api.nvim_set_keymap('n', 'j', 'jzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'k', 'kzz', { noremap = true, silent = true })
