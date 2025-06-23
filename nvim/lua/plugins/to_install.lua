@@ -181,5 +181,18 @@ return {
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
-	}
+	},
+
+{
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("neoscroll").setup({
+        -- your configuration here
+      })
+    end,
+    -- Lazy-load on a key or event if desired; otherwise, it will load on require
+    keys = { "<C-u>", "<C-d>" }, -- Example: lazy-load on these keys if you use them for scroll
+    -- Or lazy-load on an event:
+    -- event = "BufEnter",
+  },
 }
