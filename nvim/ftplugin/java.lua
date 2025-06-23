@@ -1,6 +1,6 @@
 local jdtls_settings = {
 	java = {
-		home = "/Users/mihailiurco/.sdkman/candidates/java/current",
+		home = "/Users/mihail.iurco/.sdkman/candidates/java/current",
 	},
 }
 
@@ -12,14 +12,16 @@ local client_capabilities_config = require("blink.cmp").get_lsp_capabilities()
 
 -- Define the root directory dynamically
 local root_dir =
-	vim.fs.dirname(vim.fs.find({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }, { upward = true })[1])
+				vim.fs.dirname(vim.fs.find({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }, { upward = true })[1])
 if not root_dir then
-	vim.notify("No valid Java root directory found !", vim.log.levels.ERROR)
+	vim.notify("No project root found, using file directory as workspace", vim.log.levels.WARN)
 	return
 end
 
-local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
-local java_debug_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
+-- local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
+local java_test_path = vim.fn.stdpath("data") .. "/mason/packages/java-test"
+-- local java_debug_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
+local java_debug_path = vim.fn.stdpath("data") .. "/mason/packages/java-debug-adapter"
 local lombok_path = vim.fn.stdpath("data") .. "/lombok/lombok.jar"
 local bundles = {
 	vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"),
@@ -38,7 +40,9 @@ if vim.fn.filereadable(lombok_path) == 0 then
 	})
 end
 
-local jdtls_path = require("mason-registry").get_package("jdtls"):get_install_path()
+-- local jdtls_path = require("mason-registry").get_package("jdtls"):get_install_path()
+local jdtls_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
+print("jdtls path" .. jdtls_path)
 local config = {
 
 	cmd = {
@@ -50,7 +54,7 @@ local config = {
 
 	root_dir = root_dir,
 	on_attach = function(client, bufnr)
-		print("Attaching to the java buffer, relevant keymaps will be set")
+		-- print("Attaching to the java buffer, relevant keymaps will be set")
 		local jdtls_keys = require("keymaps").jdtls_keys()
 		require("util-module").set_keymaps(bufnr, jdtls_keys)
 	end,

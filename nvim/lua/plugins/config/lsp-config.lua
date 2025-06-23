@@ -47,7 +47,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --
 
 
--- It should be set per each added lsp otherwise lsp server will not know what lsp client is capable of 
+-- It should be set per each added lsp otherwise lsp server will not know what lsp client is capable of
 -- lsp_server --> lsp_client --> blink
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 

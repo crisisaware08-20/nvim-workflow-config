@@ -51,6 +51,10 @@ require("telescope").setup({
 		-- }
 		-- please take a look at the readme of the extension you want to configure
 
+
+		live_grep_args = {
+			auto_quoting = true,
+		},
 		fzy_native = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
