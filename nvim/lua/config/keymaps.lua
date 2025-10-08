@@ -1,0 +1,10 @@
+
+vim.keymap.set('n', ']q', function() if not pcall(vim.cmd, 'cnext') then vim.cmd('cfirst') end vim.cmd('normal! zvzz') end, {desc = 'Quickfix next (wrap)'})
+vim.keymap.set('n', '>>', '<Cmd>cnext<CR>',     { desc = 'Quickfix: next' })
+vim.keymap.set('n', '<<', '<Cmd>cprevious<CR>', { desc = 'Quickfix: prev' })
+vim.keymap.set('n', ']l', '<Cmd>lnext<CR>',     { desc = 'Loclist: next' })
+vim.keymap.set('n', '[l', '<Cmd>lprevious<CR>', { desc = 'Loclist: prev' })
+vim.keymap.set("n", "<leader>x", function()
+  local line = vim.api.nvim_get_current_line()
+  vim.cmd("lua " .. line)
+end, { desc = "Run current Lua line" })
