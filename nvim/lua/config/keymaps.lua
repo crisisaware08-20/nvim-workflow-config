@@ -33,9 +33,11 @@ vim.keymap.set('n', '<<', '<Cmd>cprevious<CR>', { desc = 'Quickfix: prev' })
 vim.keymap.set('n', ']l', '<Cmd>lnext<CR>', { desc = 'Loclist: next' })
 vim.keymap.set('n', '[l', '<Cmd>lprevious<CR>', { desc = 'Loclist: prev' })
 
+-- One liner execution, TJ's source
 vim.keymap.set("n", "<leader>x", function()
 	local line = vim.api.nvim_get_current_line()
 	vim.cmd("lua " .. line)
 end, { desc = "Run current Lua line" })
 
+-- Explore directory
 vim.keymap.set('n', '<leader>e', '<Cmd>Explore<CR>', { desc = 'Explore' })
