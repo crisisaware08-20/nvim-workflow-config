@@ -7,6 +7,7 @@ vim.pack.add({"https://github.com/folke/snacks.nvim"})
 require('config.options')
 require('config.keymaps')
 require('config.commands')
+require('config.autocmds')
 require('lsp')
 
 require('plugins.nick_opencode')

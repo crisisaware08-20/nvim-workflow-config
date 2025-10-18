@@ -3,6 +3,19 @@
 
 [] Create nvim plugin
 
+[] opencodeai lsp ?
+[] opencodeai editor ?
+[] kotlin lsp ?
+[] I want to enhance alacritty terminal with opencodeai, this would increase the workflow more like warp is at the moment.
+
+Input: zz: <Prompt>
+Output: the suggestions.
+
+The context will be what ? Your current directory ? Your current discussion ?
+Most probably you will not have the posability to manage it in a proper way 
+
+
+
 Automation
 ------------
 
