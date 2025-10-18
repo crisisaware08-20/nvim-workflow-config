@@ -25,6 +25,8 @@ vim.lsp.config.lua_ls = {
       diagnostics = {
         -- Recognize vim global
         globals = { 'vim' },
+	severity = {min = 'Error'},
+	enable = false
       },
       -- Improve completion
       completion = {
@@ -33,5 +35,3 @@ vim.lsp.config.lua_ls = {
     },
   },
 }
-
-print(vim.env.VIMRUNTIME)
