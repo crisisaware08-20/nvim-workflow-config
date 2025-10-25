@@ -1,0 +1,15 @@
+
+[] Lua, new programming concepts like coroutines, functions, lambdas, etc
+
+[] Create nvim plugin
+
+
+What is the thing that will make your workflow better than others ?
+
+[] Search/grep for complex things and doing operations on it.
+[] Good speed of navigating through the project
+    - recent buffers
+    - search/find references of "words", nice list(maybe with preview)
+    - easily to compare things: split window, quick diff
+    - multiple yank, multiple paste. Would this be a source for blink ?
+[] Seamless integration with ai tools.
