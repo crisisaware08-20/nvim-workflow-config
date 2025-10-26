@@ -48,11 +48,45 @@ export PATH=/Users/mihai.iurcomgmail.com/.opencode/bin:$PATH
 # ═══════════════════════════════════════════════════════════
 # OpenCodeAI Helper Functions - Dual-mode support
 # ═══════════════════════════════════════════════════════════
+# 
+# Global mode: Single instance on port 12345, accessible from nvim anywhere
+# Local mode: Project-specific instance, auto-discovered by CWD
+#
+# CLI Functions:
+#   opencode-global          - Start global instance on port 12345
+#   opencode-local           - Start local instance in current directory
+#   opencode-status          - Show all running instances (marks global)
+#   opencode-clean-sessions  - Remove all stored sessions
+# ═══════════════════════════════════════════════════════════
 
 # Launch OpenCodeAI in global mode (multi-project on port 12345)
 opencode-global() {
   echo "Starting OpenCodeAI in GLOBAL mode on port 12345 from HOME directory..."
   cd ~ && opencode --port 12345
+}
+
+# Clean up old OpenCodeAI sessions
+opencode-clean-sessions() {
+  local session_dir="$HOME/.local/share/opencode/storage/session"
+  if [ ! -d "$session_dir" ]; then
+    echo "No session directory found"
+    return 0
+  fi
+  
+  local count=$(ls -1 "$session_dir" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$count" -eq 0 ]; then
+    echo "No sessions to clean"
+    return 0
+  fi
+  
+  echo "Found $count session(s). Delete all? [y/N]"
+  read -r response
+  if [[ "$response" =~ ^[Yy]$ ]]; then
+    rm -rf "$session_dir"/*
+    echo "✅ All sessions deleted"
+  else
+    echo "Cancelled"
+  fi
 }
 
 # Launch OpenCodeAI in local mode (project-specific, auto-discover)
@@ -69,7 +103,14 @@ opencode-status() {
     local pid=$(echo "$line" | awk '{print $2}')
     local port=$(echo "$line" | awk '{print $9}' | cut -d: -f2)
     local cwd=$(lsof -a -p "$pid" -d cwd 2>/dev/null | tail -1 | awk '{print $NF}')
-    echo "PID: $pid | Port: $port | CWD: $cwd"
+    
+    # Mark global instance (port 12345)
+    local marker=""
+    if [ "$port" = "12345" ]; then
+      marker=" 🌐 [GLOBAL]"
+    fi
+    
+    echo "PID: $pid | Port: $port$marker | CWD: $cwd"
   done || echo "No OpenCodeAI instances found"
 }
 

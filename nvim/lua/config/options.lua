@@ -1,10 +1,10 @@
 -- ═══════════════════════════════════════════════════════════
--- LEADER KEY (Matching tmux prefix for unified mental model)
+-- LEADER KEY
 -- ═══════════════════════════════════════════════════════════
--- Set leader to \ (backslash) - must be done before any keymaps are defined
--- This is actually the default, but we set it explicitly for clarity
-vim.g.mapleader = '\\'
-vim.g.maplocalleader = '\\'
+-- Set leader to <Space> - must be done before any keymaps are defined
+-- Changed from backslash to avoid conflict with tmux prefix key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- add to cwd ** so that it could find recursively without specifying the relative path 
 vim.opt.path:append({"**", "/usr/include", "/Users/mihai.iurcomgmail.com/github/nvim-workflow-config/**"})

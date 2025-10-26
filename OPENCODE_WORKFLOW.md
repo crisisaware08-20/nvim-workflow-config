@@ -42,8 +42,24 @@ opencode-status
 
 The `opencode-status` command shows:
 - Process ID (PID)
-- Port number
+- Port number (with 🌐 [GLOBAL] marker for port 12345)
 - Current working directory (CWD)
+
+### Using OpenCodeAI from Command Line
+
+**With a global instance running, you can:**
+
+```bash
+# Send a message to the global instance (from anywhere)
+opencode-send "explain this function"
+# or use the short alias:
+oc "what does this code do?"
+
+# Connect to the global instance TUI interactively
+opencode-connect
+```
+
+These commands work from any directory - they always connect to the global instance on port 12345.
 
 ### Switching Modes in Nvim
 
@@ -196,14 +212,16 @@ This is implemented through custom `@buffer`, `@cursor`, and `@selection` contex
 
 3. **Check mode frequently**: Use `<leader>om` if you're unsure which mode you're in.
 
-4. **Shell aliases**: Add shortcuts to your workflow:
+4. **CLI access to global instance**: The new `oc` alias gives you quick command-line access to your global instance:
    ```bash
-   alias oc-g='opencode-global'
-   alias oc-l='opencode-local'
-   alias oc-s='opencode-status'
+   oc "debug this error message"
+   oc "explain the architecture of this project"
    ```
+   This is especially useful for quick questions without opening nvim.
 
-5. **Tmux integration**: Consider binding keys in your `.tmux.conf` to quickly switch between your AI window and editor window.
+5. **Interactive vs one-off**: Use `opencode-connect` for full TUI interaction, `oc` for quick questions.
+
+6. **Tmux integration**: Consider binding keys in your `.tmux.conf` to quickly switch between your AI window and editor window.
 
 ## Related Files
 

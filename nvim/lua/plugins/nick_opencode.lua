@@ -121,11 +121,27 @@ vim.g.opencode_opts = {
     ["@diff"] = { description = "Git diff", value = require("opencode.context").git_diff },
     ["@grapple"] = { description = "Grapple tags", value = require("opencode.context").grapple_tags },
   },
+  -- Configure the ask input window to be a centered float
+  input = {
+    win = {
+      relative = "editor",  -- Relative to the editor instead of cursor
+      position = "float",   -- Floating window
+      width = 80,           -- Fixed width
+    },
+  },
   -- Your additional configuration, if any — see `lua/opencode/config.lua`
 }
 
 -- Required for `opts.auto_reload`
 vim.opt.autoread = true
+
+-- Map Esc to close the opencode input window
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'opencode_ask',
+  callback = function()
+    vim.keymap.set({'i', 'n'}, '<Esc>', '<cmd>stopinsert | close<cr>', { buffer = true, silent = true })
+  end,
+})
 
 -- Show current mode on startup
 vim.api.nvim_create_autocmd('VimEnter', {
