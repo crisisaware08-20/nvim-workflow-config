@@ -1,0 +1,40 @@
+{
+  "plugins": {
+    "autoclose.nvim": {
+      "rev": "3f86702",
+      "src": "https://github.com/m4xshen/autoclose.nvim"
+    },
+    "blink.cmp": {
+      "rev": "2cb0a71",
+      "src": "https://github.com/Saghen/blink.cmp"
+    },
+    "gitsigns.nvim": [],
+    "lazydocker.nvim": {
+      "rev": "3330d1f",
+      "src": "https://github.com/mgierada/lazydocker.nvim"
+    },
+    "lazygit.nvim": {
+      "rev": "2305dee",
+      "src": "https://github.com/kdheepak/lazygit.nvim"
+    },
+    "nvim-treesitter": [],
+    "opencode.nvim": [],
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "snacks.nvim": [],
+    "telescope.nvim": {
+      "rev": "b4da76b",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
+    },
+    "yanky.nvim": {
+      "rev": "04775cc",
+      "src": "https://github.com/gbprod/yanky.nvim"
+    }
+  }
+}
