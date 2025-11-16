@@ -1,0 +1,106 @@
+[] Lua, new programming concepts like coroutines, functions, lambdas, etc
+
+What is the thing that will make your workflow better than others?
+
+[x]Snacks provides good explorer. Toggle, and reveal, rename, copy
+[x]Install nerd fonts 
+[x]Install alacritty themes
+[] Flash for quick jumping
+
+[] blink sources are having a pop-up window where the background is not so user-friendly, which one are they using: the terminal one or the one defined in nvim?
+
+
+
+Previous Focus
+--------------
+[x] Tree-sitter, highlighting, increase/decrease selection, how does it work with LSP?
+[x] LSP highlighting, easy to enable and disable, do you want to disable the LSP fonts/themes/styles if any?
+
+			LSP Server → Neovim LSP Client → Semantic Tokens → Highlight Groups → Theme Colors
+
+
+			1. Code: val x = 5
+
+			2. Treesitter parser creates syntax tree:
+			   val     → node type: "keyword"
+			   x       → node type: "variable"  
+			   =       → node type: "operator"
+			   5       → node type: "number"
+
+			3. Treesitter maps nodes to highlight groups:
+			   keyword  → @keyword
+			   variable → @variable
+			   operator → @operator
+			   number   → @number
+
+			4. Theme defines colors:
+			   @keyword  = purple
+			   @variable = blue
+			   @operator = white
+			   @number   = orange
+
+			5. Result: val is purple, x is blue, = is white, 5 is orange
+
+			**If theme doesn't define a group ?**
+			@keyword → not defined in theme → highlight group: none → no color
+
+			you can add manually
+			vim.api.nvim_set_hl(0, '@keyword', { fg = '#bb9af7' }) --purple
+
+
+
+Current Focus
+-------------
+[x] place wehere to define your highlits
+[x] found good colorscheme, habamax. Or you can find something similar to by perplexy 
+[] mods, glow cli tools,  to enrich yoour cli tools
+[x] get rg under your belt, and lear how to combine it with xargs and find.
+	- you do have good custom command, rg with arguments, it's in line with the rg, works perfect, just need to extend it
+[x] make cmd case-insensitive, done through blink.cmp command line
+[x] lsp inlay hints ? You could be using K, but remember that you have to set hints per each ls provider as it's language dependent
+[] you really need to be able to navigate through the git changes
+[] Improve the understanding and habbits of making use of the quick fix list
+	- changes across the entire quickfix list 
+	- opecodeai quickfix list as context
+	- UX of navigating through the quickfix list
+[] Integrated UI for AI code assistance within nvim
+[] ACP agents
+[] You found a lot of tools that are terminal based with AI like
+	- mods
+	- Wave, alternative to Warp, it's an AI-native terminal designed for modern developers
+	- Aider, is a terminal (CLI) based AI coding tool
+	- tmuxAi
+	Wave vs Aider: Aider specializes as a CLI-first AI assistant for code, git, and commits with fine-grained control.
+                        Wave is a full-featured terminal replacement with AI, graphical file previews, editor and workspace features,
+		       providing a broader development environment integration with AI seamlessly embedded
+
+[] Why there is no ACP client within the nvim
+
+As a software engineer I do want to have control over the tools I am working with especially the ones that triggers automatically. In our case it is Lsp. Clients attaches to the buffer.
+
+[] Implement nvim companion which will be based on the OpenCode terminal based agent. It should provide the models the OpenCode to work with. There should be two OpenCode instances one agent for low level but it should take decisions based on the highlevel things. 
+
+[] Local AI, and  mod
+
+
+# View your models
+ollama list
+
+# Code generation
+ollama run deepseek-coder:latest "write a Kotlin function to parse JSON"
+
+# Architecture discussion
+ollama run mixtral:latest "explain microservices vs monolith"
+
+# General questions
+ollama run mistral:latest "what is clean architecture"
+
+# Read the full guide
+cat ~/mods-usage.md
+
+
+ollama ps
+ollama stop
+
+
+
