@@ -1,0 +1,11 @@
+# Disable shell integration — it conflicts with zsh tab completion rendering
+shell-integration = none
+
+# Nice defaults for clear ghost text
+font-family = "JetBrains Mono"   # or your favorite monospace font
+font-size = 14
+
+# Tiling WM fix: Ghostty uses macOS native tabs, which the OS reports as separate
+# windows — AeroSpace tiles them and halves the screen. Make Cmd+T open a real
+# window instead, so AeroSpace tiles it intentionally.
+keybind = super+t=new_window
